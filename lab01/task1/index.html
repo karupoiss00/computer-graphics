@@ -10,6 +10,7 @@
             flex-direction: row;
             align-items: center;
             justify-content: center;
+            margin: 0;
         }
         svg {
             width: 200px;
@@ -24,64 +25,23 @@
 
         .g-letter {
             position: absolute;
-            bottom: 0;
+            bottom: 300px;
             left: 0;
-            animation: g-animate 2s ease infinite;
-            animation-delay: 200ms;
-        }
-
-        @keyframes g-animate {
-            0% {
-                bottom: 0;
-            }
-            50% {
-                bottom: 300px;
-            }
-            100% {
-                bottom: 0;
-            }
         }
 
         .r-letter {
             position: absolute;
-            bottom: 0;
+            bottom: 500px;
             left: 200px;
-            animation: r-animate 2s ease infinite;
-            animation-delay: 600ms;
-        }
-
-        @keyframes r-animate {
-            0% {
-                bottom: 0;
-            }
-            50% {
-                bottom: 250px;
-            }
-            100% {
-                bottom: 0;
-            }
         }
 
         .m-letter {
             position: absolute;
-            bottom: 0;
+            bottom: 400px;
             left: 400px;
-            animation: m-animate 2s ease infinite;
-            animation-delay: 100ms;
-        }
-
-        @keyframes m-animate {
-            0% {
-                bottom: 0;
-            }
-            50% {
-                bottom: 400px;
-            }
-            100% {
-                bottom: 0;
-            }
         }
     </style>
+    <script src="index.js"></script>
 </head>
 <body>
     <div class="container">
@@ -138,7 +98,6 @@
                 <rect x="0" y="180" width="200" height="1" fill="none" stroke="green" stroke-width="10"/>
             </g>
             <!-- Буква М -->
-
         </svg>
     </div>
 </body>
