@@ -26,6 +26,7 @@ function createDropAnimation(element, startDelay = 0, gravityAcceleration = 10) 
     const HALF_STEPS_COUNT = STEP_COUNTS / 2
     const startTime = Date.now() + startDelay
     let height = parseInt(getComputedStyle(element).bottom, 10)
+
     return {
         animate: () => {
             if (startTime > Date.now())
