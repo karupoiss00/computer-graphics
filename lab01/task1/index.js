@@ -24,8 +24,7 @@ function main() {
 }
 
 function createDropAnimation(element, startDelay = 0, gravityAcceleration = 10) {
-    const STEP_COUNTS = 50000 * (1 / gravityAcceleration)
-    const HALF_STEPS_COUNT = STEP_COUNTS / 2
+    const stepsCount = 50000 * (1 / gravityAcceleration)
     const startTime = Date.now() + startDelay
     let height = parseInt(getComputedStyle(element).bottom, 10)
 
@@ -36,17 +35,22 @@ function createDropAnimation(element, startDelay = 0, gravityAcceleration = 10) 
                 return
             }
 
-            let step = (Date.now() - startTime) % STEP_COUNTS;
-
-            if (step > HALF_STEPS_COUNT)
-            {
-                step = STEP_COUNTS - step
-            }
-
-            const wave = Math.cos(step / HALF_STEPS_COUNT * Math.PI);
+            const wave = calculateWaveFactor(startTime, stepsCount)
             const resultH = Math.abs(wave) * height
 
             element.setAttribute('style', `bottom: ${resultH}px`);
         },
     }
+}
+
+function calculateWaveFactor(startTime, stepsCount) {
+    const HALF_STEPS_COUNT = stepsCount / 2
+    let step = (Date.now() - startTime) % stepsCount;
+
+    if (step > HALF_STEPS_COUNT)
+    {
+        step = stepsCount - step
+    }
+
+    return Math.cos(step / HALF_STEPS_COUNT * Math.PI);
 }
