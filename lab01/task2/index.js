@@ -1,14 +1,16 @@
-window.onload = start
+window.onload = main
 
-function start() {
-    const px = count => `${count}px`
-
+function main() {
     const imageElement = document.body.getElementsByClassName('image')[0]
 
     if (!imageElement) {
         throw new Error('image not found')
     }
 
+    makeElementDraggable(imageElement)
+}
+
+function makeElementDraggable(element) {
     let startPoint = {
         x: 0,
         y: 0
@@ -16,8 +18,8 @@ function start() {
 
     const onMouseDown = e => {
         startPoint = {
-            x: e.clientX - imageElement.offsetLeft,
-            y: e.clientY - imageElement.offsetTop,
+            x: e.clientX - element.offsetLeft,
+            y: e.clientY - element.offsetTop,
         }
 
         window.addEventListener('mousemove', onMouseMove)
@@ -28,7 +30,7 @@ function start() {
         const left = px(e.clientX - startPoint.x)
         const top = px(e.clientY - startPoint.y)
 
-        imageElement.setAttribute(
+        element.setAttribute(
             'style',
             `left: ${left}; top: ${top};`
         )
@@ -39,5 +41,9 @@ function start() {
         window.removeEventListener('mouseup', onMouseUp)
     }
 
-    imageElement.addEventListener('mousedown', onMouseDown)
+    element.addEventListener('mousedown', onMouseDown)
+}
+
+function px(count) {
+    return `${count}px`
 }

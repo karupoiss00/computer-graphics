@@ -6,19 +6,21 @@ function main() {
     const thirdLetter = document.body.getElementsByClassName('m-letter')[0]
 
     if (!firstLetter || !secondLetter || !thirdLetter) {
-        throw new Error(msg)
+        throw new Error('one of letter elements is undefined')
     }
 
-    const {animate: animateFirst} = createDropAnimation(firstLetter, 5000, 20)
+    const {animate: animateFirst} = createDropAnimation(firstLetter, 5000/*, 20*/)
     const {animate: animateSecond}  = createDropAnimation(secondLetter, 1000)
-    const {animate: animateThird}  = createDropAnimation(thirdLetter, 3000, 30)
+    const {animate: animateThird}  = createDropAnimation(thirdLetter, 3000/*, 30*/)
 
-    requestAnimationFrame(function renderLoop() {
+    const rafLoop = () => {
         animateFirst()
         animateSecond()
         animateThird()
-        requestAnimationFrame(renderLoop)
-    })
+        requestAnimationFrame(rafLoop)
+    }
+
+    requestAnimationFrame(rafLoop)
 }
 
 function createDropAnimation(element, startDelay = 0, gravityAcceleration = 10) {
