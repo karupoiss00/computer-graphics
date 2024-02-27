@@ -11,6 +11,7 @@
             width: 100%;
             height: 100%;
             margin: 0;
+            background: #AAAAAA;
         }
 
         svg {
@@ -36,6 +37,15 @@
                 viewBox="0 0 1000 450"
                 xmlns="http://www.w3.org/2000/svg"
         >
+            <defs>
+                <!-- арки заднее -->
+                <clipPath id="cut-off-wheel-left">
+                    <rect x="247" y="372" width="86" height="48"/>
+                </clipPath>
+                <clipPath id="cut-off-wheel-right">
+                    <rect x="697" y="372" width="86" height="48"/>
+                </clipPath>
+            </defs>
             <!-- токоприемники -->
             <line x1="540" y1="190" x2="200" y2="50" stroke-width="2" stroke="#000000"/>
             <line x1="560" y1="190" x2="200" y2="50" stroke-width="2" stroke="#000000"/>
@@ -103,9 +113,8 @@
             <line x1="730" y1="240" x2="730" y2="360" stroke="#8aa5b7" stroke-width="1" />
 
             <!-- арки заднее -->
-            <circle r="43" cx="290" cy="415" fill="#000000"/>
-            <circle r="43" cx="740" cy="415" fill="#000000"/>
-            <rect x="240" y="420" height="43" width="550" fill="#ffffff"/>
+            <circle r="43" cx="290" cy="415" fill="#000000" clip-path="url(#cut-off-wheel-left)"/>
+            <circle r="43" cx="740" cy="415" fill="#000000" clip-path="url(#cut-off-wheel-right)"/>
 
             <!-- колесо заднее -->
             <circle r="35" cx="290" cy="415" fill="#686868"/>
