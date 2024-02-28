@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Model Files">
+      <UniqueIdentifier>{66365046-8d8b-4164-bf16-212cfecc6536}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model Files\image">
+      <UniqueIdentifier>{8853e067-5768-4cc2-8ffb-c9a5691c107f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model Files\drawing">
+      <UniqueIdentifier>{8ba98e52-50fa-41ab-aa58-ea406d88589b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model Files\tile">
+      <UniqueIdentifier>{df71860b-1ed9-4683-a86a-2a9586868884}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model Files\pixel">
+      <UniqueIdentifier>{ba4ac429-3089-41d8-82aa-742c983e9612}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core Files">
+      <UniqueIdentifier>{f992b935-9c14-4ef2-a056-2836e22e587d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core Files\image">
+      <UniqueIdentifier>{f1226cb4-2d51-4991-809d-60cfd9304fed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core Files\image\convertation">
+      <UniqueIdentifier>{6697635a-ca8d-4c15-a09f-7467ed813d71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core Files\image\loading">
+      <UniqueIdentifier>{887cf478-5cd8-4e06-b31f-45886ab5ed45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>qml;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Application Files\drawingStrategy">
+      <UniqueIdentifier>{dbe75610-914b-4801-b386-a5a5c4b0ecb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application Files\editor">
+      <UniqueIdentifier>{28ba4c74-a6db-4a8d-b746-b16166bac8ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application Files\editor\controller">
+      <UniqueIdentifier>{cd18339e-d5e5-4794-aba1-2f55b3f481ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application Files\editor\view">
+      <UniqueIdentifier>{b5787375-0db6-40c4-9994-c8d13d7e3ece}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core Files\color">
+      <UniqueIdentifier>{0d94bf21-e372-47b6-a6fe-37240cc5b730}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core Files\cow">
+      <UniqueIdentifier>{1c9f610d-bf4d-4718-9b8f-d5a54121c687}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core Files\geometry">
+      <UniqueIdentifier>{a48923d2-d6e2-4b6d-87a7-2a5fc1a1388f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application Files\editor\model">
+      <UniqueIdentifier>{d501018d-6e29-492f-a7e6-222186a2fdcf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application Files\drawingStrategy\base">
+      <UniqueIdentifier>{8f93c982-2d55-4650-ab7f-d6e2e09e40e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application Files\drawingStrategy\factory">
+      <UniqueIdentifier>{5809c41b-9a78-45e1-bd32-ee9304515c26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application Files\history">
+      <UniqueIdentifier>{d1896998-da4c-4914-9991-d59236ba7749}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application Files\history\memento">
+      <UniqueIdentifier>{7a0ef82b-6c11-4b56-a8a3-42ddd8428cc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application Files\panel">
+      <UniqueIdentifier>{337c0250-0a67-4ab1-af55-8361cf3759c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application Files\panel\toolsMenu">
+      <UniqueIdentifier>{dc4ce729-1b34-4c8c-8ee8-1a8bcacb7897}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application Files\panel\historyMenu">
+      <UniqueIdentifier>{4a123364-c8f1-4ca8-8be5-7b0af069c79b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application Files\history\fileMenu">
+      <UniqueIdentifier>{6482ac81-83fe-42d8-b0a3-249cc73b09a6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Paint.cpp">
+      <Filter>Application Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Image.cpp">
+      <Filter>Model Files\image</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Model Files\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="Drawer.cpp">
+      <Filter>Model Files\drawing</Filter>
+    </ClCompile>
+    <ClCompile Include="QImageToImage.cpp">
+      <Filter>Core Files\image\convertation</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorController.cpp">
+      <Filter>Application Files\editor\controller</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadImageFromFile.cpp">
+      <Filter>Core Files\image\loading</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorView.cpp">
+      <Filter>Application Files\editor\view</Filter>
+    </ClCompile>
+    <ClCompile Include="Editor.cpp">
+      <Filter>Application Files\editor\model</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Application Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileMenuController.cpp">
+      <Filter>Application Files\history\fileMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolsMenuController.cpp">
+      <Filter>Application Files\panel\toolsMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="HistoryMenuController.cpp">
+      <Filter>Application Files\panel\historyMenu</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Image.h">
+      <Filter>Model Files\image</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Model Files\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawer.h">
+      <Filter>Model Files\drawing</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Core Files\color</Filter>
+    </ClInclude>
+    <ClInclude Include="Pixel.h">
+      <Filter>Model Files\pixel</Filter>
+    </ClInclude>
+    <ClInclude Include="PenStrategy.h">
+      <Filter>Application Files\drawingStrategy</Filter>
+    </ClInclude>
+    <ClInclude Include="QImageToImage.h">
+      <Filter>Core Files\image\convertation</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadImageFromFile.h">
+      <Filter>Core Files\image\loading</Filter>
+    </ClInclude>
+    <ClInclude Include="CoW.h">
+      <Filter>Core Files\cow</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry.h">
+      <Filter>Core Files\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="WriteProxy.h">
+      <Filter>Core Files\cow</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawingStrategyBase.h">
+      <Filter>Application Files\drawingStrategy\base</Filter>
+    </ClInclude>
+    <ClInclude Include="IDrawingStrategy.h">
+      <Filter>Application Files\drawingStrategy\base</Filter>
+    </ClInclude>
+    <ClInclude Include="IDrawingStrategyFactory.h">
+      <Filter>Application Files\drawingStrategy\factory</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawingStrategyFactory.h">
+      <Filter>Application Files\drawingStrategy\factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Editor.h">
+      <Filter>Application Files\editor\model</Filter>
+    </ClInclude>
+    <ClInclude Include="IMemento.h">
+      <Filter>Application Files\history\memento</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorMemento.h">
+      <Filter>Application Files\history\memento</Filter>
+    </ClInclude>
+    <ClInclude Include="IOriginator.h">
+      <Filter>Application Files\history\memento</Filter>
+    </ClInclude>
+    <ClInclude Include="History.h">
+      <Filter>Application Files\history</Filter>
+    </ClInclude>
+    <ClInclude Include="LineStrategy.h">
+      <Filter>Application Files\drawingStrategy</Filter>
+    </ClInclude>
+    <ClInclude Include="IEditorView.h">
+      <Filter>Application Files\editor\view</Filter>
+    </ClInclude>
+    <ClInclude Include="DraftDrawingStrategy.h">
+      <Filter>Application Files\drawingStrategy\base</Filter>
+    </ClInclude>
+    <ClInclude Include="CircleStrategy.h">
+      <Filter>Application Files\drawingStrategy</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="EditorController.h">
+      <Filter>Application Files\editor\controller</Filter>
+    </QtMoc>
+    <QtMoc Include="Paint.h">
+      <Filter>Application Files</Filter>
+    </QtMoc>
+    <QtMoc Include="FileMenuController.h">
+      <Filter>Application Files\history\fileMenu</Filter>
+    </QtMoc>
+    <QtMoc Include="ToolsMenuController.h">
+      <Filter>Application Files\panel\toolsMenu</Filter>
+    </QtMoc>
+    <QtMoc Include="HistoryMenuController.h">
+      <Filter>Application Files\panel\historyMenu</Filter>
+    </QtMoc>
+    <QtMoc Include="EditorView.h">
+      <Filter>Application Files\editor\view</Filter>
+    </QtMoc>
+  </ItemGroup>
+</Project>
