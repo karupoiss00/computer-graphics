@@ -59,7 +59,7 @@ function createDropAnimation(element, startDelay = 0, gravityAcceleration = 10) 
             speed = -speed
         }
 
-        element.setAttribute('style', `bottom: ${currentHeight}px`);
+        element.setAttribute('style', `bottom: ${clampedH}px`);
         prevTime = currentTime
     }
 
