@@ -49,6 +49,8 @@ private:
 	FileMenuController* m_fileMenuController;
 	ToolsMenuController* m_toolsMenuController;
 	HistoryMenuController* m_historyMenuController;
+
+	QGridLayout* m_widgetsLayout;
 };
 
 #endif

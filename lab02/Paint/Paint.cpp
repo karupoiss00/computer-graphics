@@ -1,5 +1,4 @@
 #include <QtWidgets>
-#include <string>
 
 #include "Paint.h"
 #include "Image.h"
@@ -19,7 +18,6 @@ Paint::Paint()
 	m_drawingStrategyFactory = DrawingStrategyFactory(m_image, m_editorView);
 	m_editor = new Editor(m_image, m_drawingStrategyFactory);
 	m_editorController = new EditorController(m_editorView, m_editor);
-
 
 	setCentralWidget(m_editorView);
 	CreateUI();
