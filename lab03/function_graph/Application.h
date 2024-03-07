@@ -1,11 +1,14 @@
 ﻿#pragma once
+#include <functional>
 #include "GLApplication.h"
 
-class CMyApplication : public CGLApplication
+using MathFn = std::function<double(double)>;
+
+class CApplication : public CGLApplication
 {
 public:
-	CMyApplication(const char* title);
-	~CMyApplication(void);
+	CApplication(const char* title);
+	~CApplication(void);
 
 protected:
 	virtual void OnInit();
@@ -13,5 +16,7 @@ protected:
 	virtual void OnReshape(int width, int height);
 
 public:
-	static void FillEllipse(float xCenter, float yCenter, float rx, float ry, int points = 360);
+	static void DrawGraph(MathFn fn, float minX, float maxX);
+	static void DrawCoordinatesSystem(float step);
+	static void DrawGrid(float cellSize);
 };

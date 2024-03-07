@@ -9,7 +9,7 @@
 class CGLApplication
 {
 public:
-	void MainLoop();
+	void Run();
 
 protected:
 	CGLApplication(

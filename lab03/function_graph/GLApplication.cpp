@@ -21,7 +21,11 @@ CGLApplication::CGLApplication(
 	glutInit(&argc, argv);
 
 	glutInitDisplayMode(
-		GLUT_RGBA | GLUT_DOUBLE | (needDepth ? GLUT_DEPTH : 0) | (needStencil ? GLUT_STENCIL : 0));
+		GLUT_RGBA 
+		| GLUT_DOUBLE 
+		| (needDepth ? GLUT_DEPTH : 0) 
+		| (needStencil ? GLUT_STENCIL : 0)
+	);
 
 
 	if (width > 0 && height > 0)
@@ -106,7 +110,7 @@ void CGLApplication::PostRedisplay()
 	glutPostRedisplay();
 }
 
-void CGLApplication::MainLoop()
+void CGLApplication::Run()
 {
 	OnInit();
 	glutMainLoop();
