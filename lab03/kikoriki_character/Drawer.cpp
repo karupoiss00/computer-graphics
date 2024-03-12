@@ -21,7 +21,7 @@ void DrawFilledEllipse(double x, double y, double rx, double ry)
     glEnd();
 }
 
-void DrawBezierPolygon(std::vector<std::array<double, 3>> points, bool fill, bool drawPoints)
+void DrawBezierPolygon(std::vector<std::array<double, 3>> const& points, bool fill, bool drawPoints)
 {
 	using Point = GLdouble[3];
 

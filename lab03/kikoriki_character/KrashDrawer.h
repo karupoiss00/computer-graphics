@@ -1,3 +1,3 @@
 #pragma once
 
-void DrawKrash();
+void DrawKrash(double dx = 0, double dy = 0);
