@@ -3,13 +3,16 @@
 #include <iostream>
 #include "Application.h"
 
+constexpr unsigned WINDOW_WIDTH = 800;
+constexpr unsigned WINDOW_HEIGHT = 800;
+
 constexpr double MAX_X = 20;
 constexpr double MIN_X = -MAX_X;
 constexpr double MAX_Y = 20;
 constexpr double MIN_Y = -MAX_Y;
 
 CApplication::CApplication(const char* title)
-	: CGLApplication(title, 800, 800)
+	: CGLApplication(title, WINDOW_WIDTH, WINDOW_HEIGHT)
 {
 
 }	
@@ -42,11 +45,11 @@ void CApplication::OnReshape(int width, int height)
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
-	GLfloat heightWidthRatio = width <= height 
-		? (GLfloat)height / (GLfloat)width 
+	GLfloat heightWidthRatio = width <= height
+		? static_cast<GLfloat>(height) / static_cast<GLfloat>(width)
 		: 1;
-	GLfloat widthHeightRatio = width > height 
-		? (GLfloat)width / (GLfloat)height
+	GLfloat widthHeightRatio = width > height
+		? static_cast<GLfloat>(width) / static_cast<GLfloat>(height)
 		: 1;
 
 	gluOrtho2D(
@@ -73,6 +76,7 @@ void CApplication::DrawGraph(MathFn fn, float minX, float maxX)
 	glEnd();
 }
 
+// рисование разных сущностей в разных классах
 void CApplication::DrawCoordinatesSystem(float step)
 {
 	glBegin(GL_LINES);

@@ -24,7 +24,7 @@ void DrawFilledEllipse(double x, double y, double rx, double ry)
 void DrawBezierPolygon(std::vector<std::array<double, 3>> const& points, bool fill, bool drawPoints)
 {
 	using Point = GLdouble[3];
-
+	// не использовать new и delete, использовать .data() у vecctor
 	GLdouble(*ctrlPoints)[3] = new GLdouble[points.size()][3];
 
 	for (size_t i = 0; i < points.size(); ++i)
@@ -53,6 +53,7 @@ void DrawBezierPolygon(std::vector<std::array<double, 3>> const& points, bool fi
 		glBegin(GL_LINE_STRIP);
 	}
 
+	// магические числа убрать
 	for (int i = 0; i <= 30; i++)
 	{
 		glEvalCoord1d(i / 30.0);

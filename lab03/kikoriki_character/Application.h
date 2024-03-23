@@ -14,8 +14,4 @@ protected:
 	virtual void OnInit();
 	virtual void OnDisplay(void);
 	virtual void OnReshape(int width, int height);
-
-public:
-	static void DrawCoordinatesSystem(float step);
-	static void DrawGrid(float cellSize);
 };
