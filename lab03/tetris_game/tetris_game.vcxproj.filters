@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="drawing">
+      <UniqueIdentifier>{dbd2906b-1cae-4a2a-b419-f5dde7a7bfe8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gl">
+      <UniqueIdentifier>{5b3fe2c4-4d5f-4e14-8ea1-6c539fef98a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app">
+      <UniqueIdentifier>{f28172bc-302c-4dd1-85fa-b8ac962190d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\game">
+      <UniqueIdentifier>{3fac369d-9541-43c3-b949-5bed5cd17257}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\game\field">
+      <UniqueIdentifier>{879959ce-385f-4d90-a283-4825256c4bc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\game\figure">
+      <UniqueIdentifier>{94e210bb-d646-4b55-ba42-30af2d8f868c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\game\cell">
+      <UniqueIdentifier>{fc4c70e7-dadc-4f73-babd-972627ca8239}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\game\stats">
+      <UniqueIdentifier>{e4fdbe65-b85b-4fb1-903e-9208e28cc938}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Drawer.cpp">
+      <Filter>drawing</Filter>
+    </ClCompile>
+    <ClCompile Include="GLApplication.cpp">
+      <Filter>gl</Filter>
+    </ClCompile>
+    <ClCompile Include="Application.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="Figure.cpp">
+      <Filter>app\game\figure</Filter>
+    </ClCompile>
+    <ClCompile Include="FigureType.cpp">
+      <Filter>app\game\figure</Filter>
+    </ClCompile>
+    <ClCompile Include="Field.cpp">
+      <Filter>app\game\field</Filter>
+    </ClCompile>
+    <ClCompile Include="TetrisGame.cpp">
+      <Filter>app\game</Filter>
+    </ClCompile>
+    <ClCompile Include="Stats.cpp">
+      <Filter>app\game\stats</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Drawer.h">
+      <Filter>drawing</Filter>
+    </ClInclude>
+    <ClInclude Include="GLApplication.h">
+      <Filter>gl</Filter>
+    </ClInclude>
+    <ClInclude Include="Application.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="FigureType.h">
+      <Filter>app\game\figure</Filter>
+    </ClInclude>
+    <ClInclude Include="FigureData.h">
+      <Filter>app\game\figure</Filter>
+    </ClInclude>
+    <ClInclude Include="CellData.h">
+      <Filter>app\game\cell</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldData.h">
+      <Filter>app\game\field</Filter>
+    </ClInclude>
+    <ClInclude Include="Figure.h">
+      <Filter>app\game\figure</Filter>
+    </ClInclude>
+    <ClInclude Include="FigureView.h">
+      <Filter>app\game\figure</Filter>
+    </ClInclude>
+    <ClInclude Include="IDrawable.h">
+      <Filter>drawing</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>drawing</Filter>
+    </ClInclude>
+    <ClInclude Include="Vec.h">
+      <Filter>drawing</Filter>
+    </ClInclude>
+    <ClInclude Include="CellView.h">
+      <Filter>app\game\cell</Filter>
+    </ClInclude>
+    <ClInclude Include="TetrisGame.h">
+      <Filter>app\game</Filter>
+    </ClInclude>
+    <ClInclude Include="Field.h">
+      <Filter>app\game\field</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldView.h">
+      <Filter>app\game\field</Filter>
+    </ClInclude>
+    <ClInclude Include="Stats.h">
+      <Filter>app\game\stats</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
