@@ -13,7 +13,7 @@ public:
 
 	void Draw() 
 	{
-		glColor3d(0, 0, 0);
+		glColor3d(0.15, 0.15, 0.15);
 
 		if (m_data.filled)
 		{

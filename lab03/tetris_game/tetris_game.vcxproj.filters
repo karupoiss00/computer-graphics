@@ -107,5 +107,8 @@
     <ClInclude Include="Stats.h">
       <Filter>app\game\stats</Filter>
     </ClInclude>
+    <ClInclude Include="StatsView.h">
+      <Filter>app\game\stats</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

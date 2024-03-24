@@ -15,6 +15,7 @@ CApplication::CApplication(const char* title)
 	, m_game()
 	, m_figureView(m_game.GetFigure())
 	, m_fieldView(m_game.GetField(), { 0, 0 })
+	, m_statsView(m_game.GetStats())
 {
 	m_prevTimePoint = std::chrono::system_clock::now();
 }
@@ -38,23 +39,26 @@ void CApplication::OnIdle()
 }
 
 
-void CApplication::OnKeyboard(unsigned char key, int x, int y)
+void CApplication::OnSpecial(int key, int x, int y)
 {
 	switch (key)
 	{
-	case 'w':
+	case GLUT_KEY_UP:
 		m_game.RotateFigure();
 		break;
-	case 'a':
+	case GLUT_KEY_LEFT:
 		m_game.MoveFigureLeft();
 		break;
-	case 's':
+	case GLUT_KEY_DOWN:
 		m_game.MoveFigureDown();
 		break;
-	case 'd':
+	case GLUT_KEY_RIGHT:
 		m_game.MoveFigureRight();
 		break;
 	case 'p':
+	case 'P':
+	case 'з':
+	case 'З':
 		m_game.SetPaused(!m_game.IsPaused());
 		break;
 	}
@@ -62,15 +66,32 @@ void CApplication::OnKeyboard(unsigned char key, int x, int y)
 	PostRedisplay();
 }
 
+void CApplication::OnKeyboard(unsigned char key, int x, int y)
+{
+	switch (key)
+	{
+	case 'p':
+	case 'P':
+	case 'з':
+	case 'З':
+		m_game.SetPaused(!m_game.IsPaused());
+		break;
+	}
+
+	PostRedisplay();
+}
+
+
 void CApplication::OnInit()
 {
-	glClearColor(1, 1, 1, 1);
+	glClearColor(0.1f, 0.1f, 0.1f, 1.f);
 }
 
 void CApplication::OnDisplay(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	m_fieldView.Draw();
+	m_statsView.Draw();
 	m_figureView.Draw();
 }
 

@@ -40,7 +40,6 @@ private:
 	std::shared_ptr<Field> m_field;
 	std::shared_ptr<Figure> m_figure;
 	std::shared_ptr<Stats> m_stats;
-	FigureType m_nextFigure;
 	bool m_paused;
 	GameState m_state;
 };

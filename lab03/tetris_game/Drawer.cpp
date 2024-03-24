@@ -63,3 +63,13 @@ void DrawBezierPolygon(std::vector<std::array<double, 3>> const& points, bool fi
 
 	delete[] ctrlPoints;
 }
+
+void DrawString(double x, double y, const char* string)
+{
+	glRasterPos2d(x, y);
+
+	for (const char* c = string; *c != '\0'; c++)
+	{
+		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
+	}
+}

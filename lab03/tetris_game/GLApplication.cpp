@@ -43,6 +43,7 @@ void CGLApplication::InitEventHandlers()
 	glutDisplayFunc(&DisplayHandler);
 	glutReshapeFunc(&ReshapeHandler);
 	glutKeyboardFunc(&KeyboardHandler);
+	glutSpecialFunc(&SpecialHandler);
 	glutMouseFunc(&MouseHandler);
 	glutMotionFunc(&MotionHandler);
 	glutIdleFunc(&IdleHandler);
@@ -80,6 +81,12 @@ void CGLApplication::KeyboardHandler(unsigned char key, int x, int y)
 	m_pApplication->OnKeyboard(key, x, y);
 }
 
+void CGLApplication::SpecialHandler(int key, int x, int y)
+{
+	m_pApplication->OnSpecial(key, x, y);
+}
+
+
 void CGLApplication::OnReshape(int width, int height)
 {
 	glViewport(0, 0, width, height);
@@ -88,6 +95,11 @@ void CGLApplication::OnReshape(int width, int height)
 void CGLApplication::OnKeyboard(unsigned char /*key*/, int /*x*/, int /*y*/)
 {
 }
+
+void CGLApplication::OnSpecial(int /*key*/, int /*x*/, int /*y*/)
+{
+}
+
 
 void CGLApplication::OnMouse(int /*button*/, int /*state*/, int /*x*/, int /*y*/)
 {

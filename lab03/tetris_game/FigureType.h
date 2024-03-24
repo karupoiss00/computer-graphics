@@ -14,4 +14,4 @@ enum class FigureType
 };
 
 FigureData CreateFigureData(FigureType type, Color3d color);
-
+FigureType GetRandomFigureType();

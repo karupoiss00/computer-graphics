@@ -172,6 +172,7 @@
     <ClInclude Include="FigureView.h" />
     <ClInclude Include="GLApplication.h" />
     <ClInclude Include="Stats.h" />
+    <ClInclude Include="StatsView.h" />
     <ClInclude Include="TetrisGame.h" />
     <ClInclude Include="Vec.h" />
     <ClInclude Include="IDrawable.h" />

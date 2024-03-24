@@ -2,16 +2,19 @@
 
 bool Field::CanPutFigure(Vec2d point, FigureData figure)
 {
+	unsigned px = static_cast<unsigned>(point.x);
+	unsigned py = static_cast<unsigned>(point.y);
+
 	for (unsigned y = 0; y < figure.size(); y++)
 	{
 		for (unsigned x = 0; x < figure[y].size(); x++)
 		{
 			if (figure[y][x].filled && (
-				point.x + x < 0 ||
-				point.x + x >= GetWidth() ||
-				point.y + y < 0 ||
-				point.y + y >= GetHeight() ||
-				m_data[point.y + y][point.x + x].filled
+				px + x < 0 ||
+				px + x >= GetWidth() ||
+				py + y < 0 ||
+				py + y >= GetHeight() ||
+				m_data[py + y][px + x].filled
 			)) 
 			{
 				return false;
@@ -29,13 +32,16 @@ void Field::PutFigure(Vec2d point, FigureData figure)
 		return;
 	}
 
+	unsigned px = static_cast<unsigned>(point.x);
+	unsigned py = static_cast<unsigned>(point.y);
+
 	for (unsigned y = 0; y < figure.size(); y++)
 	{
 		for (unsigned x = 0; x < figure[y].size(); x++)
 		{
 			if (figure[y][x].filled)
 			{
-				m_data[point.y + y][point.x + x] = figure[y][x];
+				m_data[py + y][px + x] = figure[y][x];
 			}
 		}
 	}

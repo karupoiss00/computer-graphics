@@ -5,6 +5,8 @@
 #include "Vec.h"
 #include "Field.h"
 
+constexpr double MARGIN_TOP = -4;
+
 class FieldView : public IDrawable
 {
 public:
@@ -19,7 +21,9 @@ public:
 		{
 			for (unsigned x = 0; x < data[y].size(); x++)
 			{
-				CellView cell(data[y][x], Vec2d{ double(x), double(y) });
+				double px = static_cast<double>(x);
+				double py = static_cast<double>(y);
+				CellView cell(data[y][x], Vec2d{ px, py });
 				cell.Draw();
 			}
 		}

@@ -6,17 +6,16 @@ constexpr unsigned LEVEL_DELAY_STEP = 50;
 
 TetrisGame::TetrisGame()
 	: m_field(std::make_shared<Field>())
-	, m_figure(std::make_shared<Figure>(FigureType::I, Vec2d{4, 0}))
 	, m_stats(std::make_shared<Stats>())
+	, m_figure(std::make_shared<Figure>(GetRandomFigureType(), Vec2d{4, 0}, GenerateRandomColor3d()))
 	, m_paused(false)
-	, m_nextFigure(FigureType::L)
 	, m_state(GameState::PLAYING)
 {
 }
 
 void TetrisGame::Update()
 {
-	if (m_paused || IsGameOver() || IsGameWon())
+	if (IsPaused() || IsGameOver() || IsGameWon())
 	{
 		return;
 	}
@@ -65,7 +64,6 @@ bool TetrisGame::IsPaused()
 	return m_paused;
 }
 
-
 bool TetrisGame::GameStopped()
 {
 	return IsPaused() || IsGameWon() || IsGameOver();
@@ -79,7 +77,10 @@ void TetrisGame::UpdateFigure()
 	double fieldHeight = double(m_field->GetHeight());
 	double startX = fieldWidth / 2 - m_figure->GetData()[0].size() / 2;
 
+	*m_figure = *m_stats->GetNextFigure();
 	m_figure->SetPosition({ startX, 0 });
+
+	m_stats->UpdateNextFigure();
 }
 
 void TetrisGame::MoveFigureLeft()
