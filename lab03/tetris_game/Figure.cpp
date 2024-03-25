@@ -1,4 +1,5 @@
 #include "Figure.h"
+#include "Rotate.h"
 
 Figure::Figure(FigureType type, Vec2d position, Color3d color)
 	: m_data(CreateFigureData(type, color))
@@ -8,22 +9,7 @@ Figure::Figure(FigureType type, Vec2d position, Color3d color)
 }
 void Figure::Rotate()
 {
-	if (m_data.size() == 0 || (m_data[0].size() != m_data.size()))
-	{
-		throw std::exception("figure matrix must be square");
-	}
-
-	auto initialData = m_data;
-
-	const auto N = m_data.size() - 1;
-
-	for (unsigned y = 0; y < m_data.size(); y++)
-	{
-		for (unsigned x = 0; x < m_data[y].size(); x++)
-		{
-			m_data[y][x] = initialData[N - x][y];
-		}
-	}
+	m_data = RotateMatrix(m_data);
 }
 
 void Figure::SetPosition(Vec2d pos)

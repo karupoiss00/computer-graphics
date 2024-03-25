@@ -5,8 +5,6 @@
 #include "Vec.h"
 #include "Field.h"
 
-constexpr double MARGIN_TOP = -4;
-
 class FieldView : public IDrawable
 {
 public:

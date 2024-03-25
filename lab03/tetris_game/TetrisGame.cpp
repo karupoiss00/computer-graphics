@@ -1,4 +1,5 @@
 #include "TetrisGame.h"
+#include "Rotate.h"
 
 constexpr unsigned MAX_LEVEL = 11;
 constexpr unsigned MAX_DELAY = 550;
@@ -141,7 +142,12 @@ void TetrisGame::RotateFigure()
 		return;
 	}
 
-	m_figure->Rotate();
+	auto rotatedData = RotateMatrix(m_figure->GetData());
+
+	if (m_field->CanPutFigure(m_figure->GetPosition(), rotatedData))
+	{
+		m_figure->Rotate();
+	}
 }
 
 std::shared_ptr<Field> TetrisGame::GetField()

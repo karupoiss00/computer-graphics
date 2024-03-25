@@ -110,5 +110,8 @@
     <ClInclude Include="StatsView.h">
       <Filter>app\game\stats</Filter>
     </ClInclude>
+    <ClInclude Include="Rotate.h">
+      <Filter>drawing</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

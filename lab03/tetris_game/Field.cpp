@@ -2,8 +2,8 @@
 
 bool Field::CanPutFigure(Vec2d point, FigureData figure)
 {
-	unsigned px = static_cast<unsigned>(point.x);
-	unsigned py = static_cast<unsigned>(point.y);
+	int px = static_cast<int>(point.x);
+	int py = static_cast<int>(point.y);
 
 	for (unsigned y = 0; y < figure.size(); y++)
 	{
@@ -32,8 +32,8 @@ void Field::PutFigure(Vec2d point, FigureData figure)
 		return;
 	}
 
-	unsigned px = static_cast<unsigned>(point.x);
-	unsigned py = static_cast<unsigned>(point.y);
+	int px = static_cast<int>(point.x);
+	int py = static_cast<int>(point.y);
 
 	for (unsigned y = 0; y < figure.size(); y++)
 	{
