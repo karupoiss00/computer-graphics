@@ -55,12 +55,6 @@ void CApplication::OnSpecial(int key, int x, int y)
 	case GLUT_KEY_RIGHT:
 		m_game.MoveFigureRight();
 		break;
-	case 'p':
-	case 'P':
-	case 'з':
-	case 'З':
-		m_game.SetPaused(!m_game.IsPaused());
-		break;
 	}
 	
 	PostRedisplay();
@@ -76,6 +70,11 @@ void CApplication::OnKeyboard(unsigned char key, int x, int y)
 	case 'З':
 		m_game.SetPaused(!m_game.IsPaused());
 		break;
+	case 'r':
+	case 'R':
+	case 'к':
+	case 'К':
+		m_game.Restart();
 	}
 
 	PostRedisplay();

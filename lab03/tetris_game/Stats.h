@@ -7,6 +7,7 @@ class Stats
 public:
 	Stats();
 
+	void Reset();
 	void AddReachedLines(unsigned count);
 	void UpdateNextFigure();
 

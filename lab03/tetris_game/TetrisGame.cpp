@@ -35,7 +35,8 @@ void TetrisGame::Update()
 	}
 	else 
 	{
-		m_field->PutFigure(nextPos, m_figure->GetData());
+		m_field->PutFigure(m_figure->GetPosition(), m_figure->GetData());
+
 		UpdateFigure();
 
 		auto removedLines = m_field->Update();
@@ -72,8 +73,6 @@ bool TetrisGame::GameStopped()
 
 void TetrisGame::UpdateFigure()
 {
-	m_field->PutFigure(m_figure->GetPosition(), m_figure->GetData());
-
 	double fieldWidth = double(m_field->GetWidth());
 	double fieldHeight = double(m_field->GetHeight());
 	double startX = fieldWidth / 2 - m_figure->GetData()[0].size() / 2;
@@ -173,4 +172,19 @@ bool TetrisGame::IsGameOver()
 bool TetrisGame::IsGameWon()
 {
 	return m_state == GameState::WON;
+}
+
+void TetrisGame::Restart()
+{
+	if (m_state == GameState::PLAYING)
+	{
+		return;
+	}
+
+	m_field->Clear();
+	m_stats->Reset();
+	m_state = GameState::PLAYING;
+	m_paused = false;
+
+	UpdateFigure();
 }

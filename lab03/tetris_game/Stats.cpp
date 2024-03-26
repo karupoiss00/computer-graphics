@@ -64,3 +64,11 @@ unsigned Stats::GetScores()
 {
 	return m_scores;
 }
+
+void Stats::Reset()
+{
+	m_scores = 0;
+	m_level = 1;
+	m_linesLeft = LINES_TO_NEXT_LEVEL;
+	*m_nextFigure = Figure(GetRandomFigureType(), NEXT_FIGURE_POS, GenerateRandomColor3d());
+}

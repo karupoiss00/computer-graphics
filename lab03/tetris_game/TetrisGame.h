@@ -18,6 +18,7 @@ class TetrisGame
 public:
 	TetrisGame();
 
+	void Restart();
 	void Update();
 	void SetPaused(bool paused);
 	void MoveFigureLeft();
