@@ -42,6 +42,9 @@ glm::ivec2 BaseWindow::GetFramebufferSize() const
 void BaseWindow::Run()
 {
 	glfwMakeContextCurrent(m_window);
+	ImGui_ImplGlfw_InitForOpenGL(m_window, true);
+	ImGui_ImplOpenGL3_Init();
+
 	OnRunStart();
 
 	{
@@ -51,8 +54,18 @@ void BaseWindow::Run()
 
 	while (!glfwWindowShouldClose(m_window))
 	{
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
+
+		ImGui::NewFrame();
+
 		auto size = GetFramebufferSize();
 		Draw(size.x, size.y);
+		DrawGUI(size.x, size.y);
+
+		ImGui::Render();
+
+		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 		glFinish();
 		glfwSwapBuffers(m_window);
 		glfwPollEvents();

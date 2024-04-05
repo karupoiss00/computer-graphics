@@ -3,6 +3,10 @@
 #include "DirectLight.h"
 #include "Dodecahedron.h"
 #include "Camera.h"
+#include "RenderConfigEditor.h"
+#include "RenderConfig.h"
+#include "ObjectConfigEditor.h"
+#include "ObjectConfig.h"
 
 class Window : public BaseWindow
 {
@@ -12,24 +16,43 @@ public:
 private:
 	static constexpr double DISTANCE_TO_ORIGIN = 2;
 
+	void SetupLight();
+
+	void SetupDodecahedron();
+
+	bool MouseDownPrevented();
+
 	void OnMouseButton(int button, int action, [[maybe_unused]] int mods) override;
 
 	void OnMouseMove(double x, double y) override;
-
-	void RotateCamera(double xAngleRadians, double yAngleRadians);
 
 	void OnResize(int width, int height) override;
 
 	void OnRunStart() override;
 
 	void Draw(int width, int height) override;
+	
+	void DrawGUI(int width, int height) override;
 
-	Dodecahedron m_object;
+	void ApplyProjectionChanges(int width, int height);
+
+	void ApplyDodecahedronChanges();
+
+	void ApplyChanges();
+
+
+	RenderConfigEditor m_renderConfigEditor;
+	RenderConfig m_renderConfig;
+
+	ObjectConfigEditor m_objectConfigEditor;
+	ObjectConfig m_objectConfig;
+
 	DirectLight m_light;
 	Camera m_camera;
 
+	Dodecahedron m_dodecahedron;
+	IRenderable& m_object;
 
 	bool m_leftButtonPressed = false;
 	glm::dvec2 m_mousePos = {};
-	
 };

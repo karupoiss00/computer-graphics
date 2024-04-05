@@ -1,4 +1,5 @@
 #pragma once
+#include "Renderable.h"
 
 enum class DodecahedronSide
 {
@@ -16,12 +17,13 @@ enum class DodecahedronSide
 	BOTTOM_FIFTH,
 };
 
-class Dodecahedron
+class Dodecahedron : public IRenderable
 {
 public:
 	explicit Dodecahedron(float size = 1);
-	void Draw() const;
+	void Render() const;
 
+	void SetObjectSize(float size);
 	void SetSideColor(DodecahedronSide side, const glm::vec4& color);
 	void SetSpecularColor(glm::vec4 color);
 	void SetShininess(float shininess);

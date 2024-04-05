@@ -13,18 +13,18 @@ constexpr float VERTICES[VERTECES_COUNT][3] = {
 	{-1, 1, -1},
 	{-1, -1, 1},
 	{-1, -1, -1},
-	{0, 0.618, 1.618},
-	{0, 0.618, -1.618},
-	{0, -0.618, 1.618},
-	{0, -0.618, -1.618},
-	{0.618, 1.618, 0},
-	{0.618, -1.618, 0},
-	{-0.618, 1.618, 0},
-	{-0.618, -1.618, 0},
-	{1.618, 0, 0.618},
-	{1.618, 0, -0.618},
-	{-1.618, 0, 0.618},
-	{-1.618, 0, -0.618}
+	{0, 0.618f, 1.618f},
+	{0, 0.618f, -1.618f},
+	{0, -0.618f, 1.618f},
+	{0, -0.618f, -1.618f},
+	{0.618f, 1.618f, 0},
+	{0.618f, -1.618f, 0},
+	{-0.618f, 1.618f, 0},
+	{-0.618f, -1.618f, 0},
+	{1.618f, 0, 0.618f},
+	{1.618f, 0, -0.618f},
+	{-1.618f, 0, 0.618f},
+	{-1.618f, 0, -0.618f}
 };
 
 /*
@@ -74,7 +74,7 @@ Dodecahedron::Dodecahedron(float size)
 	SetSideColor(DodecahedronSide::BOTTOM_FIFTH, defaultColor);
 }
 
-void Dodecahedron::Draw() const
+void Dodecahedron::Render() const
 {
 	glEnable(GL_COLOR_MATERIAL);
 	glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
@@ -135,4 +135,9 @@ void Dodecahedron::SetSpecularColor(glm::vec4 color)
 void Dodecahedron::SetShininess(float shininess)
 {
 	m_shininess = shininess;
+}
+
+void Dodecahedron::SetObjectSize(float size)
+{
+	m_size = size;
 }

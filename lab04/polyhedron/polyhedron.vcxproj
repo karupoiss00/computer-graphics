@@ -72,15 +72,19 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>../../external/;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>../../external/;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>../../external/;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>../../external/;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -158,20 +162,45 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\external\imgui\imconfig.h" />
+    <ClInclude Include="..\..\external\imgui\imgui.h" />
+    <ClInclude Include="..\..\external\imgui\imgui_impl_glfw.h" />
+    <ClInclude Include="..\..\external\imgui\imgui_impl_opengl3.h" />
+    <ClInclude Include="..\..\external\imgui\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="..\..\external\imgui\imgui_internal.h" />
+    <ClInclude Include="..\..\external\imgui\imstb_rectpack.h" />
+    <ClInclude Include="..\..\external\imgui\imstb_textedit.h" />
+    <ClInclude Include="..\..\external\imgui\imstb_truetype.h" />
     <ClInclude Include="BaseWindow.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="ObjectConfig.h" />
+    <ClInclude Include="ObjectConfigEditor.h" />
+    <ClInclude Include="Renderable.h" />
+    <ClInclude Include="RenderConfig.h" />
+    <ClInclude Include="RenderConfigEditor.h" />
     <ClInclude Include="Dodecahedron.h" />
     <ClInclude Include="DirectLight.h" />
     <ClInclude Include="GLFWInitializer.h" />
+    <ClInclude Include="ImguiInitializer.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\external\imgui\imgui.cpp" />
+    <ClCompile Include="..\..\external\imgui\imgui_demo.cpp" />
+    <ClCompile Include="..\..\external\imgui\imgui_draw.cpp" />
+    <ClCompile Include="..\..\external\imgui\imgui_impl_glfw.cpp" />
+    <ClCompile Include="..\..\external\imgui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="..\..\external\imgui\imgui_tables.cpp" />
+    <ClCompile Include="..\..\external\imgui\imgui_widgets.cpp" />
     <ClCompile Include="BaseWindow.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="ObjectConfigEditor.cpp" />
+    <ClCompile Include="RenderConfigEditor.cpp" />
     <ClCompile Include="Dodecahedron.cpp" />
     <ClCompile Include="DirectLight.cpp" />
     <ClCompile Include="GLFWInitializer.cpp" />
+    <ClCompile Include="ImguiInitializer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="Window.cpp" />
