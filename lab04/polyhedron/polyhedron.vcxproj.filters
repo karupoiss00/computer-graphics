@@ -34,29 +34,35 @@
     <Filter Include="external\imgui">
       <UniqueIdentifier>{dfc5e1bb-05e6-4dc5-bd7c-c3b22617e3f1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="app\config">
-      <UniqueIdentifier>{08b0df02-c83e-415e-9fd4-38ff865835c3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="app\config\object">
-      <UniqueIdentifier>{8eb30f8f-458b-4ba2-bb20-b5b8319822e4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="app\common">
       <UniqueIdentifier>{0ccbe02f-78d3-4d40-9b0e-f3e9c29a5071}</UniqueIdentifier>
     </Filter>
-    <Filter Include="app\config\render">
-      <UniqueIdentifier>{07bac160-fc23-40a3-b1e7-bba30b380700}</UniqueIdentifier>
+    <Filter Include="app\ui">
+      <UniqueIdentifier>{08b0df02-c83e-415e-9fd4-38ff865835c3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="app\config\render\model">
-      <UniqueIdentifier>{843332ab-bde6-4eee-a67a-2fe27f8fac74}</UniqueIdentifier>
+    <Filter Include="app\ui\object">
+      <UniqueIdentifier>{8eb30f8f-458b-4ba2-bb20-b5b8319822e4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="app\config\render\view">
-      <UniqueIdentifier>{8e08da59-b620-4938-b7f8-78034e856acd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="app\config\object\model">
+    <Filter Include="app\ui\object\model">
       <UniqueIdentifier>{fa349cd2-45a7-4fda-a21f-c535c68a5c5c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="app\config\object\view">
+    <Filter Include="app\ui\object\view">
       <UniqueIdentifier>{963639cd-9661-4df5-897d-c58a39cd8c0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\ui\render">
+      <UniqueIdentifier>{07bac160-fc23-40a3-b1e7-bba30b380700}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\ui\render\model">
+      <UniqueIdentifier>{843332ab-bde6-4eee-a67a-2fe27f8fac74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\ui\render\view">
+      <UniqueIdentifier>{8e08da59-b620-4938-b7f8-78034e856acd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\objects\dodecahedron">
+      <UniqueIdentifier>{836e8b05-3c62-48bf-b182-4fe60012fc14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\objects\mobiusStrip">
+      <UniqueIdentifier>{e87db19a-01e3-422d-b089-cc3740d5197b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -74,9 +80,6 @@
     </ClInclude>
     <ClInclude Include="DirectLight.h">
       <Filter>app\light</Filter>
-    </ClInclude>
-    <ClInclude Include="Dodecahedron.h">
-      <Filter>app\objects</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>app\camera</Filter>
@@ -112,19 +115,28 @@
       <Filter>external\imgui</Filter>
     </ClInclude>
     <ClInclude Include="RenderConfig.h">
-      <Filter>app\config\render\model</Filter>
+      <Filter>app\ui\render\model</Filter>
     </ClInclude>
     <ClInclude Include="RenderConfigEditor.h">
-      <Filter>app\config\render\view</Filter>
+      <Filter>app\ui\render\view</Filter>
     </ClInclude>
     <ClInclude Include="Renderable.h">
       <Filter>app\common</Filter>
     </ClInclude>
     <ClInclude Include="ObjectConfig.h">
-      <Filter>app\config\object\model</Filter>
+      <Filter>app\ui\object\model</Filter>
     </ClInclude>
     <ClInclude Include="ObjectConfigEditor.h">
-      <Filter>app\config\object\view</Filter>
+      <Filter>app\ui\object\view</Filter>
+    </ClInclude>
+    <ClInclude Include="EmptyObject.h">
+      <Filter>app\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Dodecahedron.h">
+      <Filter>app\objects\dodecahedron</Filter>
+    </ClInclude>
+    <ClInclude Include="MobiusStrip.h">
+      <Filter>app\objects\mobiusStrip</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -139,9 +151,6 @@
     </ClCompile>
     <ClCompile Include="DirectLight.cpp">
       <Filter>app\light</Filter>
-    </ClCompile>
-    <ClCompile Include="Dodecahedron.cpp">
-      <Filter>app\objects</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>app</Filter>
@@ -177,10 +186,16 @@
       <Filter>external\imgui</Filter>
     </ClCompile>
     <ClCompile Include="RenderConfigEditor.cpp">
-      <Filter>app\config\render\view</Filter>
+      <Filter>app\ui\render\view</Filter>
     </ClCompile>
     <ClCompile Include="ObjectConfigEditor.cpp">
-      <Filter>app\config\object\view</Filter>
+      <Filter>app\ui\object\view</Filter>
+    </ClCompile>
+    <ClCompile Include="Dodecahedron.cpp">
+      <Filter>app\objects\dodecahedron</Filter>
+    </ClCompile>
+    <ClCompile Include="MobiusStrip.cpp">
+      <Filter>app\objects\mobiusStrip</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

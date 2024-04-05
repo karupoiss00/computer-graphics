@@ -9,5 +9,7 @@ public:
 
 	void Render();
 private:
+	void SelectedObjectCombo();
+
 	ObjectConfig& m_config;
 };

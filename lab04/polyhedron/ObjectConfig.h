@@ -5,7 +5,7 @@ struct ObjectConfig
 {
 	ObjectConfig()
 		: m_size(1.0f)
-		, m_selectedObject("dodecahedron")
+		, m_selectedObject("empty")
 	{
 		
 	}

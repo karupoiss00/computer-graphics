@@ -173,6 +173,8 @@
     <ClInclude Include="..\..\external\imgui\imstb_truetype.h" />
     <ClInclude Include="BaseWindow.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="EmptyObject.h" />
+    <ClInclude Include="MobiusStrip.h" />
     <ClInclude Include="ObjectConfig.h" />
     <ClInclude Include="ObjectConfigEditor.h" />
     <ClInclude Include="Renderable.h" />
@@ -195,6 +197,7 @@
     <ClCompile Include="..\..\external\imgui\imgui_widgets.cpp" />
     <ClCompile Include="BaseWindow.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="MobiusStrip.cpp" />
     <ClCompile Include="ObjectConfigEditor.cpp" />
     <ClCompile Include="RenderConfigEditor.cpp" />
     <ClCompile Include="Dodecahedron.cpp" />

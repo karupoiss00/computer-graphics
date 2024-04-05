@@ -7,6 +7,6 @@ int main()
 {
 	GLFWInitializer initGLFW;
 	ImguiInitializer initImgui;
-	Window window { 800, 600, "3D Cube" };
+	Window window { 1280, 720, "polyhedron" };
 	window.Run();
 }

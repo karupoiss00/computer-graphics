@@ -7,6 +7,8 @@
 #include "RenderConfig.h"
 #include "ObjectConfigEditor.h"
 #include "ObjectConfig.h"
+#include "EmptyObject.h"
+#include "MobiusStrip.h"
 
 class Window : public BaseWindow
 {
@@ -36,6 +38,8 @@ private:
 
 	void ApplyProjectionChanges(int width, int height);
 
+	void ApplyObjectChanges();
+
 	void ApplyDodecahedronChanges();
 
 	void ApplyChanges();
@@ -50,8 +54,10 @@ private:
 	DirectLight m_light;
 	Camera m_camera;
 
+	EmptyObject m_emptyObject;
 	Dodecahedron m_dodecahedron;
-	IRenderable& m_object;
+	MobiusStrip m_mobiusStrip;
+	IRenderable* m_object;
 
 	bool m_leftButtonPressed = false;
 	glm::dvec2 m_mousePos = {};

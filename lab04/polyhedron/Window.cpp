@@ -1,4 +1,5 @@
-﻿#include "pch.h"
+﻿#include <iostream>
+#include "pch.h"
 #include "Window.h"
 
 Window::Window(int w, int h, const char* title)
@@ -6,7 +7,7 @@ Window::Window(int w, int h, const char* title)
 	, m_light({ 0.0f, 0.0f, 1.0f })
 	, m_camera(DISTANCE_TO_ORIGIN)
 	, m_dodecahedron(m_objectConfig.m_size)
-	, m_object(m_dodecahedron)
+	, m_object(&m_emptyObject)
 	, m_renderConfigEditor(m_renderConfig)
 	, m_objectConfigEditor(m_objectConfig)
 {
@@ -82,6 +83,7 @@ void Window::OnRunStart()
 void Window::Draw(int width, int height)
 {
 	ApplyChanges();
+
 	auto clearColor = m_renderConfig.m_backgroundColor;
 	glClearColor(
 		clearColor[0],
@@ -92,7 +94,7 @@ void Window::Draw(int width, int height)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	m_camera.UpdateView();
-	m_object.Render();
+	m_object->Render();
 }
 
 
@@ -112,13 +114,14 @@ void Window::ApplyChanges()
 	auto size = GetFramebufferSize();
 
 	ApplyDodecahedronChanges();
+	ApplyObjectChanges();
 	ApplyProjectionChanges(int(size.x), int(size.y));
 }
 
 void Window::ApplyProjectionChanges(int width, int height)
 {
 	float aspect = float(width) / float(height);
-	float fov = m_renderConfig.m_fov * M_PI / 180.0;
+	float fov = m_renderConfig.m_fov * float(M_PI) / 180.0f;
 	auto projectionMatrix = glm::perspective(fov, aspect, m_renderConfig.m_zNear, m_renderConfig.m_zFar);
 
 	glViewport(0, 0, width, height);
@@ -130,4 +133,22 @@ void Window::ApplyProjectionChanges(int width, int height)
 void Window::ApplyDodecahedronChanges()
 {
 	m_dodecahedron.SetObjectSize(m_objectConfig.m_size);
+}
+
+void Window::ApplyObjectChanges()
+{
+	auto selectedObject = m_objectConfig.m_selectedObject;
+
+	if (selectedObject == "dodecahedron")
+	{
+		m_object = &m_dodecahedron;
+	}
+	else if (selectedObject == "mobius strip")
+	{
+		m_object = &m_mobiusStrip;
+	}
+	else
+	{
+		m_object = &m_emptyObject;
+	}
 }
