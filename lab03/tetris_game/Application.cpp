@@ -4,6 +4,9 @@
 #include <functional>
 #include "Application.h"
 
+// экран game over
+// экран старта
+
 constexpr unsigned WINDOW_WIDTH = 800;
 constexpr unsigned WINDOW_HEIGHT = 800;
 

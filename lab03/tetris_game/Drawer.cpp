@@ -70,6 +70,7 @@ void DrawString(double x, double y, const char* string)
 
 	for (const char* c = string; *c != '\0'; c++)
 	{
+		//размер текста должен зависить от размера экрана
 		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
 	}
 }

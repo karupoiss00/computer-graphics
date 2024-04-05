@@ -7,14 +7,15 @@ class Field
 {
 public:
 	void PutFigure(Vec2d point, FigureData figure);
-
+	// константные методы
 	unsigned GetWidth();
 	unsigned GetHeight();
 	bool CanPutFigure(Vec2d point, FigureData figure);
 	FieldData GetData();
-	unsigned Update();
+	[[nodicard]] unsigned Update();
 	void Clear();
 protected:
+	// сделать приватными
 	void RemoveEmptyLines();
 	unsigned RemoveFilledLines();
 private:

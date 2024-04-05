@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="core">
+      <UniqueIdentifier>{49f43d5e-48fa-47b1-8184-89f8959e437a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\glfw">
+      <UniqueIdentifier>{d887cd17-07a7-4dfb-83e5-569def3021f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\window">
+      <UniqueIdentifier>{7ad58b61-7d81-4f57-b8b4-6be202eca7d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app">
+      <UniqueIdentifier>{c746c303-880e-48e2-a47f-d3b217b37925}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\light">
+      <UniqueIdentifier>{12d4b41f-fcf0-4662-9dde-adbab987e109}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\objects">
+      <UniqueIdentifier>{1fad7fb3-3cc5-4bbb-9500-97da1cd59b8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\camera">
+      <UniqueIdentifier>{0d576470-0bbc-47d5-8f85-74b6981ca3dd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="GLFWInitializer.h">
+      <Filter>core\glfw</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseWindow.h">
+      <Filter>core\window</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectLight.h">
+      <Filter>app\light</Filter>
+    </ClInclude>
+    <ClInclude Include="Dodecahedron.h">
+      <Filter>app\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>app\camera</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GLFWInitializer.cpp">
+      <Filter>core\glfw</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseWindow.cpp">
+      <Filter>core\window</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectLight.cpp">
+      <Filter>app\light</Filter>
+    </ClCompile>
+    <ClCompile Include="Dodecahedron.cpp">
+      <Filter>app\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>app\camera</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -12,7 +12,8 @@ std::vector<std::vector<T>> RotateMatrix(std::vector<std::vector<T>> const& v)
 	auto rotatedCopy = v;
 
 	const auto N = v.size() - 1;
-
+	// исправить warning при x64 (size_t)
+	// настроить сборку x64
 	for (unsigned y = 0; y < v.size(); y++)
 	{
 		for (unsigned x = 0; x < v[y].size(); x++)
