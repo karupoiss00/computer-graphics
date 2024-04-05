@@ -1,9 +1,11 @@
 #include "pch.h"
 #include "MobiusStrip.h"
 
+constexpr float DELTA = 0.015f;
 constexpr unsigned MAXVRT = 10;
 
-MobiusStrip::MobiusStrip()
+MobiusStrip::MobiusStrip(float size)
+    : m_size(size)
 {
 
 }
@@ -16,36 +18,51 @@ void MobiusStrip::Render() const
 
     float x = 0, y = 0, z = 0;
 
-    double r = 0, t = 0;
-    for (t = 0; t < (2 * M_PI) + 0.01; t += 0.005)
+    float r = 0, t = 0;
+    for (t = 0; t < (2 * M_PI) + 0.01; t += DELTA / 3)
     {
         glBegin(GL_LINE_STRIP);
-        for (r = -1; r <= 1; r += 0.005)
+        for (r = -1; r <= 1; r += DELTA)
         {
-            x = (cos(t)) * (2 + (r / 2) * cos(t / 2));
-            y = (sin(t)) * (2 + (r / 2) * cos(t / 2));
-            z = ((r / 2) * sin(t / 2));
+            x = (cosf(t)) * (2 + (r / 2) * cosf(t / 2));
+            y = (sinf(t)) * (2 + (r / 2) * cosf(t / 2));
+            z = ((r / 2) * sinf(t / 2));
 
-            glColor3f(abs(x / 2), abs(y / 2), abs(z / 2));
-            glVertex3f(x / 2.5, y / 2.5, z / 2.5);
+            float rp[3] = { x, y, z };
+            auto p = glm::make_vec3(rp);
 
+            glColor3fv(glm::value_ptr(p));
+
+            p *= m_size * 0.5;
+
+            glVertex3fv(glm::value_ptr(p));
         }
         glEnd();
 
     }
-    for (r = -1; r <= 1; r += 0.005)
+    for (r = -1; r <= 1; r += DELTA / 3)
     {
         glBegin(GL_LINE_STRIP);
-        for (t = 0; t < (2 * M_PI) + 0.01; t += 0.005)
+        for (t = 0; t < (2 * M_PI) + 0.01; t += DELTA)
         {
+            x = (cosf(t)) * (2 + (r / 2) * cosf(t / 2));
+            y = (sinf(t)) * (2 + (r / 2) * cosf(t / 2));
+            z = ((r / 2) * sinf(t / 2));
 
-            x = (cos(t)) * (2 + (r / 2) * cos(t / 2));
-            y = (sin(t)) * (2 + (r / 2) * cos(t / 2));
-            z = ((r / 2) * sin(t / 2));
+            float rp[3] = { x, y, z };
+            auto p = glm::make_vec3(rp);
 
-            glColor3f(abs(x / 2), abs(y / 2), abs(z / 2));
-            glVertex3f(x / 2.5, y / 2.5, z / 2.5);
+            glColor3fv(glm::value_ptr(p));
+
+            p *= m_size * 0.5;
+
+            glVertex3fv(glm::value_ptr(p));
         }
         glEnd();
     }
+}
+
+void MobiusStrip::SetObjectSize(float size)
+{
+    m_size = size;
 }

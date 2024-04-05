@@ -7,6 +7,7 @@ Window::Window(int w, int h, const char* title)
 	, m_light({ 0.0f, 0.0f, 1.0f })
 	, m_camera(DISTANCE_TO_ORIGIN)
 	, m_dodecahedron(m_objectConfig.m_size)
+	, m_mobiusStrip(m_objectConfig.m_size)
 	, m_object(&m_emptyObject)
 	, m_renderConfigEditor(m_renderConfig)
 	, m_objectConfigEditor(m_objectConfig)
@@ -114,6 +115,7 @@ void Window::ApplyChanges()
 	auto size = GetFramebufferSize();
 
 	ApplyDodecahedronChanges();
+	ApplyMobiusStripChanges();
 	ApplyObjectChanges();
 	ApplyProjectionChanges(int(size.x), int(size.y));
 }
@@ -134,6 +136,12 @@ void Window::ApplyDodecahedronChanges()
 {
 	m_dodecahedron.SetObjectSize(m_objectConfig.m_size);
 }
+
+void Window::ApplyMobiusStripChanges()
+{
+	m_mobiusStrip.SetObjectSize(m_objectConfig.m_size);
+}
+
 
 void Window::ApplyObjectChanges()
 {

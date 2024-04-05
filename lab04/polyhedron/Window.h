@@ -42,6 +42,8 @@ private:
 
 	void ApplyDodecahedronChanges();
 
+	void ApplyMobiusStripChanges();
+
 	void ApplyChanges();
 
 

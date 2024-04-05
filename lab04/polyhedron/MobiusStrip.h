@@ -4,6 +4,9 @@
 class MobiusStrip : public IRenderable
 {
 public:
-	MobiusStrip();
+	MobiusStrip(float size);
+	void SetObjectSize(float size);
 	void Render() const;
+private:
+	float m_size;
 };
