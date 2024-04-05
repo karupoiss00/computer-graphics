@@ -3,7 +3,6 @@
 
 RenderConfigEditor::RenderConfigEditor(RenderConfig& cfg)
 	: m_config(cfg)
-    , m_opened(true)
 {
 }
 
@@ -11,7 +10,7 @@ void RenderConfigEditor::Render()
 {
     ImGui::SetNextWindowSize(ImVec2(400, 220));
 
-    if (!ImGui::Begin("Render Configuration Editor", &m_opened, ImGuiWindowFlags_NoResize))
+    if (!ImGui::Begin("Render Configuration Editor", nullptr, ImGuiWindowFlags_NoResize))
     {
         ImGui::End();
         return;

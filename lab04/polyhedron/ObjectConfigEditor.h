@@ -10,5 +10,4 @@ public:
 	void Render();
 private:
 	ObjectConfig& m_config;
-	bool m_opened;
 };

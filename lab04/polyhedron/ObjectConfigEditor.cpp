@@ -3,7 +3,6 @@
 
 ObjectConfigEditor::ObjectConfigEditor(ObjectConfig& cfg)
     : m_config(cfg)
-    , m_opened(true)
 {
 }
 
@@ -11,7 +10,7 @@ void ObjectConfigEditor::Render()
 {
     ImGui::SetNextWindowSize(ImVec2(400, 220));
 
-    if (!ImGui::Begin("Object Configuration Editor", &m_opened, ImGuiWindowFlags_NoResize))
+    if (!ImGui::Begin("Object Configuration Editor", nullptr, ImGuiWindowFlags_NoResize))
     {
         ImGui::End();
         return;
