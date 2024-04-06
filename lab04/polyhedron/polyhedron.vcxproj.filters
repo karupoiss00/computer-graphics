@@ -138,6 +138,9 @@
     <ClInclude Include="MobiusStrip.h">
       <Filter>app\objects\mobiusStrip</Filter>
     </ClInclude>
+    <ClInclude Include="CameraController.h">
+      <Filter>app\camera</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GLFWInitializer.cpp">
@@ -196,6 +199,9 @@
     </ClCompile>
     <ClCompile Include="MobiusStrip.cpp">
       <Filter>app\objects\mobiusStrip</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraController.cpp">
+      <Filter>app\camera</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

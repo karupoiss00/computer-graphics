@@ -40,6 +40,7 @@ void MobiusStrip::Render() const
         glEnd();
 
     }
+    
     for (r = -1; r <= 1; r += DELTA / 3)
     {
         glBegin(GL_LINE_STRIP);

@@ -1,8 +1,11 @@
 ﻿#pragma once
+#include <map>
+#include <string>
 #include "BaseWindow.h"
 #include "DirectLight.h"
 #include "Dodecahedron.h"
 #include "Camera.h"
+#include "CameraController.h"
 #include "RenderConfigEditor.h"
 #include "RenderConfig.h"
 #include "ObjectConfigEditor.h"
@@ -54,13 +57,15 @@ private:
 	ObjectConfig m_objectConfig;
 
 	DirectLight m_light;
+
+	CameraController m_cameraController;
 	Camera m_camera;
 
 	EmptyObject m_emptyObject;
 	Dodecahedron m_dodecahedron;
 	MobiusStrip m_mobiusStrip;
+
 	IRenderable* m_object;
 
-	bool m_leftButtonPressed = false;
-	glm::dvec2 m_mousePos = {};
+	std::map<std::string, IRenderable*> m_objectsMap;
 };

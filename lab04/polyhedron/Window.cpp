@@ -6,6 +6,7 @@ Window::Window(int w, int h, const char* title)
 	: BaseWindow(w, h, title)
 	, m_light({ 0.0f, 0.0f, 1.0f })
 	, m_camera(DISTANCE_TO_ORIGIN)
+	, m_cameraController(m_camera)
 	, m_dodecahedron(m_objectConfig.m_size)
 	, m_mobiusStrip(m_objectConfig.m_size)
 	, m_object(&m_emptyObject)
@@ -14,6 +15,9 @@ Window::Window(int w, int h, const char* title)
 {
 	SetupDodecahedron();
 	SetupLight();
+
+	m_objectsMap.insert({ "dodecahedron", &m_dodecahedron });
+	m_objectsMap.insert({ "mobius strip", &m_mobiusStrip });
 }
 
 void Window::SetupLight()
@@ -43,25 +47,17 @@ void Window::SetupDodecahedron()
 
 void Window::OnMouseButton(int button, int action, int mods)
 {
-	if (button == GLFW_MOUSE_BUTTON_1 && !MouseDownPrevented())
+	if (MouseDownPrevented())
 	{
-		m_leftButtonPressed = (action & GLFW_PRESS) != 0;
+		return;
 	}
+
+	m_cameraController.MouseDownHandler(button, action, mods);
 }
 
 void Window::OnMouseMove(double x, double y)
 {
-	const glm::dvec2 mousePos{ x, y };
-	if (m_leftButtonPressed)
-	{
-		const auto windowSize = GetFramebufferSize();
-
-		const auto mouseDelta = mousePos - m_mousePos;
-		const double xAngle = mouseDelta.y * M_PI / windowSize.y;
-		const double yAngle = mouseDelta.x * M_PI / windowSize.x;
-		m_camera.Rotate(xAngle, yAngle);
-	}
-	m_mousePos = mousePos;
+	m_cameraController.MouseMoveHandler(GetFramebufferSize(), x, y);
 }
 
 void Window::OnResize(int width, int height)
@@ -101,8 +97,10 @@ void Window::Draw(int width, int height)
 
 void Window::DrawGUI(int width, int height)
 {
+	ImGui::NewFrame();
 	m_renderConfigEditor.Render();
 	m_objectConfigEditor.Render();
+	ImGui::Render();
 }
 
 bool Window::MouseDownPrevented()
@@ -147,16 +145,14 @@ void Window::ApplyObjectChanges()
 {
 	auto selectedObject = m_objectConfig.m_selectedObject;
 
-	if (selectedObject == "dodecahedron")
+	auto pos = m_objectsMap.find(selectedObject);
+
+	if (pos == m_objectsMap.end())
 	{
-		m_object = &m_dodecahedron;
-	}
-	else if (selectedObject == "mobius strip")
-	{
-		m_object = &m_mobiusStrip;
+		m_object = &m_emptyObject;
 	}
 	else
 	{
-		m_object = &m_emptyObject;
+		m_object = pos->second;
 	}
 }

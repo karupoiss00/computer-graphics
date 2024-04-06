@@ -57,15 +57,12 @@ void BaseWindow::Run()
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 
-		ImGui::NewFrame();
-
 		auto size = GetFramebufferSize();
 		Draw(size.x, size.y);
 		DrawGUI(size.x, size.y);
 
-		ImGui::Render();
-
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
 		glFinish();
 		glfwSwapBuffers(m_window);
 		glfwPollEvents();
