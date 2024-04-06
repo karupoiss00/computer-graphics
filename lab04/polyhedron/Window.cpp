@@ -47,7 +47,7 @@ void Window::SetupDodecahedron()
 
 void Window::OnMouseButton(int button, int action, int mods)
 {
-	if (MouseDownPrevented())
+	if (MouseMovePrevented())
 	{
 		return;
 	}
@@ -103,7 +103,7 @@ void Window::DrawGUI(int width, int height)
 	ImGui::Render();
 }
 
-bool Window::MouseDownPrevented()
+bool Window::MouseMovePrevented()
 {
 	return ImGui::GetIO().WantCaptureMouse;
 }

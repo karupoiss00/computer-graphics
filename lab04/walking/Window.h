@@ -3,15 +3,12 @@
 #include <string>
 #include "BaseWindow.h"
 #include "DirectLight.h"
-#include "Dodecahedron.h"
 #include "Camera.h"
 #include "CameraController.h"
 #include "RenderConfigEditor.h"
 #include "RenderConfig.h"
-#include "ObjectConfigEditor.h"
-#include "ObjectConfig.h"
-#include "EmptyObject.h"
-#include "MobiusStrip.h"
+#include "World.h"
+#include "WorldRenderer.h"
 
 class Window : public BaseWindow
 {
@@ -19,15 +16,13 @@ public:
 	Window(int w, int h, const char* title);
 
 private:
-	static constexpr double DISTANCE_TO_ORIGIN = 2;
-
 	void SetupLight();
-
-	void SetupDodecahedron();
 
 	bool MouseMovePrevented();
 
-	void OnMouseButton(int button, int action, [[maybe_unused]] int mods) override;
+	void OnKeyDown(int key, int scancode, int mods);
+
+	void OnKeyUp(int key, int scancode, int mods);
 
 	void OnMouseMove(double x, double y) override;
 
@@ -41,31 +36,25 @@ private:
 
 	void ApplyProjectionChanges(int width, int height);
 
-	void ApplyObjectChanges();
-
-	void ApplyDodecahedronChanges();
-
-	void ApplyMobiusStripChanges();
-
 	void ApplyChanges();
 
 
 	RenderConfigEditor m_renderConfigEditor;
 	RenderConfig m_renderConfig;
 
-	ObjectConfigEditor m_objectConfigEditor;
-	ObjectConfig m_objectConfig;
-
 	DirectLight m_light;
 
 	CameraController m_cameraController;
 	Camera m_camera;
 
-	EmptyObject m_emptyObject;
-	Dodecahedron m_dodecahedron;
-	MobiusStrip m_mobiusStrip;
+	World m_world;
+	WorldRenderer m_worldRenderer;
 
-	IRenderable* m_object;
+	bool m_showRenderConfig;
 
-	std::map<std::string, IRenderable*> m_objectsMap;
+
+	bool m_walkingForward;
+	bool m_walkingBackward; 
+	bool m_walkingLeft;
+	bool m_walkingRight;
 };

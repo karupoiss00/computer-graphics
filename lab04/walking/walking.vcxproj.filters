@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="core">
+      <UniqueIdentifier>{49f43d5e-48fa-47b1-8184-89f8959e437a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\glfw">
+      <UniqueIdentifier>{d887cd17-07a7-4dfb-83e5-569def3021f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\window">
+      <UniqueIdentifier>{7ad58b61-7d81-4f57-b8b4-6be202eca7d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app">
+      <UniqueIdentifier>{c746c303-880e-48e2-a47f-d3b217b37925}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\light">
+      <UniqueIdentifier>{12d4b41f-fcf0-4662-9dde-adbab987e109}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\camera">
+      <UniqueIdentifier>{0d576470-0bbc-47d5-8f85-74b6981ca3dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\imgui">
+      <UniqueIdentifier>{64cf54f2-9fad-45aa-abab-04313bde5ac2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external">
+      <UniqueIdentifier>{5d375edc-179f-4470-8fa5-708c83f8d6d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\imgui">
+      <UniqueIdentifier>{dfc5e1bb-05e6-4dc5-bd7c-c3b22617e3f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\common">
+      <UniqueIdentifier>{0ccbe02f-78d3-4d40-9b0e-f3e9c29a5071}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\ui">
+      <UniqueIdentifier>{08b0df02-c83e-415e-9fd4-38ff865835c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\ui\render">
+      <UniqueIdentifier>{07bac160-fc23-40a3-b1e7-bba30b380700}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\ui\render\model">
+      <UniqueIdentifier>{843332ab-bde6-4eee-a67a-2fe27f8fac74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\ui\render\view">
+      <UniqueIdentifier>{8e08da59-b620-4938-b7f8-78034e856acd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\world">
+      <UniqueIdentifier>{0c254a60-d38d-47be-8742-3d6c5420b4f8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\external\imgui\imconfig.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\imgui\imgui.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\imgui\imgui_impl_glfw.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\imgui\imgui_impl_opengl3.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\imgui\imgui_impl_opengl3_loader.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\imgui\imgui_internal.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\imgui\imstb_rectpack.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\imgui\imstb_textedit.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\imgui\imstb_truetype.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseWindow.h">
+      <Filter>core\window</Filter>
+    </ClInclude>
+    <ClInclude Include="ImguiInitializer.h">
+      <Filter>core\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="GLFWInitializer.h">
+      <Filter>core\glfw</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraController.h">
+      <Filter>app\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>app\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderable.h">
+      <Filter>app\common</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectLight.h">
+      <Filter>app\light</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderConfig.h">
+      <Filter>app\ui\render\model</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderConfigEditor.h">
+      <Filter>app\ui\render\view</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldRenderer.h">
+      <Filter>app\world</Filter>
+    </ClInclude>
+    <ClInclude Include="World.h">
+      <Filter>app\world</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\external\imgui\imgui.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\imgui\imgui_demo.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\imgui\imgui_draw.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\imgui\imgui_impl_glfw.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\imgui\imgui_impl_opengl3.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\imgui\imgui_tables.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\imgui\imgui_widgets.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseWindow.cpp">
+      <Filter>core\window</Filter>
+    </ClCompile>
+    <ClCompile Include="ImguiInitializer.cpp">
+      <Filter>core\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="GLFWInitializer.cpp">
+      <Filter>core\glfw</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraController.cpp">
+      <Filter>app\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>app\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectLight.cpp">
+      <Filter>app\light</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderConfigEditor.cpp">
+      <Filter>app\ui\render\view</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldRenderer.cpp">
+      <Filter>app\world</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>app\world</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>
