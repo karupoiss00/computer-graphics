@@ -4,7 +4,7 @@
 
 Window::Window(int w, int h, const char* title)
 	: BaseWindow(w, h, title)
-	, m_light({ 0.0f, 1.0f, 0.0f })
+	, m_light({ 0.0f, 8.0f, 0.0f })
 	, m_camera()
 	, m_cameraController(m_camera)
 	, m_renderConfigEditor(m_renderConfig)
@@ -16,7 +16,7 @@ Window::Window(int w, int h, const char* title)
 
 void Window::SetupLight()
 {
-	m_light.SetDiffuseIntensity({ 0.6f, 0.6f, 0.6f, 1.0f });
+	m_light.SetDiffuseIntensity({ 0.3f, 0.6f, 0.3f, 1.0f });
 	m_light.SetAmbientIntensity({ 0.3f, 0.3f, 0.3f, 1.0f });
 	m_light.SetSpecularIntensity({ 0.3f, 0.3f, 0.3f, 1.0f });
 }
@@ -30,19 +30,19 @@ void Window::OnKeyDown(int key, int scancode, int mods)
 
 	if (key == GLFW_KEY_W)
 	{
-		m_playerController.SetSpeed(Direction::FORWARD, 0.005);
+		m_playerController.SetSpeed(Direction::FORWARD, 0.05);
 	}
 	if (key == GLFW_KEY_S)
 	{
-		m_playerController.SetSpeed(Direction::BACKWARD, 0.005);
+		m_playerController.SetSpeed(Direction::BACKWARD, 0.05);
 	}
 	if (key == GLFW_KEY_A)
 	{
-		m_playerController.SetSpeed(Direction::LEFT, 0.005);
+		m_playerController.SetSpeed(Direction::LEFT, 0.05);
 	}
 	if (key == GLFW_KEY_D)
 	{
-		m_playerController.SetSpeed(Direction::RIGHT, 0.005);
+		m_playerController.SetSpeed(Direction::RIGHT, 0.05);
 	}
 }
 
@@ -129,6 +129,7 @@ bool Window::MouseMovePrevented()
 
 void Window::ApplyChanges()
 {
+	std::cout << m_player.GetPosition().x << " " << m_player.GetPosition().z << std::endl;
 	m_playerController.Update();
 	auto size = GetFramebufferSize();
 	ApplyProjectionChanges(int(size.x), int(size.y));

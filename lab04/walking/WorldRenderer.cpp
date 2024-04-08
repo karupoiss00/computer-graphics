@@ -1,5 +1,6 @@
 #include <iostream>
 #include "pch.h"
+#include "Column.h"
 #include "WorldRenderer.h"
 
 WorldRenderer::WorldRenderer(World& world)
@@ -23,9 +24,17 @@ void WorldRenderer::Render() const
 	{
 		for (int j = -halfFloorSize; j < halfFloorSize; j++)
 		{
-			auto color = floor[i + halfFloorSize][j + halfFloorSize];
+			auto column = floor[i + halfFloorSize][j + halfFloorSize];
+			auto color = column.color;
 			glColor4f(color.x, color.y, color.z, 1);
-			DrawSquare(i, j);
+			if (column.filled)
+			{
+				DrawColumn(i * 2, j * 2);
+			}
+			else
+			{
+				DrawSquare(i, j);
+			}
 		}
 	}
 }
@@ -38,4 +47,10 @@ void WorldRenderer::DrawSquare(int x, int z) const
 	glVertex3d(0.5 + x, 0, 0.5 + z);
 	glVertex3d(0.5 + x, 0, -0.5 + z);
 	glEnd();
+}
+
+void WorldRenderer::DrawColumn(int x, int z) const
+{
+	Column column({x * 0.5, 0.5, z * 0.5});
+	column.Draw();
 }

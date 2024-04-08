@@ -1,11 +1,18 @@
 #pragma once
 #include <vector>
 
+struct Cell
+{
+	bool filled;
+	glm::vec3 color;
+};
+
 class World
 {
+	
 public:
 	World();
-	std::vector<std::vector<glm::vec3>> GetFloor();
+	std::vector<std::vector<Cell>> GetFloor();
 private:
-	std::vector<std::vector<glm::vec3>> m_floor;
+	std::vector<std::vector<Cell>> m_floor;
 };

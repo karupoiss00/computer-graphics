@@ -49,6 +49,9 @@
     <Filter Include="app\player">
       <UniqueIdentifier>{f89dd283-bcbb-44b2-a164-c2543dcb7af4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="app\objects">
+      <UniqueIdentifier>{92231ba0-41a8-4f14-a83e-4333422bde81}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\external\imgui\imconfig.h">
@@ -126,6 +129,9 @@
     <ClInclude Include="Direction.h">
       <Filter>app\common</Filter>
     </ClInclude>
+    <ClInclude Include="Column.h">
+      <Filter>app\objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\external\imgui\imgui.cpp">
@@ -190,6 +196,9 @@
     </ClCompile>
     <ClCompile Include="PlayerController.cpp">
       <Filter>app\player</Filter>
+    </ClCompile>
+    <ClCompile Include="Column.cpp">
+      <Filter>app\objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
