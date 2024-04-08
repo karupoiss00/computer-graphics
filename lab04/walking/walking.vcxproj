@@ -166,6 +166,8 @@
     <ClCompile Include="ImguiInitializer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerController.cpp" />
     <ClCompile Include="RenderConfigEditor.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="World.cpp" />
@@ -184,10 +186,13 @@
     <ClInclude Include="BaseWindow.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraController.h" />
+    <ClInclude Include="Direction.h" />
     <ClInclude Include="DirectLight.h" />
     <ClInclude Include="GLFWInitializer.h" />
     <ClInclude Include="ImguiInitializer.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerController.h" />
     <ClInclude Include="Renderable.h" />
     <ClInclude Include="RenderConfig.h" />
     <ClInclude Include="RenderConfigEditor.h" />

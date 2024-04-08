@@ -1,5 +1,5 @@
 #pragma once
-#include "pch.h"
+#include "Direction.h"
 
 class Camera
 {
@@ -8,12 +8,9 @@ public:
 
 	void Rotate(double mouseX, double mouseY);
 
-	void MoveForward(double speed);
-	void MoveBackward(double speed);
-	void MoveLeft(double speed);
-	void MoveRight(double speed);
+	void SetPosition(glm::dvec3 position);
 
-	void SetPosition(glm::dvec3 pos);
+	glm::dvec3 GetDirectionProjection(Direction dir);
 
 	glm::dmat4 GetWorldToViewMatrix() const;
 private:

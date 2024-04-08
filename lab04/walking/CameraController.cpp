@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "CameraController.h"
 
 CameraController::CameraController(Camera& cam)
@@ -16,24 +17,4 @@ void CameraController::MouseMoveHandler(glm::ivec2 windowSize, double x, double 
 	}
 	
 	m_mousePos = mousePos;
-}
-
-void CameraController::MoveForward(double speed)
-{
-	m_camera.MoveForward(speed);
-}
-
-void CameraController::MoveBackward(double speed)
-{
-	m_camera.MoveBackward(speed);
-}
-
-void CameraController::MoveLeft(double speed)
-{
-	m_camera.MoveLeft(speed);
-}
-
-void CameraController::MoveRight(double speed)
-{
-	m_camera.MoveRight(speed);
 }

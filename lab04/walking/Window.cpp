@@ -10,6 +10,8 @@ Window::Window(int w, int h, const char* title)
 	, m_renderConfigEditor(m_renderConfig)
 	, m_world()
 	, m_worldRenderer(m_world)
+	, m_player()
+	, m_playerController(m_player, m_camera)
 {}
 
 void Window::SetupLight()
@@ -28,19 +30,19 @@ void Window::OnKeyDown(int key, int scancode, int mods)
 
 	if (key == GLFW_KEY_W)
 	{
-		m_walkingForward = true;
+		m_playerController.SetSpeed(Direction::FORWARD, 0.005);
 	}
 	if (key == GLFW_KEY_S)
 	{
-		m_walkingBackward = true;
+		m_playerController.SetSpeed(Direction::BACKWARD, 0.005);
 	}
 	if (key == GLFW_KEY_A)
 	{
-		m_walkingLeft = true;
+		m_playerController.SetSpeed(Direction::LEFT, 0.005);
 	}
 	if (key == GLFW_KEY_D)
 	{
-		m_walkingRight = true;
+		m_playerController.SetSpeed(Direction::RIGHT, 0.005);
 	}
 }
 
@@ -48,19 +50,19 @@ void Window::OnKeyUp(int key, int scancode, int mods)
 {
 	if (key == GLFW_KEY_W)
 	{
-		m_walkingForward = false;
+		m_playerController.SetSpeed(Direction::FORWARD, 0);
 	}
 	if (key == GLFW_KEY_S)
 	{
-		m_walkingBackward = false;
+		m_playerController.SetSpeed(Direction::BACKWARD, 0);
 	}
 	if (key == GLFW_KEY_A)
 	{
-		m_walkingLeft = false;
+		m_playerController.SetSpeed(Direction::LEFT, 0);
 	}
 	if (key == GLFW_KEY_D)
 	{
-		m_walkingRight = false;
+		m_playerController.SetSpeed(Direction::RIGHT, 0);
 	}
 }
 
@@ -127,23 +129,7 @@ bool Window::MouseMovePrevented()
 
 void Window::ApplyChanges()
 {
-	if (m_walkingForward)
-	{
-		m_cameraController.MoveForward(0.1);
-	}
-	else if (m_walkingBackward)
-	{
-		m_cameraController.MoveBackward(0.1);
-	}
-	else if (m_walkingLeft)
-	{
-		m_cameraController.MoveLeft(0.1);
-	}
-	else if (m_walkingRight)
-	{
-		m_cameraController.MoveRight(0.1);
-	}
-
+	m_playerController.Update();
 	auto size = GetFramebufferSize();
 	ApplyProjectionChanges(int(size.x), int(size.y));
 }

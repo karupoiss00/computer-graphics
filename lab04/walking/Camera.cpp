@@ -1,10 +1,11 @@
+#include "pch.h"
 #include "Camera.h"
 
 constexpr float ROTATION_SPEED = 0.003f;
 constexpr glm::dvec3 UP_DIRECTION = { 0.0, 1.0, 0.0 };
 
 Camera::Camera()
-	: m_cameraPos(glm::dvec3{ 0.0, 0.2, 0.0 })
+	: m_cameraPos(glm::dvec3{ 0.0, 0.0, 0.0 })
 	, m_lookDirection(glm::normalize(glm::dvec3{ 1.0, 0.0, 1.0 }))
 {}
 
@@ -19,33 +20,9 @@ void Camera::Rotate(double deltaX, double deltaY)
 	m_lookDirection = glm::mat3(rotator) * m_lookDirection;
 }
 
-void Camera::MoveForward(double speed)
+void Camera::SetPosition(glm::dvec3 position)
 {
-	glm::dvec3 horizontalLookDirection = glm::dvec3{ m_lookDirection.x, 0, m_lookDirection.z };
-	m_cameraPos += horizontalLookDirection * speed;
-}
-
-void Camera::MoveBackward(double speed)
-{
-	glm::dvec3 horizontalLookDirection = -glm::dvec3{ m_lookDirection.x, 0, m_lookDirection.z };
-	m_cameraPos += horizontalLookDirection * speed;
-}
-
-void Camera::MoveLeft(double speed)
-{
-	glm::dvec3 strafeDirection = -glm::cross(m_lookDirection, UP_DIRECTION);
-	m_cameraPos += speed * strafeDirection;
-}
-
-void Camera::MoveRight(double speed)
-{
-	glm::dvec3 strafeDirection = glm::cross(m_lookDirection, UP_DIRECTION);
-	m_cameraPos += speed * strafeDirection;
-}
-
-void Camera::SetPosition(glm::dvec3 pos)
-{
-	m_cameraPos = pos;
+	m_cameraPos = position;
 }
 
 glm::dmat4 Camera::GetWorldToViewMatrix() const
@@ -55,4 +32,21 @@ glm::dmat4 Camera::GetWorldToViewMatrix() const
 		m_cameraPos + glm::normalize(m_lookDirection),
 		UP_DIRECTION
 	);
+}
+
+glm::dvec3 Camera::GetDirectionProjection(Direction dir)
+{
+	switch (dir)
+	{
+	case Direction::FORWARD:
+		return glm::dvec3{ m_lookDirection.x, 0, m_lookDirection.z };
+	case Direction::BACKWARD:
+		return -glm::dvec3{ m_lookDirection.x, 0, m_lookDirection.z };
+	case Direction::LEFT:
+		return -glm::cross(m_lookDirection, UP_DIRECTION);
+	case Direction::RIGHT:
+		return glm::cross(m_lookDirection, UP_DIRECTION);
+	}
+
+	throw std::exception("unknown direction");
 }

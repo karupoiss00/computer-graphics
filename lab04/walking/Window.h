@@ -9,6 +9,8 @@
 #include "RenderConfig.h"
 #include "World.h"
 #include "WorldRenderer.h"
+#include "Player.h"
+#include "PlayerController.h"
 
 class Window : public BaseWindow
 {
@@ -50,11 +52,8 @@ private:
 	World m_world;
 	WorldRenderer m_worldRenderer;
 
+	Player m_player;
+	PlayerController m_playerController;
+
 	bool m_showRenderConfig;
-
-
-	bool m_walkingForward;
-	bool m_walkingBackward; 
-	bool m_walkingLeft;
-	bool m_walkingRight;
 };
