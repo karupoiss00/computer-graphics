@@ -1,5 +1,4 @@
 ﻿#include <iostream>
-#include "FrequencyTimer.h"
 #include "pch.h"
 #include "Window.h"
 

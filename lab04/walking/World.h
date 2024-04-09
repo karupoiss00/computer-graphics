@@ -12,7 +12,7 @@ class World
 	
 public:
 	World();
-	std::vector<std::vector<Cell>> GetFloor();
+	std::vector<std::vector<Cell>> GetMap();
 private:
-	std::vector<std::vector<Cell>> m_floor;
+	std::vector<std::vector<Cell>> m_map;
 };

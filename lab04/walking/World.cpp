@@ -39,11 +39,11 @@ World::World()
 			auto color = glm::vec3(0.1, 0.1 + dist6(rng), 0.1);
 			line.push_back(Cell{ LABYRINTH_MAP[i][j] == 1, color });
 		}
-		m_floor.push_back(line);
+		m_map.push_back(line);
 	}
 }
 
-std::vector<std::vector<Cell>> World::GetFloor()
+std::vector<std::vector<Cell>> World::GetMap()
 {
-	return m_floor;
+	return m_map;
 }

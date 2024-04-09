@@ -16,7 +16,7 @@ void WorldRenderer::Render() const
 	glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 0.5);
 	glNormal3f(0, 1, 0);
 	
-	auto floor = m_world.GetFloor();
+	auto floor = m_world.GetMap();
 	int floorSize = static_cast<int>(floor.size());
 	int halfFloorSize = floorSize / 2;
 
