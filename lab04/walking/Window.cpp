@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include "FrequencyTimer.h"
 #include "pch.h"
 #include "Window.h"
 
@@ -30,19 +31,19 @@ void Window::OnKeyDown(int key, int scancode, int mods)
 
 	if (key == GLFW_KEY_W)
 	{
-		m_playerController.SetSpeed(Direction::FORWARD, 0.05);
+		m_playerController.SetSpeed(Direction::FORWARD, 2);
 	}
 	if (key == GLFW_KEY_S)
 	{
-		m_playerController.SetSpeed(Direction::BACKWARD, 0.05);
+		m_playerController.SetSpeed(Direction::BACKWARD, 2);
 	}
 	if (key == GLFW_KEY_A)
 	{
-		m_playerController.SetSpeed(Direction::LEFT, 0.05);
+		m_playerController.SetSpeed(Direction::LEFT, 2);
 	}
 	if (key == GLFW_KEY_D)
 	{
-		m_playerController.SetSpeed(Direction::RIGHT, 0.05);
+		m_playerController.SetSpeed(Direction::RIGHT, 2);
 	}
 }
 
@@ -119,6 +120,7 @@ void Window::DrawGUI(int width, int height)
 {
 	ImGui::NewFrame();
 	m_renderConfigEditor.Render(m_showRenderConfig);
+	m_renderStats.Render(m_renderConfig.m_showStats);
 	ImGui::Render();
 }
 
@@ -129,8 +131,9 @@ bool Window::MouseMovePrevented()
 
 void Window::ApplyChanges()
 {
-	std::cout << m_player.GetPosition().x << " " << m_player.GetPosition().z << std::endl;
-	m_playerController.Update();
+	auto deltaTime = GetEllapsedTime();
+	m_playerController.Update(deltaTime);
+
 	auto size = GetFramebufferSize();
 	ApplyProjectionChanges(int(size.x), int(size.y));
 }

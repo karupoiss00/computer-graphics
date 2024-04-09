@@ -10,7 +10,7 @@ public:
 
 	void SetSpeed(Direction dir, double speed);
 
-	void Update();
+	void Update(double deltaTime);
 private:
 	Camera& m_camera;
 	Player& m_player;

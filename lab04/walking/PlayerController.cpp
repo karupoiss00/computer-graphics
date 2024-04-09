@@ -18,14 +18,14 @@ void PlayerController::SetSpeed(Direction dir, double speed)
 	m_speed[dir] = speed;
 }
 
-void PlayerController::Update()
+void PlayerController::Update(double deltaTime)
 {
 	for (auto dir : DIRECTIONS)
 	{
 		auto playerPos = m_player.GetPosition();
 		auto speed = m_speed[dir];
 		auto moveVector = m_camera.GetDirectionProjection(dir);
-		auto newPosition = playerPos + moveVector * speed;
+		auto newPosition = playerPos + moveVector * speed * deltaTime;
 
 		m_player.SetPosition(newPosition);
 		m_camera.SetPosition(newPosition);

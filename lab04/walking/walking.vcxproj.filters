@@ -52,6 +52,15 @@
     <Filter Include="app\objects">
       <UniqueIdentifier>{92231ba0-41a8-4f14-a83e-4333422bde81}</UniqueIdentifier>
     </Filter>
+    <Filter Include="core\render">
+      <UniqueIdentifier>{8db94fce-0942-4f06-937c-cee16fd314b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\ui\renderStats">
+      <UniqueIdentifier>{8ecb4dff-e136-4ac0-b95a-c17d4144e391}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\ui\renderStats\view">
+      <UniqueIdentifier>{62b5c6ab-4191-4632-b824-f5d8105f41fc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\external\imgui\imconfig.h">
@@ -132,6 +141,12 @@
     <ClInclude Include="Column.h">
       <Filter>app\objects</Filter>
     </ClInclude>
+    <ClInclude Include="GetFPS.h">
+      <Filter>core\render</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderStats.h">
+      <Filter>app\ui\renderStats\view</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\external\imgui\imgui.cpp">
@@ -199,6 +214,12 @@
     </ClCompile>
     <ClCompile Include="Column.cpp">
       <Filter>app\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="GetFPS.cpp">
+      <Filter>core\render</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderStats.cpp">
+      <Filter>app\ui\renderStats\view</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

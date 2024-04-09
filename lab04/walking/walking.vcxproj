@@ -163,6 +163,7 @@
     <ClCompile Include="CameraController.cpp" />
     <ClCompile Include="Column.cpp" />
     <ClCompile Include="DirectLight.cpp" />
+    <ClCompile Include="GetFPS.cpp" />
     <ClCompile Include="GLFWInitializer.cpp" />
     <ClCompile Include="ImguiInitializer.cpp" />
     <ClCompile Include="main.cpp" />
@@ -170,6 +171,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerController.cpp" />
     <ClCompile Include="RenderConfigEditor.cpp" />
+    <ClCompile Include="RenderStats.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="World.cpp" />
     <ClCompile Include="WorldRenderer.cpp" />
@@ -190,6 +192,7 @@
     <ClInclude Include="Column.h" />
     <ClInclude Include="Direction.h" />
     <ClInclude Include="DirectLight.h" />
+    <ClInclude Include="GetFPS.h" />
     <ClInclude Include="GLFWInitializer.h" />
     <ClInclude Include="ImguiInitializer.h" />
     <ClInclude Include="pch.h" />
@@ -198,6 +201,7 @@
     <ClInclude Include="Renderable.h" />
     <ClInclude Include="RenderConfig.h" />
     <ClInclude Include="RenderConfigEditor.h" />
+    <ClInclude Include="RenderStats.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="World.h" />
     <ClInclude Include="WorldRenderer.h" />

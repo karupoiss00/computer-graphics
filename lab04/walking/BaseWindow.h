@@ -18,6 +18,7 @@ public:
 
 protected:
 	void ShowCursor(bool show);
+	double GetEllapsedTime();
 private:
 	static BaseWindow* GetBaseWindow(GLFWwindow* window);
 
@@ -40,4 +41,7 @@ private:
 	static GLFWwindow* MakeWindow(int w, int h, const char* title);
 
 	GLFWwindow* m_window;
+
+	double m_lastTime;
+	double m_nowTime;
 };

@@ -9,12 +9,12 @@ Column::Column(glm::dvec3 pos, float size)
 void Column::Draw() const
 {
 	static constexpr float vertices[8][3] = {
-		{ -1, -3, -1 }, // 0
-		{ +1, -3, -1 }, // 1
+		{ -1, 0, -1 }, // 0
+		{ +1, 0, -1 }, // 1
 		{ +1, +3, -1 }, // 2
 		{ -1, +3, -1 }, // 3
-		{ -1, -3, +1 }, // 4
-		{ +1, -3, +1 }, // 5
+		{ -1, 0, +1 }, // 4
+		{ +1, 0, +1 }, // 5
 		{ +1, +3, +1 }, // 6
 		{ -1, +3, +1 }, // 7
 	};
@@ -34,6 +34,7 @@ void Column::Draw() const
 	glScalef(m_size * 0.5f, m_size * 0.5f, m_size * 0.5f);
 	glEnable(GL_COLOR_MATERIAL);
 	glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
+	glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 0.5f);
 	glBegin(GL_QUADS);
 	{
 		for (size_t face = 0; face < faceCount; ++face)

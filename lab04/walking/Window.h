@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <map>
 #include <string>
+#include <functional>
 #include "BaseWindow.h"
 #include "DirectLight.h"
 #include "Camera.h"
@@ -11,6 +12,7 @@
 #include "WorldRenderer.h"
 #include "Player.h"
 #include "PlayerController.h"
+#include "RenderStats.h"
 
 class Window : public BaseWindow
 {
@@ -43,6 +45,7 @@ private:
 
 	RenderConfigEditor m_renderConfigEditor;
 	RenderConfig m_renderConfig;
+	RenderStats m_renderStats;
 
 	DirectLight m_light;
 

@@ -51,6 +51,6 @@ void WorldRenderer::DrawSquare(int x, int z) const
 
 void WorldRenderer::DrawColumn(int x, int z) const
 {
-	Column column({x * 0.5, 0.5, z * 0.5});
+	Column column({x * 0.5, 0, z * 0.5});
 	column.Draw();
 }

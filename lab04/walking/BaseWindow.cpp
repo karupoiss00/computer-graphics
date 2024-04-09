@@ -3,6 +3,8 @@
 
 BaseWindow::BaseWindow(int w, int h, const char* title)
 	: m_window{ MakeWindow(w, h, title) }
+	, m_lastTime(glfwGetTime())
+	, m_nowTime(glfwGetTime())
 {
 	if (!m_window)
 	{
@@ -66,6 +68,7 @@ void BaseWindow::Run()
 
 	while (!glfwWindowShouldClose(m_window))
 	{
+		m_nowTime = glfwGetTime();
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 
@@ -78,6 +81,7 @@ void BaseWindow::Run()
 		glFinish();
 		glfwSwapBuffers(m_window);
 		glfwPollEvents();
+		m_lastTime = m_nowTime;
 	}
 	OnRunEnd();
 }
@@ -109,4 +113,9 @@ void BaseWindow::ShowCursor(bool show)
 			? GLFW_CURSOR_NORMAL 
 			: GLFW_CURSOR_DISABLED
 	);
+}
+
+double BaseWindow::GetEllapsedTime()
+{
+	return m_nowTime - m_lastTime;
 }
