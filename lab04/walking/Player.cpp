@@ -2,7 +2,7 @@
 #include "Player.h"
 
 Player::Player()
-	: m_position(0.0, 0.3, -0.9)
+	: m_position(9.5, 0.3, 8.5)
 {
 
 }

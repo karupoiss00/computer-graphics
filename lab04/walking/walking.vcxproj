@@ -189,6 +189,7 @@
     <ClInclude Include="BaseWindow.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraController.h" />
+    <ClInclude Include="CollisionProvider.h" />
     <ClInclude Include="Column.h" />
     <ClInclude Include="Direction.h" />
     <ClInclude Include="DirectLight.h" />

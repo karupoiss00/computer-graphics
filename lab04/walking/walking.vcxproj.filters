@@ -61,6 +61,9 @@
     <Filter Include="app\ui\renderStats\view">
       <UniqueIdentifier>{62b5c6ab-4191-4632-b824-f5d8105f41fc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="app\collision">
+      <UniqueIdentifier>{2df7e8a2-4254-4878-a3f8-19767ec357dd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\external\imgui\imconfig.h">
@@ -146,6 +149,9 @@
     </ClInclude>
     <ClInclude Include="RenderStats.h">
       <Filter>app\ui\renderStats\view</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionProvider.h">
+      <Filter>app\collision</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

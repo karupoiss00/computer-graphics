@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include "CollisionProvider.h"
 
 struct Cell
 {
@@ -7,12 +8,14 @@ struct Cell
 	glm::vec3 color;
 };
 
-class World
+class World : public ICollisionProvider
 {
 	
 public:
 	World();
+
 	std::vector<std::vector<Cell>> GetMap();
+	Collision GetCollision(glm::dvec3 point) const override;
 private:
 	std::vector<std::vector<Cell>> m_map;
 };

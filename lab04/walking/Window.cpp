@@ -11,7 +11,7 @@ Window::Window(int w, int h, const char* title)
 	, m_world()
 	, m_worldRenderer(m_world)
 	, m_player()
-	, m_playerController(m_player, m_camera)
+	, m_playerController(m_player, m_camera, m_world)
 {}
 
 void Window::SetupLight()
@@ -30,19 +30,19 @@ void Window::OnKeyDown(int key, int scancode, int mods)
 
 	if (key == GLFW_KEY_W)
 	{
-		m_playerController.SetSpeed(Direction::FORWARD, 2);
+		m_playerController.SetSpeed(Direction::FORWARD, 4);
 	}
 	if (key == GLFW_KEY_S)
 	{
-		m_playerController.SetSpeed(Direction::BACKWARD, 2);
+		m_playerController.SetSpeed(Direction::BACKWARD, 4);
 	}
 	if (key == GLFW_KEY_A)
 	{
-		m_playerController.SetSpeed(Direction::LEFT, 2);
+		m_playerController.SetSpeed(Direction::LEFT, 4);
 	}
 	if (key == GLFW_KEY_D)
 	{
-		m_playerController.SetSpeed(Direction::RIGHT, 2);
+		m_playerController.SetSpeed(Direction::RIGHT, 4);
 	}
 }
 

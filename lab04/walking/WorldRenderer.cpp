@@ -16,20 +16,18 @@ void WorldRenderer::Render() const
 	glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 0.5);
 	glNormal3f(0, 1, 0);
 	
-	auto floor = m_world.GetMap();
-	int floorSize = static_cast<int>(floor.size());
-	int halfFloorSize = floorSize / 2;
+	auto map = m_world.GetMap();
 
-	for (int i = -halfFloorSize; i < halfFloorSize; i++)
+	for (int i = 0; i < map.size(); i++)
 	{
-		for (int j = -halfFloorSize; j < halfFloorSize; j++)
+		for (int j = 0; j < map[i].size(); j++)
 		{
-			auto column = floor[i + halfFloorSize][j + halfFloorSize];
-			auto color = column.color;
+			auto cell = map[i][j];
+			auto color = cell.color;
 			glColor4f(color.x, color.y, color.z, 1);
-			if (column.filled)
+			if (cell.filled)
 			{
-				DrawColumn(i * 2, j * 2);
+				DrawColumn(i, j);
 			}
 			else
 			{
@@ -41,16 +39,21 @@ void WorldRenderer::Render() const
 
 void WorldRenderer::DrawSquare(int x, int z) const
 {
+	glPushMatrix();
+	glTranslated(x + 0.5, 0, z + 0.5);
+	glScaled(0.5, 0.5, 0.5);
+
 	glBegin(GL_POLYGON);
-	glVertex3d(-0.5 + x, 0, -0.5 + z);
-	glVertex3d(-0.5 + x, 0, 0.5 + z);
-	glVertex3d(0.5 + x, 0, 0.5 + z);
-	glVertex3d(0.5 + x, 0, -0.5 + z);
+	glVertex3d(-1, 0, -1);
+	glVertex3d(-1, 0, 1);
+	glVertex3d(1, 0, 1);
+	glVertex3d(1 , 0, -1);
 	glEnd();
+	glPopMatrix();
 }
 
 void WorldRenderer::DrawColumn(int x, int z) const
 {
-	Column column({x * 0.5, 0, z * 0.5});
+	Column column({x + 0.5, 0, z + 0.5});
 	column.Draw();
 }
