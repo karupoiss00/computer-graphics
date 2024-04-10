@@ -49,6 +49,11 @@ glm::dmat4 Camera::GetWorldToViewMatrix() const
 	);
 }
 
+glm::dvec3 Camera::GetLookDirection() const
+{
+	return m_lookDirection;
+}
+
 glm::dvec3 Camera::GetDirectionProjection(Direction dir)
 {
 	switch (dir)
@@ -64,4 +69,19 @@ glm::dvec3 Camera::GetDirectionProjection(Direction dir)
 	}
 
 	throw std::exception("unknown direction");
+}
+
+double Camera::GetVerticalAngle() const
+{
+	return glm::angle(m_lookDirection, UP_DIRECTION) / M_PI * 180;
+}
+
+double Camera::GetMaxVerticalAngle() const
+{
+	return MAX_VERTICAL_ANGLE;
+}
+
+double Camera::GetMinVerticalAngle() const
+{
+	return MIN_VERTICAL_ANGLE;
 }

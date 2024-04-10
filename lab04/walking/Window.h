@@ -22,6 +22,8 @@ public:
 private:
 	void SetupLight();
 
+	void UpdateLight();
+
 	bool MouseMovePrevented();
 
 	void OnKeyDown(int key, int scancode, int mods);
@@ -33,6 +35,10 @@ private:
 	void OnResize(int width, int height) override;
 
 	void OnRunStart() override;
+
+	void Clear();
+
+	void LoadCameraMatrix();
 
 	void Draw(int width, int height) override;
 	

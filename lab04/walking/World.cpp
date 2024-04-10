@@ -4,27 +4,33 @@
 #include "World.h"
 
 constexpr unsigned WORLD_SIZE = 18;
-constexpr unsigned BLOCK_SIZE = 1;
 constexpr double COLLISION_THRESHOLD = 0.3;
+
+const Collision NO_COLLISION = {
+	true,
+	true,
+	true
+};
+
 
 const std::vector<std::vector<bool>> LABYRINTH_MAP = {
 	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-	{1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1},
+	{1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1},
+	{1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1},
+	{1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1},
+	{1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1},
+	{1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1},
+	{1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1},
+	{1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 1},
+	{1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1},
+	{1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1},
+	{1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1},
+	{1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1},
+	{1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1},
+	{1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1},
+	{1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1},
 	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 };
 
@@ -51,18 +57,31 @@ Collision World::GetCollision(glm::dvec3 point) const
 {
 	size_t playerX = static_cast<size_t>(point.x);
 	size_t playerZ = static_cast<size_t>(point.z);
-	double playerMinX, playerMaxX, playerMinZ, playerMaxZ;
 
-	std::modf(point.x + COLLISION_THRESHOLD, &playerMaxX);
-	std::modf(point.x - COLLISION_THRESHOLD, &playerMinX);
-	std::modf(point.z + COLLISION_THRESHOLD, &playerMaxZ);
-	std::modf(point.z - COLLISION_THRESHOLD, &playerMinZ);
+	double playerMinX, playerMaxX, playerMinZ, playerMaxZ, fractional;
 
-	return Collision{
-		!m_map[playerMinX][playerZ].filled && !m_map[playerMaxX][playerZ].filled,
-		true,
-		!m_map[playerX][playerMinZ].filled && !m_map[playerX][playerMaxZ].filled,
-	};
+	fractional = std::modf(point.x + COLLISION_THRESHOLD, &playerMaxX);
+	fractional = std::modf(point.x - COLLISION_THRESHOLD, &playerMinX);
+	fractional = std::modf(point.z + COLLISION_THRESHOLD, &playerMaxZ);
+	fractional = std::modf(point.z - COLLISION_THRESHOLD, &playerMinZ);
+
+	size_t playerMinXsz = static_cast<size_t>(playerMinX);
+	size_t playerMaxXsz = static_cast<size_t>(playerMaxX);
+	size_t playerMinZsz = static_cast<size_t>(playerMinZ);
+	size_t playerMaxZsz = static_cast<size_t>(playerMaxZ);
+
+	try
+	{
+		return Collision{
+			!m_map[playerMinXsz][playerZ].filled && !m_map[playerMaxXsz][playerZ].filled,
+			true,
+			!m_map[playerX][playerMinZsz].filled && !m_map[playerX][playerMaxZsz].filled,
+		};
+	}
+	catch (...)
+	{
+		return NO_COLLISION;
+	}
 }
 
 std::vector<std::vector<Cell>> World::GetMap()
