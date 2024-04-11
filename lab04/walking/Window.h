@@ -13,6 +13,7 @@
 #include "Player.h"
 #include "PlayerController.h"
 #include "RenderStats.h"
+#include "Gravity.h"
 
 class Window : public BaseWindow
 {
@@ -22,7 +23,11 @@ public:
 private:
 	void SetupLight();
 
+	void SetupPhysics();
+
 	void UpdateLight();
+
+	void UpdatePhysics();
 
 	bool MouseMovePrevented();
 
@@ -52,6 +57,8 @@ private:
 	RenderConfigEditor m_renderConfigEditor;
 	RenderConfig m_renderConfig;
 	RenderStats m_renderStats;
+
+	Gravity m_gravity;
 
 	DirectLight m_light;
 

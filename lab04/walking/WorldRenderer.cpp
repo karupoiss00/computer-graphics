@@ -18,9 +18,9 @@ void WorldRenderer::Render() const
 	
 	auto map = m_world.GetMap();
 
-	for (int i = 0; i < map.size(); i++)
+	for (size_t i = 0; i < map.size(); i++)
 	{
-		for (int j = 0; j < map[i].size(); j++)
+		for (size_t j = 0; j < map[i].size(); j++)
 		{
 			auto cell = map[i][j];
 			auto color = cell.color;

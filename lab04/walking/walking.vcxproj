@@ -93,6 +93,8 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -109,6 +111,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -125,6 +128,8 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,6 +146,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -165,6 +171,7 @@
     <ClCompile Include="DirectLight.cpp" />
     <ClCompile Include="GetFPS.cpp" />
     <ClCompile Include="GLFWInitializer.cpp" />
+    <ClCompile Include="Gravity.cpp" />
     <ClCompile Include="ImguiInitializer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pch.cpp" />
@@ -195,14 +202,18 @@
     <ClInclude Include="DirectLight.h" />
     <ClInclude Include="GetFPS.h" />
     <ClInclude Include="GLFWInitializer.h" />
+    <ClInclude Include="GravityObject.h" />
     <ClInclude Include="ImguiInitializer.h" />
+    <ClInclude Include="Math.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Gravity.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerController.h" />
     <ClInclude Include="Renderable.h" />
     <ClInclude Include="RenderConfig.h" />
     <ClInclude Include="RenderConfigEditor.h" />
     <ClInclude Include="RenderStats.h" />
+    <ClInclude Include="ViewDirectionProvider.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="World.h" />
     <ClInclude Include="WorldRenderer.h" />

@@ -49,9 +49,6 @@
     <Filter Include="app\player">
       <UniqueIdentifier>{f89dd283-bcbb-44b2-a164-c2543dcb7af4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="app\objects">
-      <UniqueIdentifier>{92231ba0-41a8-4f14-a83e-4333422bde81}</UniqueIdentifier>
-    </Filter>
     <Filter Include="core\render">
       <UniqueIdentifier>{8db94fce-0942-4f06-937c-cee16fd314b1}</UniqueIdentifier>
     </Filter>
@@ -61,8 +58,20 @@
     <Filter Include="app\ui\renderStats\view">
       <UniqueIdentifier>{62b5c6ab-4191-4632-b824-f5d8105f41fc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="app\collision">
+    <Filter Include="app\physics">
+      <UniqueIdentifier>{ff5cd95a-51c3-4fdb-a928-206c0b9e0a58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\physics\gravity">
+      <UniqueIdentifier>{6e1ec3bc-8a7f-462a-a4f8-75c7c7a73c6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\math">
+      <UniqueIdentifier>{54a9ed24-8c9b-4ed1-8e6e-b0c0574218a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\physics\collision">
       <UniqueIdentifier>{2df7e8a2-4254-4878-a3f8-19767ec357dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\world\objects">
+      <UniqueIdentifier>{92231ba0-41a8-4f14-a83e-4333422bde81}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -142,7 +151,7 @@
       <Filter>app\common</Filter>
     </ClInclude>
     <ClInclude Include="Column.h">
-      <Filter>app\objects</Filter>
+      <Filter>app\world\objects</Filter>
     </ClInclude>
     <ClInclude Include="GetFPS.h">
       <Filter>core\render</Filter>
@@ -151,7 +160,19 @@
       <Filter>app\ui\renderStats\view</Filter>
     </ClInclude>
     <ClInclude Include="CollisionProvider.h">
-      <Filter>app\collision</Filter>
+      <Filter>app\physics\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Gravity.h">
+      <Filter>app\physics\gravity</Filter>
+    </ClInclude>
+    <ClInclude Include="GravityObject.h">
+      <Filter>app\physics\gravity</Filter>
+    </ClInclude>
+    <ClInclude Include="Math.h">
+      <Filter>core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewDirectionProvider.h">
+      <Filter>app\common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -219,13 +240,16 @@
       <Filter>app\player</Filter>
     </ClCompile>
     <ClCompile Include="Column.cpp">
-      <Filter>app\objects</Filter>
+      <Filter>app\world\objects</Filter>
     </ClCompile>
     <ClCompile Include="GetFPS.cpp">
       <Filter>core\render</Filter>
     </ClCompile>
     <ClCompile Include="RenderStats.cpp">
       <Filter>app\ui\renderStats\view</Filter>
+    </ClCompile>
+    <ClCompile Include="Gravity.cpp">
+      <Filter>app\physics\gravity</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

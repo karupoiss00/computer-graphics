@@ -2,7 +2,7 @@
 #include "pch.h"
 #include "Camera.h"
 
-constexpr double MIN_VERTICAL_ANGLE = 30;
+constexpr double MIN_VERTICAL_ANGLE = 10;
 constexpr double MAX_VERTICAL_ANGLE = 150;
 constexpr float ROTATION_SPEED = 0.003f;
 constexpr glm::dvec3 UP_DIRECTION = { 0.0, 1.0, 0.0 };
@@ -63,9 +63,12 @@ glm::dvec3 Camera::GetDirectionProjection(Direction dir)
 	case Direction::BACKWARD:
 		return -glm::dvec3{ m_lookDirection.x, 0, m_lookDirection.z };
 	case Direction::LEFT:
+		// разобраться с управлением камеры
 		return -glm::cross(m_lookDirection, UP_DIRECTION);
 	case Direction::RIGHT:
 		return glm::cross(m_lookDirection, UP_DIRECTION);
+	case Direction::VERTICAL:
+		return UP_DIRECTION;
 	}
 
 	throw std::exception("unknown direction");

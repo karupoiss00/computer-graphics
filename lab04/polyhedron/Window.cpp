@@ -67,8 +67,9 @@ void Window::OnResize(int width, int height)
 
 void Window::OnRunStart()
 {
-	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0);
+	//glEnable(GL_LIGHTING);
+	//glEnable(GL_LIGHT_MODEL_TWO_SIDE);
+	//glEnable(GL_LIGHT0);
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
 	glFrontFace(GL_CCW);

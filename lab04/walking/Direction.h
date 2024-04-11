@@ -7,11 +7,13 @@ enum class Direction
 	BACKWARD,
 	LEFT,
 	RIGHT,
+	VERTICAL
 };
 
 const std::vector<Direction> DIRECTIONS = {
 	Direction::FORWARD,
 	Direction::BACKWARD,
 	Direction::LEFT,
-	Direction::RIGHT
+	Direction::RIGHT,
+	Direction::VERTICAL
 };

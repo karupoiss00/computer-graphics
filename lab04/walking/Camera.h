@@ -1,7 +1,7 @@
 #pragma once
-#include "Direction.h"
+#include "ViewDirectionProvider.h"
 
-class Camera
+class Camera : public IViewDirectionProvider
 {
 public:
 	explicit Camera();
@@ -10,7 +10,7 @@ public:
 
 	void SetPosition(glm::dvec3 position);
 
-	glm::dvec3 GetDirectionProjection(Direction dir);
+	glm::dvec3 GetDirectionProjection(Direction dir) override;
 
 	glm::dmat4 GetWorldToViewMatrix() const;
 

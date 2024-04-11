@@ -107,6 +107,7 @@ void Dodecahedron::Render() const
 
 		glColor4fv(glm::value_ptr(m_sideColors[face]));
 
+		//избавиться от z-fighting'а
 		glBegin(GL_LINE_STRIP);
 		for (int x = 0; x < 5; x++)
 		{

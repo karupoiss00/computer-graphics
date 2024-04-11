@@ -1,7 +1,7 @@
 #pragma once
 #include <glm/ext.hpp>
 
-struct Collision
+struct CollisionFlags
 {
 	bool x, y, z;
 };
@@ -9,5 +9,7 @@ struct Collision
 class ICollisionProvider
 {
 public:
-	virtual Collision GetCollision(glm::dvec3 point) const = 0;
+	virtual CollisionFlags GetCollision(glm::dvec3 point) const = 0;
+	
+	virtual ~ICollisionProvider() = default;
 };
