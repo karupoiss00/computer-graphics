@@ -1,15 +1,21 @@
 #pragma once
 #include <glm/ext.hpp>
 
-struct CollisionFlags
+struct Collision
 {
-	bool x, y, z;
+	glm::dvec3 clamp;
+};
+
+struct BoundingBox
+{
+	glm::dvec3 position;
+	glm::dvec3 size;
 };
 
 class ICollisionProvider
 {
 public:
-	virtual CollisionFlags GetCollision(glm::dvec3 point) const = 0;
+	virtual Collision GetCollision(BoundingBox box, glm::dvec3 delta) const = 0;
 	
 	virtual ~ICollisionProvider() = default;
 };

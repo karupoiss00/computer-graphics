@@ -12,7 +12,7 @@ Window::Window(int w, int h, const char* title)
 	, m_player(m_world)
 	, m_playerController(m_player, m_camera, m_world)
 	, m_light({ 0.0f, 0.0f, 0.0f })
-	, m_gravity(4.0)
+	, m_gravity(1.0)
 {
 	SetupLight();
 	SetupPhysics();
@@ -109,6 +109,8 @@ void Window::OnRunStart()
 void Window::Draw(int width, int height)
 {
 	UpdatePhysics();
+
+	//std::cout << m_player.GetPosition().x << " | " << m_player.GetPosition().z << std::endl;
 
 	UpdateLight();
 

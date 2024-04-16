@@ -4,13 +4,7 @@
 #include "World.h"
 
 constexpr unsigned WORLD_SIZE = 18;
-constexpr double COLLISION_THRESHOLD = 0.01;
-
-const CollisionFlags NO_COLLISION = {
-	true,
-	true,
-	true
-};
+constexpr double COLLISION_THRESHOLD = 0.1;
 
 World::World()
 {
@@ -52,35 +46,33 @@ World::World()
 	}
 }
 
-CollisionFlags World::GetCollision(glm::dvec3 point) const
+Collision World::GetCollision(BoundingBox box, glm::dvec3 delta) const
 {
-	size_t playerX = static_cast<size_t>(point.x);
-	size_t playerZ = static_cast<size_t>(point.z);
+	glm::dvec3 clamp(0, 0, 0);
 
-	double playerMinX, playerMaxX, playerMinZ, playerMaxZ, fractional;
+	auto newY = box.position.y - box.size.y / 2 + delta.y;
 
-	fractional = std::modf(point.x + COLLISION_THRESHOLD, &playerMaxX);
-	fractional = std::modf(point.x - COLLISION_THRESHOLD, &playerMinX);
-	fractional = std::modf(point.z + COLLISION_THRESHOLD, &playerMaxZ);
-	fractional = std::modf(point.z - COLLISION_THRESHOLD, &playerMinZ);
-
-	size_t playerMinXsz = static_cast<size_t>(playerMinX);
-	size_t playerMaxXsz = static_cast<size_t>(playerMaxX);
-	size_t playerMinZsz = static_cast<size_t>(playerMinZ);
-	size_t playerMaxZsz = static_cast<size_t>(playerMaxZ);
-
-	try
+	auto newX = size_t(box.position.x + delta.x + box.size.x / 2 * (delta.x < 0 ? -1 : +1));
+	bool hasXCollision = m_map[newX][size_t(box.position.z)].filled;
+	if (hasXCollision && newY < 1)
 	{
-		return CollisionFlags{
-			!m_map[playerMinXsz][playerZ].filled && !m_map[playerMaxXsz][playerZ].filled,
-			point.y > 0,
-			!m_map[playerX][playerMinZsz].filled && !m_map[playerX][playerMaxZsz].filled,
-		};
+		clamp.x = -delta.x;
 	}
-	catch (...)
+
+	auto newZ = size_t(box.position.z + delta.z + box.size.z / 2 * (delta.z < 0 ? -1 : +1));
+	bool hasZCollision = m_map[size_t(box.position.x)][newZ].filled;
+	if (hasZCollision && newY < 1)
 	{
-		return NO_COLLISION;
+		clamp.z = -delta.z;
 	}
+
+	auto minHeight = hasZCollision || hasXCollision ? 1.0 : 0.0;
+	if (newY < minHeight)
+	{
+		clamp.y = -delta.y;
+	}
+
+	return Collision{ clamp };
 }
 
 std::vector<std::vector<Cell>> World::GetMap()

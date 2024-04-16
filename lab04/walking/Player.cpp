@@ -1,15 +1,18 @@
+#include <iostream>
 #include "pch.h"
 #include "Math.h"
 #include "ViewDirectionProvider.h"
 #include "Player.h"
 
-constexpr double ELASTICITY = 0.0;
-constexpr double PLAYER_HEIGHT = 0.4;
-constexpr glm::dvec3 PLAYER_HEIGHT_V = { 0, PLAYER_HEIGHT, 0 };
-constexpr glm::dvec3 EPSILON_VERTICAL_MOVE = { 0, 0.01, 0 };
+constexpr double ELASTICITY = 0;
+constexpr glm::dvec3 START_PLAYER_POSITION = { 9.5, 0.5, 8.5 };
+constexpr glm::dvec3 PLAYER_SIZE = { 0.2, 1.0, 0.2 };
 
 Player::Player(ICollisionProvider& collisionProvider)
-	: m_position(9.5, PLAYER_HEIGHT, 8.5)
+	: m_box({
+		START_PLAYER_POSITION,
+		PLAYER_SIZE
+	})
 	, m_collisionProvider(collisionProvider)
 {
 	m_speed = {
@@ -23,12 +26,12 @@ Player::Player(ICollisionProvider& collisionProvider)
 
 glm::dvec3 Player::GetPosition() const
 {
-	return m_position;
+	return m_box.position;
 }
 
 void Player::SetPosition(glm::dvec3 position)
 {
-	m_position = position;
+	m_box.position = position;
 }
 
 void Player::SetSpeed(Direction dir, double speed)
@@ -44,19 +47,15 @@ void Player::Update(double deltaTime, IViewDirectionProvider& directionProvider)
 		auto moveVector = directionProvider.GetDirectionProjection(dir);
 		auto positionDelta = moveVector * speed * deltaTime;
 
-		auto collision = m_collisionProvider.GetCollision(m_position - PLAYER_HEIGHT_V + positionDelta);
+		auto collision = m_collisionProvider.GetCollision(m_box, positionDelta);
 
-		positionDelta.x *= static_cast<double>(collision.x);
-		positionDelta.y *= static_cast<double>(collision.y);
-		positionDelta.z *= static_cast<double>(collision.z);
-
-		m_position += positionDelta;
+		m_box.position += positionDelta + collision.clamp;
 	}
 }
 
 void Player::Jump()
 {
-	if (!CanDrop())
+	if (IsEqual(m_speed[Direction::VERTICAL], 0))
 	{
 		SetSpeed(Direction::VERTICAL, 2.0);
 	}
@@ -69,8 +68,8 @@ double Player::GetVerticalSpeed()
 
 bool Player::CanDrop()
 {
-	auto collision = m_collisionProvider.GetCollision(m_position - PLAYER_HEIGHT_V - EPSILON_VERTICAL_MOVE);
-	return collision.y;
+	auto collision = m_collisionProvider.GetCollision(m_box, { 0, -0.01, 0 });
+	return IsEqual(collision.clamp.y, 0);
 }
 
 double Player::GetElasticity()

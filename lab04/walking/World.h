@@ -15,7 +15,7 @@ public:
 	World();
 
 	std::vector<std::vector<Cell>> GetMap();
-	CollisionFlags GetCollision(glm::dvec3 point) const override;
+	Collision GetCollision(BoundingBox box, glm::dvec3 delta) const override;
 private:
 	std::vector<std::vector<Cell>> m_map;
 };

@@ -22,7 +22,7 @@ public:
 	glm::dvec3 GetPosition() const;
 
 private:
-	glm::dvec3 m_position;
+	BoundingBox m_box;
 	std::map<Direction, double> m_speed;
 	ICollisionProvider& m_collisionProvider;
 };

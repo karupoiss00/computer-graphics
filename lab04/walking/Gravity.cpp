@@ -2,6 +2,8 @@
 #include "Gravity.h"
 #include "Math.h"
 
+constexpr double MIN_SPEED = 0.1;
+
 Gravity::Gravity(double gConst)
 	: m_gConst(gConst)
 {
@@ -37,7 +39,14 @@ void Gravity::Update(double deltaTime)
 
 		if (currentSpeed < 0 && !object->CanDrop())
 		{
-			object->SetVerticalSpeed(-currentSpeed * elasticity);
+			if (std::abs(currentSpeed) > MIN_SPEED)
+			{
+				object->SetVerticalSpeed(-currentSpeed * elasticity);
+			}
+			else
+			{
+				object->SetVerticalSpeed(0);
+			}
 		}
 		else
 		{
