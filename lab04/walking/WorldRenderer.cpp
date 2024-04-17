@@ -35,6 +35,9 @@ void WorldRenderer::Render() const
 			}
 		}
 	}
+
+	glColor4f(0.5, 0, 0, 1);
+	DrawMarker();
 }
 
 void WorldRenderer::DrawSquare(int x, int z) const
@@ -55,5 +58,16 @@ void WorldRenderer::DrawSquare(int x, int z) const
 void WorldRenderer::DrawColumn(int x, int z) const
 {
 	Column column({x + 0.5, 0, z + 0.5});
+	column.Draw();
+}
+
+
+void WorldRenderer::DrawMarker() const
+{
+	Marker const& marker = m_world.GetMarker();
+	auto markerBox = marker.GetBox();
+	auto pos = marker.GetPosition();
+	pos.y -= markerBox.size.y / 2;
+	Column column(pos, markerBox.size.x, markerBox.size.y);
 	column.Draw();
 }

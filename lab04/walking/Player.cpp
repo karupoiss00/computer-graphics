@@ -8,76 +8,74 @@ constexpr double ELASTICITY = 0;
 constexpr glm::dvec3 START_PLAYER_POSITION = { 9.5, 0.5, 8.5 };
 constexpr glm::dvec3 PLAYER_SIZE = { 0.2, 1.0, 0.2 };
 
-Player::Player(ICollisionProvider& collisionProvider)
-	: m_box({
+Player::Player(IViewDirectionProvider& viewProvider)
+	: PhysicalObject({
 		START_PLAYER_POSITION,
 		PLAYER_SIZE
 	})
-	, m_collisionProvider(collisionProvider)
+	, m_viewProvider(viewProvider)
 {
-	m_speed = {
+	m_moving = {
 		{Direction::FORWARD, 0},
 		{Direction::BACKWARD, 0},
 		{Direction::LEFT, 0},
 		{Direction::RIGHT, 0},
-		{Direction::VERTICAL, 0}
 	};
 }
 
-glm::dvec3 Player::GetPosition() const
+void Player::Jump(double speed)
 {
-	return m_box.position;
-}
+	auto velocity = GetVelocity();
 
-void Player::SetPosition(glm::dvec3 position)
-{
-	m_box.position = position;
-}
-
-void Player::SetSpeed(Direction dir, double speed)
-{
-	m_speed[dir] = speed;
-}
-
-void Player::Update(double deltaTime, IViewDirectionProvider& directionProvider)
-{
-	for (auto dir : DIRECTIONS)
+	if (IsEqual(velocity.y, 0))
 	{
-		auto speed = m_speed[dir];
-		auto moveVector = directionProvider.GetDirectionProjection(dir);
-		auto positionDelta = moveVector * speed * deltaTime;
-
-		auto collision = m_collisionProvider.GetCollision(m_box, positionDelta);
-
-		m_box.position += positionDelta + collision.clamp;
+		velocity.y = speed;
+		SetVelocity(velocity);
 	}
 }
 
-void Player::Jump()
+void Player::SetForwardMovement(double speed)
 {
-	if (IsEqual(m_speed[Direction::VERTICAL], 0))
+	m_moving[Direction::FORWARD] = speed;
+
+	RecalculateVelocity();
+}
+void Player::SetBackwardMovement(double speed)
+{
+	m_moving[Direction::BACKWARD] = speed;
+
+	RecalculateVelocity();
+}
+
+void Player::SetStrafeLeftMovement(double speed)
+{
+	m_moving[Direction::LEFT] = speed;
+
+	RecalculateVelocity();
+}
+
+void Player::SetStrafeRightMovement(double speed)
+{
+	m_moving[Direction::RIGHT] = speed;
+
+	RecalculateVelocity();
+}
+
+void Player::RecalculateVelocity()
+{
+	auto velocity = GetVelocity();
+	glm::dvec3 newVelocity(0, velocity.y, 0);
+
+	for (auto [direction, speed] : m_moving)
 	{
-		SetSpeed(Direction::VERTICAL, 2.0);
+		auto dirVelocity = m_viewProvider.GetDirectionProjection(direction) * speed;
+		newVelocity += dirVelocity;
 	}
+
+	SetVelocity(newVelocity);
 }
 
-double Player::GetVerticalSpeed()
+void Player::Update()
 {
-	return m_speed[Direction::VERTICAL];
-}
-
-bool Player::CanDrop()
-{
-	auto collision = m_collisionProvider.GetCollision(m_box, { 0, -0.01, 0 });
-	return IsEqual(collision.clamp.y, 0);
-}
-
-double Player::GetElasticity()
-{
-	return ELASTICITY;
-}
-
-void Player::SetVerticalSpeed(double speed)
-{
-	m_speed[Direction::VERTICAL] = speed;
+	RecalculateVelocity();
 }

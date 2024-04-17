@@ -13,7 +13,7 @@
 #include "Player.h"
 #include "PlayerController.h"
 #include "RenderStats.h"
-#include "Gravity.h"
+#include "Physics.h"
 
 class Window : public BaseWindow
 {
@@ -35,6 +35,8 @@ private:
 
 	void OnKeyUp(int key, int scancode, int mods);
 
+	void OnKeyRepeat(int key, int scancode, int mods);
+
 	void OnMouseMove(double x, double y) override;
 
 	void OnResize(int width, int height) override;
@@ -53,12 +55,15 @@ private:
 
 	void ApplyChanges();
 
+	void HandleMoving(int key);
+
+	void HandleStopMoving(int key);
 
 	RenderConfigEditor m_renderConfigEditor;
 	RenderConfig m_renderConfig;
 	RenderStats m_renderStats;
 
-	Gravity m_gravity;
+	Physics m_physics;
 
 	DirectLight m_light;
 

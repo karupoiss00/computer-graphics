@@ -7,11 +7,10 @@
 class PlayerController
 {
 public:
-	PlayerController(Player& player, Camera& camera, ICollisionProvider& collisionProvider);
+	PlayerController(Player& player, Camera& camera);
 
-	void Update(double deltaTime);
+	void Update();
 private:
-	ICollisionProvider& m_collisionProvider;
 	Camera& m_camera;
 	Player& m_player;
 };

@@ -1,8 +1,9 @@
 #include "pch.h"
 #include "Column.h"
 
-Column::Column(glm::dvec3 pos, float height)
-	: m_height(height)
+Column::Column(glm::dvec3 pos, float width, float height)
+	: m_width(width)
+	, m_height(height)
 	, m_pos(pos)
 {}
 
@@ -31,7 +32,7 @@ void Column::Draw() const
 
 	glPushMatrix();
 	glTranslated(m_pos.x, m_pos.y, m_pos.z);
-	glScalef(0.5f, m_height, 0.5f);
+	glScalef(m_width / 2, m_height, m_width / 2);
 	glEnable(GL_COLOR_MATERIAL);
 	glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
 	glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 0.5f);

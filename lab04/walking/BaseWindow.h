@@ -33,6 +33,8 @@ private:
 		[[maybe_unused]] int key, [[maybe_unused]] int scancode, [[maybe_unused]] int mods) {}
 	virtual void OnKeyUp(
 		[[maybe_unused]] int key, [[maybe_unused]] int scancode, [[maybe_unused]] int mods) {}
+	virtual void OnKeyRepeat(
+		[[maybe_unused]] int key, [[maybe_unused]] int scancode, [[maybe_unused]] int mods) {}
 	virtual void Draw(int width, int height) = 0;
 	virtual void DrawGUI(int width, int height) = 0;
 	virtual void OnRunStart() {}

@@ -9,10 +9,10 @@ Window::Window(int w, int h, const char* title)
 	, m_renderConfigEditor(m_renderConfig)
 	, m_world()
 	, m_worldRenderer(m_world)
-	, m_player(m_world)
-	, m_playerController(m_player, m_camera, m_world)
+	, m_player(m_camera)
+	, m_playerController(m_player, m_camera)
 	, m_light({ 0.0f, 0.0f, 0.0f })
-	, m_gravity(1.0)
+	, m_physics(m_world, 10.0)
 {
 	SetupLight();
 	SetupPhysics();
@@ -28,7 +28,12 @@ void Window::SetupLight()
 
 void Window::SetupPhysics()
 {
-	m_gravity.AddObject(&m_player);
+	m_physics.AddObject(&m_player);
+	
+	for (auto& obj : m_world.GetObjects())
+	{
+		m_physics.AddObject(obj);
+	}
 }
 
 void Window::OnKeyDown(int key, int scancode, int mods)
@@ -38,46 +43,22 @@ void Window::OnKeyDown(int key, int scancode, int mods)
 		m_showRenderConfig = !m_showRenderConfig;
 	}
 
-	if (key == GLFW_KEY_W)
-	{
-		m_player.SetSpeed(Direction::FORWARD, 3);
-	}
-	if (key == GLFW_KEY_S)
-	{
-		m_player.SetSpeed(Direction::BACKWARD, 3);
-	}
-	if (key == GLFW_KEY_A)
-	{
-		m_player.SetSpeed(Direction::LEFT, 2);
-	}
-	if (key == GLFW_KEY_D)
-	{
-		m_player.SetSpeed(Direction::RIGHT, 2);
-	}
 	if (key == GLFW_KEY_SPACE)
 	{
-		m_player.Jump();
+		m_player.Jump(10);
 	}
+
+	HandleMoving(key);
+}
+
+void Window::OnKeyRepeat(int key, int scancode, int mods)
+{
+	HandleMoving(key);
 }
 
 void Window::OnKeyUp(int key, int scancode, int mods)
 {
-	if (key == GLFW_KEY_W)
-	{
-		m_player.SetSpeed(Direction::FORWARD, 0);
-	}
-	if (key == GLFW_KEY_S)
-	{
-		m_player.SetSpeed(Direction::BACKWARD, 0);
-	}
-	if (key == GLFW_KEY_A)
-	{
-		m_player.SetSpeed(Direction::LEFT, 0);
-	}
-	if (key == GLFW_KEY_D)
-	{
-		m_player.SetSpeed(Direction::RIGHT, 0);
-	}
+	HandleStopMoving(key);
 }
 
 void Window::OnMouseMove(double x, double y)
@@ -110,8 +91,6 @@ void Window::Draw(int width, int height)
 {
 	UpdatePhysics();
 
-	//std::cout << m_player.GetPosition().x << " | " << m_player.GetPosition().z << std::endl;
-
 	UpdateLight();
 
 	ApplyChanges();
@@ -141,8 +120,7 @@ bool Window::MouseMovePrevented()
 
 void Window::ApplyChanges()
 {
-	auto deltaTime = GetEllapsedTime();
-	m_playerController.Update(deltaTime);
+	m_playerController.Update();
 
 	auto size = GetFramebufferSize();
 	ApplyProjectionChanges(int(size.x), int(size.y));
@@ -180,7 +158,7 @@ void Window::UpdateLight()
 void Window::UpdatePhysics()
 {
 	auto deltaTime = GetEllapsedTime();
-	m_gravity.Update(deltaTime);
+	m_physics.Update(deltaTime);
 }
 
 void Window::Clear()
@@ -200,4 +178,44 @@ void Window::LoadCameraMatrix()
 	auto cameraMatrix = m_camera.GetWorldToViewMatrix();
 	glMatrixMode(GL_MODELVIEW);
 	glLoadMatrixd(&cameraMatrix[0][0]);
+}
+
+void Window::HandleMoving(int key)
+{
+	if (key == GLFW_KEY_W)
+	{
+		m_player.SetForwardMovement(3);
+	}
+	if (key == GLFW_KEY_S)
+	{
+		m_player.SetBackwardMovement(3);
+	}
+	if (key == GLFW_KEY_A)
+	{
+		m_player.SetStrafeLeftMovement(2);
+	}
+	if (key == GLFW_KEY_D)
+	{
+		m_player.SetStrafeRightMovement(2);
+	}
+}
+
+void Window::HandleStopMoving(int key)
+{
+	if (key == GLFW_KEY_W)
+	{
+		m_player.SetForwardMovement(0);
+	}
+	if (key == GLFW_KEY_S)
+	{
+		m_player.SetBackwardMovement(0);
+	}
+	if (key == GLFW_KEY_A)
+	{
+		m_player.SetStrafeLeftMovement(0);
+	}
+	if (key == GLFW_KEY_D)
+	{
+		m_player.SetStrafeRightMovement(0);
+	}
 }

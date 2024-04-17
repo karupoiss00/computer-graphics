@@ -2,27 +2,23 @@
 #include <map>
 #include "Direction.h"
 #include "CollisionProvider.h"
-#include "GravityObject.h"
+#include "PhysicalObject.h"
 
-class Player : public IGravityObject
+class Player : public PhysicalObject
 {
 public:
-	Player(ICollisionProvider& collisionProvider);
+	Player(IViewDirectionProvider& viewProvider);
 
-	void Jump();
-	void SetVerticalSpeed(double speed) override;
-	void SetPosition(glm::dvec3 position);
-	void SetSpeed(Direction dir, double speed);	
-	void Update(double deltaTime, IViewDirectionProvider& directionProvider);
+	void Jump(double speed = 1.0);
+	void SetForwardMovement(double speed = 1.0);
+	void SetBackwardMovement(double speed = 1.0);
+	void SetStrafeLeftMovement(double speed = 1.0);
+	void SetStrafeRightMovement(double speed = 1.0);
 
-
-	double GetVerticalSpeed() override;
-	bool CanDrop() override;
-	double GetElasticity() override;
-	glm::dvec3 GetPosition() const;
-
+	void Update();
 private:
-	BoundingBox m_box;
-	std::map<Direction, double> m_speed;
-	ICollisionProvider& m_collisionProvider;
+	void RecalculateVelocity();
+
+	IViewDirectionProvider& m_viewProvider;
+	std::map<Direction, double> m_moving;
 };

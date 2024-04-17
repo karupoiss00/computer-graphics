@@ -70,7 +70,10 @@
     <Filter Include="app\physics\collision">
       <UniqueIdentifier>{2df7e8a2-4254-4878-a3f8-19767ec357dd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="app\world\objects">
+    <Filter Include="app\physics\object">
+      <UniqueIdentifier>{be806086-15d2-4a16-b984-649acc659aa5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\world\column">
       <UniqueIdentifier>{92231ba0-41a8-4f14-a83e-4333422bde81}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -151,7 +154,7 @@
       <Filter>app\common</Filter>
     </ClInclude>
     <ClInclude Include="Column.h">
-      <Filter>app\world\objects</Filter>
+      <Filter>app\world\column</Filter>
     </ClInclude>
     <ClInclude Include="GetFPS.h">
       <Filter>core\render</Filter>
@@ -162,10 +165,7 @@
     <ClInclude Include="CollisionProvider.h">
       <Filter>app\physics\collision</Filter>
     </ClInclude>
-    <ClInclude Include="Gravity.h">
-      <Filter>app\physics\gravity</Filter>
-    </ClInclude>
-    <ClInclude Include="GravityObject.h">
+    <ClInclude Include="Physics.h">
       <Filter>app\physics\gravity</Filter>
     </ClInclude>
     <ClInclude Include="Math.h">
@@ -173,6 +173,15 @@
     </ClInclude>
     <ClInclude Include="ViewDirectionProvider.h">
       <Filter>app\common</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicalObject.h">
+      <Filter>app\physics\object</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>app\physics\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Marker.h">
+      <Filter>app\world</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -240,7 +249,7 @@
       <Filter>app\player</Filter>
     </ClCompile>
     <ClCompile Include="Column.cpp">
-      <Filter>app\world\objects</Filter>
+      <Filter>app\world\column</Filter>
     </ClCompile>
     <ClCompile Include="GetFPS.cpp">
       <Filter>core\render</Filter>
@@ -248,8 +257,11 @@
     <ClCompile Include="RenderStats.cpp">
       <Filter>app\ui\renderStats\view</Filter>
     </ClCompile>
-    <ClCompile Include="Gravity.cpp">
+    <ClCompile Include="Physics.cpp">
       <Filter>app\physics\gravity</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicalObject.cpp">
+      <Filter>app\physics\object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

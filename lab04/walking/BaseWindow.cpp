@@ -34,6 +34,11 @@ BaseWindow::BaseWindow(int w, int h, const char* title)
 				GetBaseWindow(window)->OnKeyDown(key, scancode, mods);
 			}
 
+			if (action == GLFW_REPEAT)
+			{
+				GetBaseWindow(window)->OnKeyRepeat(key, scancode, mods);
+			}
+
 			if (action == GLFW_RELEASE)
 			{
 				GetBaseWindow(window)->OnKeyUp(key, scancode, mods);

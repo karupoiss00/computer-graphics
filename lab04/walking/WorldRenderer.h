@@ -10,6 +10,6 @@ public:
 private:
 	void DrawSquare(int x, int z) const;
 	void DrawColumn(int x, int z) const;
-
+	void DrawMarker() const;
 	World& m_world;
 };

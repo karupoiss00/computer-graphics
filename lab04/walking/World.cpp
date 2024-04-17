@@ -2,6 +2,7 @@
 #include <iostream>
 #include "pch.h"
 #include "World.h"
+#include "Math.h"
 
 constexpr unsigned WORLD_SIZE = 18;
 constexpr double COLLISION_THRESHOLD = 0.1;
@@ -46,30 +47,54 @@ World::World()
 	}
 }
 
-Collision World::GetCollision(BoundingBox box, glm::dvec3 delta) const
+double World::GetClampX(BoundingBox objectBox) const
 {
-	glm::dvec3 clamp(0, 0, 0);
-
-	auto newY = box.position.y - box.size.y / 2 + delta.y;
-
-	auto newX = size_t(box.position.x + delta.x + box.size.x / 2 * (delta.x < 0 ? -1 : +1));
-	bool hasXCollision = m_map[newX][size_t(box.position.z)].filled;
-	if (hasXCollision && newY < 1)
+	double minX = objectBox.position.x - objectBox.size.x / 2;
+	auto const& minXCell = m_map[size_t(minX)][size_t(objectBox.position.z)];
+	if (minXCell.filled)
 	{
-		clamp.x = -delta.x;
+		return double(size_t(minX)) + 1 - minX;
 	}
 
-	auto newZ = size_t(box.position.z + delta.z + box.size.z / 2 * (delta.z < 0 ? -1 : +1));
-	bool hasZCollision = m_map[size_t(box.position.x)][newZ].filled;
-	if (hasZCollision && newY < 1)
+	double maxX = objectBox.position.x + objectBox.size.x / 2;
+	auto const&  maxXCell = m_map[size_t(maxX)][size_t(objectBox.position.z)];
+	if (maxXCell.filled)
 	{
-		clamp.z = -delta.z;
+		return double(size_t(maxX)) - maxX;
 	}
 
-	auto minHeight = hasZCollision || hasXCollision ? 1.0 : 0.0;
-	if (newY < minHeight)
+	return 0;
+}
+
+double World::GetClampZ(BoundingBox objectBox) const
+{
+	double minZ = objectBox.position.z - objectBox.size.z / 2;
+	auto zLine = m_map[size_t(objectBox.position.x)];
+
+	auto const& minZCell = zLine[size_t(minZ)];
+	if (minZCell.filled)
 	{
-		clamp.y = -delta.y;
+		return double(size_t(minZ)) + 1 - minZ;
+	}
+
+	double maxZ = objectBox.position.z + objectBox.size.z / 2;
+	auto const& maxZCell = zLine[size_t(maxZ)];
+	if (maxZCell.filled)
+	{
+		return double(size_t(maxZ)) - maxZ;
+	}
+
+	return 0;
+}
+
+Collision World::GetCollision(BoundingBox box) const
+{
+	glm::dvec3 clamp(GetClampX(box), 0, GetClampZ(box));
+	auto newY = box.position.y - box.size.y / 2;
+
+	if (newY < 0)
+	{
+		clamp.y = -newY;
 	}
 
 	return Collision{ clamp };
@@ -78,4 +103,14 @@ Collision World::GetCollision(BoundingBox box, glm::dvec3 delta) const
 std::vector<std::vector<Cell>> World::GetMap()
 {
 	return m_map;
+}
+
+std::vector<PhysicalObject*> World::GetObjects()
+{
+	return {&m_marker};
+}
+
+Marker const& World::GetMarker() const
+{
+	return m_marker;
 }
