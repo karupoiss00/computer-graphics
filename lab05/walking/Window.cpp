@@ -20,7 +20,7 @@ Window::Window(int w, int h, const char* title)
 
 void Window::SetupLight()
 {
-	m_light.SetDirection({ 0.0f, 1.5f, 0.0f });
+	m_light.SetDirection({ 0.0f, 2.0f, 0.0f });
 	m_light.SetDiffuseIntensity({ 0.9f, 0.9f, 0.9f, 1.0f });
 	m_light.SetAmbientIntensity({ 0.8f, 0.8f, 0.8f, 1.0f });
 	m_light.SetSpecularIntensity({ 0.2f, 0.2f, 0.2f, 1.0f });
@@ -34,6 +34,15 @@ void Window::SetupPhysics()
 	{
 		m_physics.AddObject(obj);
 	}
+}
+
+void Window::ApplyFog()
+{
+	float fogColor[4] = { 0.5f, 0.5f, 0.5f, 1 };
+	
+	glFogi(GL_FOG_MODE, GL_EXP2);
+	glFogfv(GL_FOG_COLOR, fogColor);
+	glFogf(GL_FOG_DENSITY, 0.5f);
 }
 
 void Window::OnKeyDown(int key, int scancode, int mods)
@@ -83,6 +92,7 @@ void Window::OnResize(int width, int height)
 
 void Window::OnRunStart()
 {
+	glEnable(GL_FOG);
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 	glEnable(GL_CULL_FACE);
@@ -90,6 +100,7 @@ void Window::OnRunStart()
 	glFrontFace(GL_CCW);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);
+	ApplyFog();
 	m_light.Apply(GL_LIGHT0);
 }
 

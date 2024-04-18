@@ -74,13 +74,13 @@ void BaseWindow::Run()
 	while (!glfwWindowShouldClose(m_window))
 	{
 		m_nowTime = glfwGetTime();
+		auto size = GetFramebufferSize();
+
+		Draw(size.x, size.y);
+
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
-
-		auto size = GetFramebufferSize();
-		Draw(size.x, size.y);
 		DrawGUI(size.x, size.y);
-
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
 		glFinish();

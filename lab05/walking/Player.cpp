@@ -14,7 +14,7 @@ Player::Player(IViewDirectionProvider& viewProvider)
 	: PhysicalObject({
 		START_PLAYER_POSITION,
 		PLAYER_SIZE
-	})
+	}, 1.0)
 	, m_viewProvider(viewProvider)
 {
 	m_moving = {
@@ -35,10 +35,7 @@ void Player::Jump(double speed)
 		auto forwardSpeed = m_moving[Direction::FORWARD];
 		if (!IsEqual(forwardSpeed, 0))
 		{
-			m_moving[Direction::FORWARD] = std::min(
-				forwardSpeed * BUNNY_HOP_ACCELERATION, 
-				MAX_FORWARD_SPEED
-			);
+			m_moving[Direction::FORWARD] = 5;
 		}
 
 		SetVelocity(velocity);
@@ -82,6 +79,8 @@ void Player::RecalculateVelocity()
 		auto dirVelocity = m_viewProvider.GetDirectionProjection(direction) * speed;
 		newVelocity += dirVelocity;
 	}
+
+	newVelocity.y = velocity.y;
 
 	SetVelocity(newVelocity);
 }

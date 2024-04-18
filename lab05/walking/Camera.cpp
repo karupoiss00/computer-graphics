@@ -63,7 +63,6 @@ glm::dvec3 Camera::GetDirectionProjection(Direction dir)
 	case Direction::BACKWARD:
 		return -glm::dvec3{ m_lookDirection.x, 0, m_lookDirection.z };
 	case Direction::LEFT:
-		// разобраться с управлением камеры
 		return -glm::cross(m_lookDirection, UP_DIRECTION);
 	case Direction::RIGHT:
 		return glm::cross(m_lookDirection, UP_DIRECTION);

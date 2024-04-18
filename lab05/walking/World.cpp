@@ -54,14 +54,14 @@ World::World()
 
 double World::GetClampX(BoundingBox objectBox) const
 {
-	double minX = objectBox.position.x - objectBox.size.x / 2;
+	double minX = std::clamp(objectBox.position.x - objectBox.size.x / 2, 0.0, double(WORLD_SIZE));
 	auto const& minXCell = m_map[size_t(minX)][size_t(objectBox.position.z)];
 	if (minXCell.filled)
 	{
 		return double(size_t(minX)) + 1 - minX;
 	}
 
-	double maxX = objectBox.position.x + objectBox.size.x / 2;
+	double maxX = std::clamp(objectBox.position.x + objectBox.size.x / 2, 0.0, double(WORLD_SIZE));
 	auto const&  maxXCell = m_map[size_t(maxX)][size_t(objectBox.position.z)];
 	if (maxXCell.filled)
 	{
@@ -73,8 +73,8 @@ double World::GetClampX(BoundingBox objectBox) const
 
 double World::GetClampZ(BoundingBox objectBox) const
 {
-	double minZ = objectBox.position.z - objectBox.size.z / 2;
-	auto zLine = m_map[size_t(objectBox.position.x)];
+	auto zLine = m_map[size_t(std::clamp(objectBox.position.x, 0.0, double(WORLD_SIZE)))];
+	double minZ = std::clamp(objectBox.position.z - objectBox.size.z / 2, 0.0, double(WORLD_SIZE));
 
 	auto const& minZCell = zLine[size_t(minZ)];
 	if (minZCell.filled)
@@ -82,7 +82,7 @@ double World::GetClampZ(BoundingBox objectBox) const
 		return double(size_t(minZ)) + 1 - minZ;
 	}
 
-	double maxZ = objectBox.position.z + objectBox.size.z / 2;
+	double maxZ = std::clamp(objectBox.position.z + objectBox.size.z / 2, 0.0, double(WORLD_SIZE));
 	auto const& maxZCell = zLine[size_t(maxZ)];
 	if (maxZCell.filled)
 	{

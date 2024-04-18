@@ -52,10 +52,6 @@ void Physics::ResolveCollisions()
 		{
 			if (abs(currentVelocity.y) > MIN_SPEED)
 			{
-				if (!IsEqual(object->GetElasticity(), 0))
-				{
-					std::cout << currentVelocity.y << std::endl;
-				}
 				currentVelocity.y = -currentVelocity.y * object->GetElasticity();
 			}
 			else

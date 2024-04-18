@@ -25,6 +25,8 @@ private:
 
 	void SetupPhysics();
 
+	void ApplyFog();
+
 	void UpdatePhysics();
 
 	bool MouseMovePrevented();
