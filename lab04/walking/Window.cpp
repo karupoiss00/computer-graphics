@@ -83,7 +83,7 @@ void Window::OnRunStart()
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
 	glFrontFace(GL_CCW);
-	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_TEXTURE);
 	m_light.Apply(GL_LIGHT0);
 }
 
