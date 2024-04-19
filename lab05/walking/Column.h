@@ -1,15 +1,5 @@
 #pragma once
 
-enum class CubeSide
-{
-	NEGATIVE_X,
-	POSITIVE_X,
-	NEGATIVE_Y,
-	POSITIVE_Y,
-	NEGATIVE_Z,
-	POSITIVE_Z,
-};
-
 class Column
 {
 public:

@@ -1,6 +1,6 @@
 #include "TextureLoader.h"
 
-CTextureLoader::CTextureLoader()
+TextureLoader::TextureLoader()
 	: m_buildMipmaps(true)
 	, m_minFilter(GL_LINEAR_MIPMAP_LINEAR)
 	, m_magFilter(GL_LINEAR)
@@ -9,28 +9,28 @@ CTextureLoader::CTextureLoader()
 {
 }
 
-void CTextureLoader::SetMinFilter(GLenum minFilter)
+void TextureLoader::SetMinFilter(GLenum minFilter)
 {
 	m_minFilter = m_minFilter;
 }
 
-void CTextureLoader::SetMagFilter(GLenum magFilter)
+void TextureLoader::SetMagFilter(GLenum magFilter)
 {
 	m_magFilter = m_magFilter;
 }
 
-void CTextureLoader::BuildMipmaps(bool buildMipmaps)
+void TextureLoader::BuildMipmaps(bool buildMipmaps)
 {
 	m_buildMipmaps = buildMipmaps;
 }
 
-void CTextureLoader::SetWrapMode(GLenum wrapS, GLenum wrapT)
+void TextureLoader::SetWrapMode(GLenum wrapS, GLenum wrapT)
 {
 	m_wrapS = wrapS;
 	m_wrapT = wrapT;
 }
 
-GLuint CTextureLoader::LoadTexture2D(std::wstring const& fileName, GLuint textureName, GLint level) const
+GLuint TextureLoader::LoadTexture2D(std::wstring const& fileName, GLuint textureName, GLint level) const
 {
 	// Загружаем изображение при помощи GDI+
 	Gdiplus::Bitmap bmp(fileName.c_str());

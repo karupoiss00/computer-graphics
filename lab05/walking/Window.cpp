@@ -13,6 +13,16 @@ Window::Window(int w, int h, const char* title)
 	, m_playerController(m_player, m_camera)
 	, m_light({ 0.0f, 0.0f, 0.0f })
 	, m_physics(m_world, 10.0)
+	, m_skyTexture(
+		L"./res/",
+		L"pos_x_skybox.jpg",
+		L"neg_x_skybox.jpg",
+		L"pos_y_skybox.jpg",
+		L"neg_y_skybox.jpg",
+		L"pos_z_skybox.jpg",
+		L"neg_z_skybox.jpg"
+	)
+	, m_skyBox(40, m_skyTexture)
 {
 	SetupLight();
 	SetupPhysics();
@@ -92,7 +102,6 @@ void Window::OnResize(int width, int height)
 
 void Window::OnRunStart()
 {
-	glEnable(GL_FOG);
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 	glEnable(GL_CULL_FACE);
@@ -100,8 +109,8 @@ void Window::OnRunStart()
 	glFrontFace(GL_CCW);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);
-	ApplyFog();
 	m_light.Apply(GL_LIGHT0);
+	m_skyTexture.Load();
 }
 
 void Window::Draw(int width, int height)
@@ -117,6 +126,8 @@ void Window::Draw(int width, int height)
 	LoadCameraMatrix();
 
 	m_worldRenderer.Render();
+
+	m_skyBox.Render();
 }
 
 
@@ -136,7 +147,7 @@ bool Window::MouseMovePrevented()
 void Window::ApplyChanges()
 {
 	m_playerController.Update();
-
+	m_skyBox.SetPosition(m_player.GetPosition());
 	auto size = GetFramebufferSize();
 	ApplyProjectionChanges(int(size.x), int(size.y));
 }

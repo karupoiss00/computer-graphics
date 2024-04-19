@@ -93,7 +93,9 @@ void WorldRenderer::LoadTextures() const
 
 	for (auto [materialType, fileName] : TEXTURE_FILES)
 	{
-		auto texture = m_textureLoader.LoadTexture2D(fileName, static_cast<GLuint>(materialType));
+		GLuint textureObj;
+		glGenTextures(1, &textureObj);
+		auto texture = m_textureLoader.LoadTexture2D(fileName, textureObj);
 		m_textureMap.insert({ materialType, texture });
 	}
 }

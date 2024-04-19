@@ -14,6 +14,7 @@
 #include "PlayerController.h"
 #include "RenderStats.h"
 #include "Physics.h"
+#include "Skybox.h"
 
 class Window : public BaseWindow
 {
@@ -64,6 +65,8 @@ private:
 	RenderStats m_renderStats;
 
 	Physics m_physics;
+	SkyBox m_skyBox;
+	CubemapTexture m_skyTexture;
 
 	DirectLight m_light;
 

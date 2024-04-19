@@ -20,7 +20,7 @@ private:
 	void DrawMarker() const;
 
 	World& m_world;
-	CTextureLoader m_textureLoader;
+	TextureLoader m_textureLoader;
 
 
 	mutable std::map<MaterialType, GLuint> m_textureMap;

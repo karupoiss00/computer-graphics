@@ -1,10 +1,10 @@
 #pragma once
 #include "Texture.h"
 
-class CTextureLoader
+class TextureLoader
 {
 public:
-	CTextureLoader();
+	TextureLoader();
 
 	GLuint LoadTexture2D(std::wstring const& fileName, GLuint textureName = 0, GLint level = 0) const;
 

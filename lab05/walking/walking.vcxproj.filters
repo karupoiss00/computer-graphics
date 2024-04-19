@@ -13,9 +13,6 @@
     <Filter Include="app">
       <UniqueIdentifier>{c746c303-880e-48e2-a47f-d3b217b37925}</UniqueIdentifier>
     </Filter>
-    <Filter Include="app\light">
-      <UniqueIdentifier>{12d4b41f-fcf0-4662-9dde-adbab987e109}</UniqueIdentifier>
-    </Filter>
     <Filter Include="app\camera">
       <UniqueIdentifier>{0d576470-0bbc-47d5-8f85-74b6981ca3dd}</UniqueIdentifier>
     </Filter>
@@ -27,9 +24,6 @@
     </Filter>
     <Filter Include="external\imgui">
       <UniqueIdentifier>{dfc5e1bb-05e6-4dc5-bd7c-c3b22617e3f1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="app\common">
-      <UniqueIdentifier>{0ccbe02f-78d3-4d40-9b0e-f3e9c29a5071}</UniqueIdentifier>
     </Filter>
     <Filter Include="app\ui">
       <UniqueIdentifier>{08b0df02-c83e-415e-9fd4-38ff865835c3}</UniqueIdentifier>
@@ -49,38 +43,59 @@
     <Filter Include="app\player">
       <UniqueIdentifier>{f89dd283-bcbb-44b2-a164-c2543dcb7af4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="core\render">
-      <UniqueIdentifier>{8db94fce-0942-4f06-937c-cee16fd314b1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="app\ui\renderStats">
       <UniqueIdentifier>{8ecb4dff-e136-4ac0-b95a-c17d4144e391}</UniqueIdentifier>
     </Filter>
     <Filter Include="app\ui\renderStats\view">
       <UniqueIdentifier>{62b5c6ab-4191-4632-b824-f5d8105f41fc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="app\physics">
-      <UniqueIdentifier>{ff5cd95a-51c3-4fdb-a928-206c0b9e0a58}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="app\physics\gravity">
-      <UniqueIdentifier>{6e1ec3bc-8a7f-462a-a4f8-75c7c7a73c6f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="core\math">
-      <UniqueIdentifier>{54a9ed24-8c9b-4ed1-8e6e-b0c0574218a8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="app\physics\collision">
-      <UniqueIdentifier>{2df7e8a2-4254-4878-a3f8-19767ec357dd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="app\physics\object">
-      <UniqueIdentifier>{be806086-15d2-4a16-b984-649acc659aa5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="app\world\column">
-      <UniqueIdentifier>{92231ba0-41a8-4f14-a83e-4333422bde81}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="core\texture">
-      <UniqueIdentifier>{253d88b5-5708-4630-93df-d3f0daeb202b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="core\gdi">
       <UniqueIdentifier>{44fa1dcb-b6c8-42e4-bc9a-db56bc036871}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine">
+      <UniqueIdentifier>{68dd7bfa-e929-4b32-925f-b4fde0f87b22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\render">
+      <UniqueIdentifier>{8db94fce-0942-4f06-937c-cee16fd314b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\texture">
+      <UniqueIdentifier>{253d88b5-5708-4630-93df-d3f0daeb202b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\light">
+      <UniqueIdentifier>{12d4b41f-fcf0-4662-9dde-adbab987e109}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\physics">
+      <UniqueIdentifier>{ff5cd95a-51c3-4fdb-a928-206c0b9e0a58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\physics\gravity">
+      <UniqueIdentifier>{6e1ec3bc-8a7f-462a-a4f8-75c7c7a73c6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\physics\collision">
+      <UniqueIdentifier>{2df7e8a2-4254-4878-a3f8-19767ec357dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\physics\object">
+      <UniqueIdentifier>{be806086-15d2-4a16-b984-649acc659aa5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\common">
+      <UniqueIdentifier>{0ccbe02f-78d3-4d40-9b0e-f3e9c29a5071}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\math">
+      <UniqueIdentifier>{54a9ed24-8c9b-4ed1-8e6e-b0c0574218a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\texture\loader">
+      <UniqueIdentifier>{09896bf1-43f8-43d5-ba5e-c81ddf70c6b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\texture\cubemap">
+      <UniqueIdentifier>{9acf3509-d263-4f92-a008-3a204c459ddb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\skybox">
+      <UniqueIdentifier>{ac8b34f1-d622-4707-a8de-5a62ccb88665}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\world\view">
+      <UniqueIdentifier>{dbbea78a-7c67-4d7f-a2eb-0f5f02510a3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\world\view\column">
+      <UniqueIdentifier>{92231ba0-41a8-4f14-a83e-4333422bde81}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -126,11 +141,8 @@
     <ClInclude Include="Camera.h">
       <Filter>app\camera</Filter>
     </ClInclude>
-    <ClInclude Include="Renderable.h">
-      <Filter>app\common</Filter>
-    </ClInclude>
     <ClInclude Include="DirectLight.h">
-      <Filter>app\light</Filter>
+      <Filter>engine\light</Filter>
     </ClInclude>
     <ClInclude Include="RenderConfig.h">
       <Filter>app\ui\render\model</Filter>
@@ -144,9 +156,6 @@
     <ClInclude Include="pch.h">
       <Filter>core</Filter>
     </ClInclude>
-    <ClInclude Include="WorldRenderer.h">
-      <Filter>app\world</Filter>
-    </ClInclude>
     <ClInclude Include="World.h">
       <Filter>app\world</Filter>
     </ClInclude>
@@ -157,46 +166,58 @@
       <Filter>app\player</Filter>
     </ClInclude>
     <ClInclude Include="Direction.h">
-      <Filter>app\common</Filter>
+      <Filter>engine\common</Filter>
     </ClInclude>
     <ClInclude Include="Column.h">
-      <Filter>app\world\column</Filter>
+      <Filter>app\world\view\column</Filter>
     </ClInclude>
     <ClInclude Include="GetFPS.h">
-      <Filter>core\render</Filter>
+      <Filter>engine\render</Filter>
     </ClInclude>
     <ClInclude Include="RenderStats.h">
       <Filter>app\ui\renderStats\view</Filter>
     </ClInclude>
     <ClInclude Include="CollisionProvider.h">
-      <Filter>app\physics\collision</Filter>
+      <Filter>engine\physics\collision</Filter>
     </ClInclude>
     <ClInclude Include="Physics.h">
-      <Filter>app\physics\gravity</Filter>
+      <Filter>engine\physics\gravity</Filter>
     </ClInclude>
     <ClInclude Include="Math.h">
-      <Filter>core\math</Filter>
-    </ClInclude>
-    <ClInclude Include="ViewDirectionProvider.h">
-      <Filter>app\common</Filter>
+      <Filter>engine\math</Filter>
     </ClInclude>
     <ClInclude Include="PhysicalObject.h">
-      <Filter>app\physics\object</Filter>
+      <Filter>engine\physics\object</Filter>
     </ClInclude>
     <ClInclude Include="Collision.h">
-      <Filter>app\physics\collision</Filter>
+      <Filter>engine\physics\collision</Filter>
     </ClInclude>
     <ClInclude Include="Marker.h">
       <Filter>app\world</Filter>
     </ClInclude>
-    <ClInclude Include="TextureLoader.h">
-      <Filter>core\texture</Filter>
-    </ClInclude>
     <ClInclude Include="Texture.h">
-      <Filter>core\texture</Filter>
+      <Filter>engine\texture</Filter>
     </ClInclude>
     <ClInclude Include="GdiPlusInitializer.h">
       <Filter>core\gdi</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewDirectionProvider.h">
+      <Filter>app\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureLoader.h">
+      <Filter>engine\texture\loader</Filter>
+    </ClInclude>
+    <ClInclude Include="CubemapTexture.h">
+      <Filter>engine\texture\cubemap</Filter>
+    </ClInclude>
+    <ClInclude Include="Skybox.h">
+      <Filter>engine\skybox</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderable.h">
+      <Filter>engine\render</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldRenderer.h">
+      <Filter>app\world\view</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -237,7 +258,7 @@
       <Filter>app\camera</Filter>
     </ClCompile>
     <ClCompile Include="DirectLight.cpp">
-      <Filter>app\light</Filter>
+      <Filter>engine\light</Filter>
     </ClCompile>
     <ClCompile Include="RenderConfigEditor.cpp">
       <Filter>app\ui\render\view</Filter>
@@ -251,9 +272,6 @@
     <ClCompile Include="pch.cpp">
       <Filter>core</Filter>
     </ClCompile>
-    <ClCompile Include="WorldRenderer.cpp">
-      <Filter>app\world</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>app\player</Filter>
     </ClCompile>
@@ -264,25 +282,34 @@
       <Filter>app\player</Filter>
     </ClCompile>
     <ClCompile Include="Column.cpp">
-      <Filter>app\world\column</Filter>
+      <Filter>app\world\view\column</Filter>
     </ClCompile>
     <ClCompile Include="GetFPS.cpp">
-      <Filter>core\render</Filter>
+      <Filter>engine\render</Filter>
     </ClCompile>
     <ClCompile Include="RenderStats.cpp">
       <Filter>app\ui\renderStats\view</Filter>
     </ClCompile>
     <ClCompile Include="Physics.cpp">
-      <Filter>app\physics\gravity</Filter>
+      <Filter>engine\physics\gravity</Filter>
     </ClCompile>
     <ClCompile Include="PhysicalObject.cpp">
-      <Filter>app\physics\object</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureLoader.cpp">
-      <Filter>core\texture</Filter>
+      <Filter>engine\physics\object</Filter>
     </ClCompile>
     <ClCompile Include="GdiPlusInitializer.cpp">
       <Filter>core\gdi</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureLoader.cpp">
+      <Filter>engine\texture\loader</Filter>
+    </ClCompile>
+    <ClCompile Include="CubemapTexture.cpp">
+      <Filter>engine\texture\cubemap</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldRenderer.cpp">
+      <Filter>app\world\view</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyBox.cpp">
+      <Filter>engine\skybox</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

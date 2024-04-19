@@ -5,7 +5,7 @@ struct RenderConfig
 	RenderConfig()
 		: m_fov(60.0f)
 		, m_zNear(0.001f)
-		, m_zFar(20.0f)
+		, m_zFar(100.0f)
 	{
 		m_backgroundColor[0] = 0.65f;
 		m_backgroundColor[1] = 0.85f;

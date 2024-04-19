@@ -168,6 +168,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraController.cpp" />
     <ClCompile Include="Column.cpp" />
+    <ClCompile Include="CubemapTexture.cpp" />
     <ClCompile Include="DirectLight.cpp" />
     <ClCompile Include="GdiPlusInitializer.cpp" />
     <ClCompile Include="GetFPS.cpp" />
@@ -181,6 +182,7 @@
     <ClCompile Include="PlayerController.cpp" />
     <ClCompile Include="RenderConfigEditor.cpp" />
     <ClCompile Include="RenderStats.cpp" />
+    <ClCompile Include="SkyBox.cpp" />
     <ClCompile Include="TextureLoader.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="World.cpp" />
@@ -202,6 +204,7 @@
     <ClInclude Include="Collision.h" />
     <ClInclude Include="CollisionProvider.h" />
     <ClInclude Include="Column.h" />
+    <ClInclude Include="CubemapTexture.h" />
     <ClInclude Include="Direction.h" />
     <ClInclude Include="DirectLight.h" />
     <ClInclude Include="GdiPlusInitializer.h" />
@@ -219,6 +222,7 @@
     <ClInclude Include="RenderConfig.h" />
     <ClInclude Include="RenderConfigEditor.h" />
     <ClInclude Include="RenderStats.h" />
+    <ClInclude Include="Skybox.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TextureLoader.h" />
     <ClInclude Include="ViewDirectionProvider.h" />
