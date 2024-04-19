@@ -30,6 +30,8 @@ private:
 
 	void UpdatePhysics();
 
+	void UpdateSkybox();
+
 	bool MouseMovePrevented();
 
 	void OnKeyDown(int key, int scancode, int mods);

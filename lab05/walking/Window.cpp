@@ -22,7 +22,7 @@ Window::Window(int w, int h, const char* title)
 		L"pos_z_skybox.jpg",
 		L"neg_z_skybox.jpg"
 	)
-	, m_skyBox(40, m_skyTexture)
+	, m_skyBox(36, m_skyTexture)
 {
 	SetupLight();
 	SetupPhysics();
@@ -48,11 +48,16 @@ void Window::SetupPhysics()
 
 void Window::ApplyFog()
 {
-	float fogColor[4] = { 0.5f, 0.5f, 0.5f, 1 };
-	
+	if (!m_renderConfig.m_showFog)
+	{
+		glDisable(GL_FOG);
+		return;
+	}
+
+	glEnable(GL_FOG);
 	glFogi(GL_FOG_MODE, GL_EXP2);
-	glFogfv(GL_FOG_COLOR, fogColor);
-	glFogf(GL_FOG_DENSITY, 0.5f);
+	glFogfv(GL_FOG_COLOR, m_renderConfig.m_fogColor);
+	glFogf(GL_FOG_DENSITY, m_renderConfig.m_fogDensity);
 }
 
 void Window::OnKeyDown(int key, int scancode, int mods)
@@ -109,15 +114,22 @@ void Window::OnRunStart()
 	glFrontFace(GL_CCW);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);
+	ApplyFog();
 	m_light.Apply(GL_LIGHT0);
 	m_skyTexture.Load();
 }
 
 void Window::Draw(int width, int height)
 {
+	ApplyFog();
+
+	m_playerController.Update();
+
 	UpdatePhysics();
 
-	ApplyChanges();
+	UpdateSkybox();
+
+	ApplyProjectionChanges(width, height);
 
 	Clear();
 
@@ -127,7 +139,10 @@ void Window::Draw(int width, int height)
 
 	m_worldRenderer.Render();
 
-	m_skyBox.Render();
+	if (m_renderConfig.m_showSky)
+	{
+		m_skyBox.Render();
+	}
 }
 
 
@@ -142,14 +157,6 @@ void Window::DrawGUI(int width, int height)
 bool Window::MouseMovePrevented()
 {
 	return m_showRenderConfig;
-}
-
-void Window::ApplyChanges()
-{
-	m_playerController.Update();
-	m_skyBox.SetPosition(m_player.GetPosition());
-	auto size = GetFramebufferSize();
-	ApplyProjectionChanges(int(size.x), int(size.y));
 }
 
 void Window::ApplyProjectionChanges(int width, int height)
@@ -168,6 +175,12 @@ void Window::UpdatePhysics()
 {
 	auto deltaTime = GetEllapsedTime();
 	m_physics.Update(deltaTime);
+}
+
+void Window::UpdateSkybox()
+{
+	auto playerPos = m_player.GetPosition();
+	m_skyBox.SetPosition(playerPos);
 }
 
 void Window::Clear()

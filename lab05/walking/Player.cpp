@@ -29,7 +29,7 @@ void Player::Jump(double speed)
 {
 	auto velocity = GetVelocity();
 
-	//if (IsEqual(velocity.y, 0))
+	if (IsEqual(velocity.y, 0))
 	{
 		velocity.y = speed;
 		auto forwardSpeed = m_moving[Direction::FORWARD];
