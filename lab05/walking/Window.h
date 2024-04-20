@@ -13,6 +13,7 @@
 #include "Player.h"
 #include "PlayerController.h"
 #include "RenderStats.h"
+#include "PlayerState.h"
 #include "Physics.h"
 #include "Skybox.h"
 
@@ -37,8 +38,6 @@ private:
 	void OnKeyDown(int key, int scancode, int mods);
 
 	void OnKeyUp(int key, int scancode, int mods);
-
-	void OnKeyRepeat(int key, int scancode, int mods);
 
 	void OnMouseMove(double x, double y) override;
 
@@ -65,6 +64,7 @@ private:
 	RenderConfigEditor m_renderConfigEditor;
 	RenderConfig m_renderConfig;
 	RenderStats m_renderStats;
+	PlayerState m_playerState;
 
 	Physics m_physics;
 	SkyBox m_skyBox;

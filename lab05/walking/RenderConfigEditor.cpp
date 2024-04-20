@@ -13,7 +13,7 @@ void RenderConfigEditor::Render(bool& opened)
         return;
     }
 
-    ImGui::SetNextWindowSize(ImVec2(400, 260));
+    ImGui::SetNextWindowSize(ImVec2(400, 280));
 
     if (!ImGui::Begin("Render Configuration Editor", &opened, ImGuiWindowFlags_NoResize))
     {
@@ -25,6 +25,12 @@ void RenderConfigEditor::Render(bool& opened)
     ImGui::SliderFloat("zFar", &m_config.m_zFar, 0.f, 200.f);
     ImGui::SliderFloat("zNear", &m_config.m_zNear, 0.f, 20.f);
     ImGui::ColorEdit3("Background Color", &m_config.m_backgroundColor[0]);
+    ImGui::Separator();
+
+    ImGui::Checkbox("Show Player State", &m_config.m_showPlayerState);
+
+    ImGui::Separator();
+
     ImGui::Checkbox("Show FPS", &m_config.m_showStats);
 
     ImGui::Separator();

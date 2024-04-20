@@ -23,6 +23,7 @@ Window::Window(int w, int h, const char* title)
 		L"neg_z_skybox.jpg"
 	)
 	, m_skyBox(36, m_skyTexture)
+	, m_playerState(m_player)
 {
 	SetupLight();
 	SetupPhysics();
@@ -69,17 +70,7 @@ void Window::OnKeyDown(int key, int scancode, int mods)
 
 	if (key == GLFW_KEY_SPACE)
 	{
-		m_player.Jump(3);
-	}
-
-	HandleMoving(key);
-}
-
-void Window::OnKeyRepeat(int key, int scancode, int mods)
-{
-	if (key == GLFW_KEY_SPACE)
-	{
-		m_player.Jump(3);
+		m_player.SetJumping(true);
 	}
 
 	HandleMoving(key);
@@ -87,6 +78,11 @@ void Window::OnKeyRepeat(int key, int scancode, int mods)
 
 void Window::OnKeyUp(int key, int scancode, int mods)
 {
+	if (key == GLFW_KEY_SPACE)
+	{
+		m_player.SetJumping(false);
+	}
+
 	HandleStopMoving(key);
 }
 
@@ -137,18 +133,19 @@ void Window::Draw(int width, int height)
 
 	LoadCameraMatrix();
 
-	m_worldRenderer.Render();
-
 	if (m_renderConfig.m_showSky)
 	{
 		m_skyBox.Render();
 	}
+
+	m_worldRenderer.Render();
 }
 
 
 void Window::DrawGUI(int width, int height)
 {
 	ImGui::NewFrame();
+	m_playerState.Render(m_renderConfig.m_showPlayerState);
 	m_renderConfigEditor.Render(m_showRenderConfig);
 	m_renderStats.Render(m_renderConfig.m_showStats);
 	ImGui::Render();

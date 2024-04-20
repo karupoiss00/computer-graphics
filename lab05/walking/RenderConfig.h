@@ -26,6 +26,7 @@ struct RenderConfig
 	float m_zFar;
 	float m_backgroundColor[4];
 	bool m_showStats;
+	bool m_showPlayerState;
 	bool m_showFog;
 	bool m_showSky;
 	float m_fogColor[4];

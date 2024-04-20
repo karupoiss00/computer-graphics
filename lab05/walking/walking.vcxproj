@@ -180,6 +180,7 @@
     <ClCompile Include="PhysicalObject.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerController.cpp" />
+    <ClCompile Include="PlayerState.cpp" />
     <ClCompile Include="RenderConfigEditor.cpp" />
     <ClCompile Include="RenderStats.cpp" />
     <ClCompile Include="SkyBox.cpp" />
@@ -218,6 +219,7 @@
     <ClInclude Include="PhysicalObject.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerController.h" />
+    <ClInclude Include="PlayerState.h" />
     <ClInclude Include="Renderable.h" />
     <ClInclude Include="RenderConfig.h" />
     <ClInclude Include="RenderConfigEditor.h" />

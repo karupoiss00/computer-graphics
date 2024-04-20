@@ -16,6 +16,7 @@ Player::Player(IViewDirectionProvider& viewProvider)
 		PLAYER_SIZE
 	}, 1.0)
 	, m_viewProvider(viewProvider)
+	, m_jumpingSpeed(3)
 {
 	m_moving = {
 		{Direction::FORWARD, 0},
@@ -25,21 +26,24 @@ Player::Player(IViewDirectionProvider& viewProvider)
 	};
 }
 
-void Player::Jump(double speed)
+void Player::SetJumpingSpeed(double speed)
 {
+	m_jumpingSpeed = speed;
+}
+
+
+void Player::SetJumping(bool jumping)
+{
+	m_jumping = jumping;
+
 	auto velocity = GetVelocity();
-
-	if (IsEqual(velocity.y, 0))
+	auto forwardSpeed = m_moving[Direction::FORWARD];
+	if (m_jumping && IsEqual(velocity.y, 0) && !IsEqual(forwardSpeed, 0))
 	{
-		velocity.y = speed;
-		auto forwardSpeed = m_moving[Direction::FORWARD];
-		if (!IsEqual(forwardSpeed, 0))
-		{
-			m_moving[Direction::FORWARD] = 5;
-		}
-
-		SetVelocity(velocity);
+		m_moving[Direction::FORWARD] = 5;
 	}
+
+	RecalculateVelocity();
 }
 
 void Player::SetForwardMovement(double speed)
@@ -80,7 +84,10 @@ void Player::RecalculateVelocity()
 		newVelocity += dirVelocity;
 	}
 
-	newVelocity.y = velocity.y;
+	if (m_jumping && IsEqual(velocity.y, 0))
+	{
+		newVelocity.y = m_jumpingSpeed;
+	}
 
 	SetVelocity(newVelocity);
 }
@@ -88,4 +95,9 @@ void Player::RecalculateVelocity()
 void Player::Update()
 {
 	RecalculateVelocity();
+}
+
+bool Player::IsJumping() const
+{
+	return m_jumping;
 }

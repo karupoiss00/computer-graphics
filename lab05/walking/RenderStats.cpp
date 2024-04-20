@@ -7,7 +7,7 @@ RenderStats::RenderStats()
 {
 }
 
-void RenderStats::Render(bool& opened)
+void RenderStats::Render(bool& opened) const
 {
     if (!opened)
     {

@@ -7,5 +7,5 @@ class RenderStats
 public:
 	RenderStats();
 
-	void Render(bool& opened);
+	void Render(bool& opened) const;
 };

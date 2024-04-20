@@ -65,6 +65,9 @@ void SkyBox::Render() const
 	};
 	static size_t const faceCount = sizeof(faces) / sizeof(*faces);
 
+	glDisable(GL_DEPTH_TEST);
+	glDepthMask(GL_FALSE);
+
 	glPushMatrix();
 
 	glTranslated(m_position.x, m_position.y, m_position.z);
@@ -105,9 +108,9 @@ void SkyBox::Render() const
 		glEnd();
 	}
 
-	
-
 	glPopMatrix();
+	glDepthMask(GL_TRUE);
+	glEnable(GL_DEPTH_TEST);
 }
 
 void SkyBox::SetPosition(glm::dvec3 position)
