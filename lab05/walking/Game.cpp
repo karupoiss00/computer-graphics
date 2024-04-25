@@ -1,6 +1,6 @@
 #include "Game.h"
 
-Game::Game(IScreenProvider const& screenSizeProvider)
+Game::Game(IScreenProvider const& screenProvider, std::function<void()> onGoToMenu)
 	: m_camera()
 	, m_cameraController(m_camera)
 	, m_renderConfigEditor(m_renderConfig)
@@ -22,7 +22,8 @@ Game::Game(IScreenProvider const& screenSizeProvider)
 	)
 	, m_skyBox(36, m_skyTexture)
 	, m_playerState(m_player)
-	, m_screenProvider(screenSizeProvider)
+	, m_screenProvider(screenProvider)
+	, m_gameMenu(screenProvider, onGoToMenu)
 {
 	SetupLight();
 	SetupPhysics();
@@ -75,11 +76,12 @@ void Game::Draw()
 
 	m_worldRenderer.Render();
 
-	m_screenProvider.SetCursorVisible(m_showRenderConfig);
+	m_screenProvider.SetCursorVisible(InputPrevented());
 }
 
 void Game::DrawUI()
 {
+	m_gameMenu.Render(m_showGameMenu);
 	m_playerState.Render(m_renderConfig.m_showPlayerState);
 	m_renderConfigEditor.Render(m_showRenderConfig);
 	m_renderStats.Render(m_renderConfig.m_showStats);
@@ -89,15 +91,18 @@ void Game::OnKeyDown(int key, int scancode, int mods)
 {
 	if (key == GLFW_KEY_ESCAPE)
 	{
+		m_showGameMenu = !m_showGameMenu;
+	}
+
+	if (key == GLFW_KEY_GRAVE_ACCENT)
+	{
 		m_showRenderConfig = !m_showRenderConfig;
 	}
 
-	if (key == GLFW_KEY_SPACE)
+	if (!InputPrevented())
 	{
-		m_player.SetJumping(true);
+		HandleMoving(key);
 	}
-
-	HandleMoving(key);
 }
 
 void Game::OnKeyUp(int key, int scancode, int mods)
@@ -107,7 +112,10 @@ void Game::OnKeyUp(int key, int scancode, int mods)
 		m_player.SetJumping(false);
 	}
 
-	HandleStopMoving(key);
+	if (!InputPrevented())
+	{
+		HandleStopMoving(key);
+	}
 }
 
 void Game::OnMouseMove(double x, double y)
@@ -116,7 +124,7 @@ void Game::OnMouseMove(double x, double y)
 		m_screenProvider.GetScreenSize(),
 		x,
 		y,
-		MouseMovePrevented()
+		InputPrevented()
 	);
 }
 
@@ -148,7 +156,6 @@ void Game::SetupPhysics()
 	}
 }
 
-
 void Game::ApplyFog()
 {
 	if (!m_renderConfig.m_showFog)
@@ -165,6 +172,10 @@ void Game::ApplyFog()
 
 void Game::HandleMoving(int key)
 {
+	if (key == GLFW_KEY_SPACE)
+	{
+		m_player.SetJumping(true);
+	}
 	if (key == GLFW_KEY_W)
 	{
 		m_player.SetForwardMovement(3);
@@ -185,6 +196,10 @@ void Game::HandleMoving(int key)
 
 void Game::HandleStopMoving(int key)
 {
+	if (key == GLFW_KEY_SPACE)
+	{
+		m_player.SetJumping(false);
+	}
 	if (key == GLFW_KEY_W)
 	{
 		m_player.SetForwardMovement(0);
@@ -203,9 +218,9 @@ void Game::HandleStopMoving(int key)
 	}
 }
 
-bool Game::MouseMovePrevented()
+bool Game::InputPrevented()
 {
-	return m_showRenderConfig;
+	return m_showRenderConfig || m_showGameMenu;
 }
 
 void Game::ApplyProjection(int width, int height)

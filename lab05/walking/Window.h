@@ -3,6 +3,7 @@
 #include <string>
 #include <functional>
 #include "Game.h"
+#include "MainMenu.h"
 #include "BaseWindow.h"
 #include "IScreenProvider.h"
 
@@ -22,15 +23,16 @@ private:
 
 	void OnResize(int width, int height) override;
 
-	void OnRunStart() override;
-
 	void Update(double dt) override;
 
 	void Draw(int width, int height) override;
 	
 	void DrawGUI(int width, int height) override;
 
+	void SwitchView(IView* view);
+
 	Game m_game;
+	MainMenu m_menu;
 
 	IView* m_currentView;
 };

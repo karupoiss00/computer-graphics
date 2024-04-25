@@ -64,6 +64,12 @@
     <Filter Include="engine\skybox">
       <UniqueIdentifier>{ac8b34f1-d622-4707-a8de-5a62ccb88665}</UniqueIdentifier>
     </Filter>
+    <Filter Include="app\common">
+      <UniqueIdentifier>{9bec061a-c813-4b9e-9100-1e2469c68cc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\window">
+      <UniqueIdentifier>{5c51385c-d195-438f-adb3-973a2265148d}</UniqueIdentifier>
+    </Filter>
     <Filter Include="app\game">
       <UniqueIdentifier>{63cdd2e9-9b63-4ceb-bc39-d09616d25347}</UniqueIdentifier>
     </Filter>
@@ -82,41 +88,41 @@
     <Filter Include="app\game\world\view\column">
       <UniqueIdentifier>{92231ba0-41a8-4f14-a83e-4333422bde81}</UniqueIdentifier>
     </Filter>
-    <Filter Include="app\ui">
+    <Filter Include="app\game\ui">
       <UniqueIdentifier>{08b0df02-c83e-415e-9fd4-38ff865835c3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="app\ui\dev">
+    <Filter Include="app\game\ui\dev">
       <UniqueIdentifier>{1981a6ea-0e9e-4910-ae28-d44d5f69eb29}</UniqueIdentifier>
     </Filter>
-    <Filter Include="app\ui\dev\playerState">
+    <Filter Include="app\game\ui\dev\playerState">
       <UniqueIdentifier>{1d265a32-2ffa-48af-826f-444cc3492935}</UniqueIdentifier>
     </Filter>
-    <Filter Include="app\ui\dev\playerState\view">
+    <Filter Include="app\game\ui\dev\playerState\view">
       <UniqueIdentifier>{c3c3735f-535a-4c7e-b595-900cc0c9a785}</UniqueIdentifier>
     </Filter>
-    <Filter Include="app\ui\dev\render">
+    <Filter Include="app\game\ui\dev\render">
       <UniqueIdentifier>{07bac160-fc23-40a3-b1e7-bba30b380700}</UniqueIdentifier>
     </Filter>
-    <Filter Include="app\ui\dev\render\model">
+    <Filter Include="app\game\ui\dev\render\model">
       <UniqueIdentifier>{843332ab-bde6-4eee-a67a-2fe27f8fac74}</UniqueIdentifier>
     </Filter>
-    <Filter Include="app\ui\dev\render\view">
+    <Filter Include="app\game\ui\dev\render\view">
       <UniqueIdentifier>{8e08da59-b620-4938-b7f8-78034e856acd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="app\ui\dev\renderStats">
+    <Filter Include="app\game\ui\dev\renderStats">
       <UniqueIdentifier>{8ecb4dff-e136-4ac0-b95a-c17d4144e391}</UniqueIdentifier>
     </Filter>
-    <Filter Include="app\ui\dev\renderStats\view">
+    <Filter Include="app\game\ui\dev\renderStats\view">
       <UniqueIdentifier>{62b5c6ab-4191-4632-b824-f5d8105f41fc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="app\ui\mainMenu">
-      <UniqueIdentifier>{c2f9e0f7-ae58-4bb9-93a5-a80932abbcc0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="app\ui\gameMenu">
+    <Filter Include="app\game\ui\gameMenu">
       <UniqueIdentifier>{da65c4fd-d143-47d3-b3e2-c3a3851a3545}</UniqueIdentifier>
     </Filter>
-    <Filter Include="app\common">
-      <UniqueIdentifier>{9bec061a-c813-4b9e-9100-1e2469c68cc5}</UniqueIdentifier>
+    <Filter Include="app\mainMenu">
+      <UniqueIdentifier>{8d6be304-225c-4dde-9728-7230154759bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\game\ui\gameMenu\view">
+      <UniqueIdentifier>{a099b64c-ab73-4dcf-b47c-ec85f66c9d8b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -166,13 +172,10 @@
       <Filter>engine\light</Filter>
     </ClInclude>
     <ClInclude Include="RenderConfig.h">
-      <Filter>app\ui\dev\render\model</Filter>
+      <Filter>app\game\ui\dev\render\model</Filter>
     </ClInclude>
     <ClInclude Include="RenderConfigEditor.h">
-      <Filter>app\ui\dev\render\view</Filter>
-    </ClInclude>
-    <ClInclude Include="Window.h">
-      <Filter>app</Filter>
+      <Filter>app\game\ui\dev\render\view</Filter>
     </ClInclude>
     <ClInclude Include="pch.h">
       <Filter>core</Filter>
@@ -238,10 +241,10 @@
       <Filter>app\game\world\view</Filter>
     </ClInclude>
     <ClInclude Include="RenderStats.h">
-      <Filter>app\ui\dev\renderStats\view</Filter>
+      <Filter>app\game\ui\dev\renderStats\view</Filter>
     </ClInclude>
     <ClInclude Include="PlayerState.h">
-      <Filter>app\ui\dev\playerState\view</Filter>
+      <Filter>app\game\ui\dev\playerState\view</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>app\game</Filter>
@@ -251,6 +254,15 @@
     </ClInclude>
     <ClInclude Include="IView.h">
       <Filter>app\common</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>app\window</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>app\mainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMenu.h">
+      <Filter>app\game\ui\gameMenu\view</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -294,10 +306,7 @@
       <Filter>engine\light</Filter>
     </ClCompile>
     <ClCompile Include="RenderConfigEditor.cpp">
-      <Filter>app\ui\dev\render\view</Filter>
-    </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>app</Filter>
+      <Filter>app\game\ui\dev\render\view</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>app</Filter>
@@ -342,13 +351,22 @@
       <Filter>engine\skybox</Filter>
     </ClCompile>
     <ClCompile Include="RenderStats.cpp">
-      <Filter>app\ui\dev\renderStats\view</Filter>
+      <Filter>app\game\ui\dev\renderStats\view</Filter>
     </ClCompile>
     <ClCompile Include="PlayerState.cpp">
-      <Filter>app\ui\dev\playerState\view</Filter>
+      <Filter>app\game\ui\dev\playerState\view</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>app\game</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>app\window</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>app\mainMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMenu.cpp">
+      <Filter>app\game\ui\gameMenu\view</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

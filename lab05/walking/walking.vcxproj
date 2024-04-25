@@ -171,9 +171,11 @@
     <ClCompile Include="CubemapTexture.cpp" />
     <ClCompile Include="DirectLight.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameMenu.cpp" />
     <ClCompile Include="GdiPlusInitializer.cpp" />
     <ClCompile Include="GetFPS.cpp" />
     <ClCompile Include="GLFWInitializer.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="ImguiInitializer.cpp" />
     <ClCompile Include="main.cpp" />
@@ -210,12 +212,14 @@
     <ClInclude Include="Direction.h" />
     <ClInclude Include="DirectLight.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameMenu.h" />
     <ClInclude Include="GdiPlusInitializer.h" />
     <ClInclude Include="GetFPS.h" />
     <ClInclude Include="GLFWInitializer.h" />
     <ClInclude Include="ImguiInitializer.h" />
     <ClInclude Include="IScreenProvider.h" />
     <ClInclude Include="IView.h" />
+    <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Marker.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="pch.h" />

@@ -4,8 +4,9 @@
 
 Window::Window(int w, int h, const char* title)
 	: BaseWindow(w, h, title)
-	, m_game(*this)
-	, m_currentView(&m_game)
+	, m_game(*this, [this]() { SwitchView(&m_menu); })
+	, m_menu(*this, [this]() { SwitchView(&m_game); })
+	, m_currentView(&m_menu)
 {
 }
 
@@ -27,11 +28,6 @@ void Window::OnMouseMove(double x, double y)
 void Window::OnResize(int width, int height)
 {
 	m_currentView->OnResize(width, height);
-}
-
-void Window::OnRunStart()
-{
-	m_currentView->Setup();
 }
 
 void Window::Update(double dt)
@@ -61,4 +57,10 @@ glm::ivec2 Window::GetScreenSize() const
 void Window::SetCursorVisible(bool visible) const
 {
 	this->ShowCursor(visible);
+}
+
+void Window::SwitchView(IView* view)
+{
+	m_currentView = view;
+	m_currentView->Setup();
 }

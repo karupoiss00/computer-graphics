@@ -1,4 +1,5 @@
 #pragma once
+#include <functional>
 #include "IView.h"
 #include "IScreenProvider.h"
 #include "DirectLight.h"
@@ -14,11 +15,12 @@
 #include "PlayerState.h"
 #include "Physics.h"
 #include "Skybox.h"
+#include "GameMenu.h"
 
 class Game : public IView
 {
 public:
-	Game(IScreenProvider const& screenSizeProvider);
+	Game(IScreenProvider const& screenProvider, std::function<void()> onGoToMenu);
 
 	void Setup();
 	void Update(double dt);
@@ -38,7 +40,7 @@ private:
 	void HandleMoving(int key);
 	void HandleStopMoving(int key);
 
-	bool MouseMovePrevented();
+	bool InputPrevented();
 
 	void ApplyProjection(int width, int height);
 
@@ -46,6 +48,7 @@ private:
 	RenderConfig m_renderConfig;
 	RenderStats m_renderStats;
 	PlayerState m_playerState;
+	GameMenu m_gameMenu;
 
 	Camera m_camera;
 	World m_world;
@@ -63,6 +66,7 @@ private:
 	CubemapTexture m_skyTexture;
 
 	bool m_showRenderConfig;
+	bool m_showGameMenu;
 
 	IScreenProvider const& m_screenProvider;
 };
