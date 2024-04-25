@@ -11,7 +11,8 @@ Window::Window(int w, int h, const char* title)
 	, m_worldRenderer(m_world)
 	, m_player(m_camera)	
 	, m_playerController(m_player, m_camera)
-	, m_light({ 0.0f, 0.0f, 0.0f })
+	, m_headLamp({ 0.0f, 0.0f, 0.0f })
+	, m_globalLight({ 0.0f, 0.0f, 0.0f })
 	, m_physics(m_world, 10.0)
 	, m_skyTexture(
 		L"./res/",
@@ -31,10 +32,15 @@ Window::Window(int w, int h, const char* title)
 
 void Window::SetupLight()
 {
-	m_light.SetDirection({ 0.0f, 2.0f, 0.0f });
-	m_light.SetDiffuseIntensity({ 0.9f, 0.9f, 0.9f, 1.0f });
-	m_light.SetAmbientIntensity({ 0.8f, 0.8f, 0.8f, 1.0f });
-	m_light.SetSpecularIntensity({ 0.2f, 0.2f, 0.2f, 1.0f });
+	m_headLamp.SetDirection({ 0.0f, 0.0f, 1.0f });
+	m_headLamp.SetDiffuseIntensity({ 0.9f, 0.9f, 0.9f, 1.0f });
+	m_headLamp.SetAmbientIntensity({ 0.8f, 0.8f, 0.8f, 1.0f });
+	m_headLamp.SetSpecularIntensity({ 0.2f, 0.2f, 0.2f, 1.0f });
+
+	m_globalLight.SetDirection({ 0.0f, 1.0f, 0.0f });
+	m_globalLight.SetDiffuseIntensity({ 0.9f, 0.9f, 0.9f, 1.0f });
+	m_globalLight.SetAmbientIntensity({ 0.8f, 0.8f, 0.8f, 1.0f });
+	m_globalLight.SetSpecularIntensity({ 0.2f, 0.2f, 0.2f, 1.0f });
 }
 
 void Window::SetupPhysics()
@@ -105,13 +111,15 @@ void Window::OnRunStart()
 {
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
+	glEnable(GL_LIGHT1);
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
 	glFrontFace(GL_CCW);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);
 	ApplyFog();
-	m_light.Apply(GL_LIGHT0);
+	m_headLamp.Apply(GL_LIGHT0);
+	m_globalLight.Apply(GL_LIGHT1);
 	m_skyTexture.Load();
 }
 

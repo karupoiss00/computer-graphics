@@ -14,7 +14,7 @@ void PlayerState::Render(bool& opened) const
         return;
     }
 
-    ImGui::SetNextWindowSize(ImVec2(320, 60));
+    ImGui::SetNextWindowSize(ImVec2(320, 65));
 
     ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(0, 0, 0, 0.3f));
     ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0, 0, 0, 0));

@@ -70,7 +70,8 @@ private:
 	SkyBox m_skyBox;
 	CubemapTexture m_skyTexture;
 
-	DirectLight m_light;
+	DirectLight m_headLamp;
+	DirectLight m_globalLight;
 
 	CameraController m_cameraController;
 	Camera m_camera;
