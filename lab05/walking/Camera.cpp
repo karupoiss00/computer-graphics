@@ -9,7 +9,7 @@ constexpr glm::dvec3 UP_DIRECTION = { 0.0, 1.0, 0.0 };
 
 Camera::Camera()
 	: m_cameraPos(glm::dvec3{ 0.0, 0.0, 0.0 })
-	, m_lookDirection(glm::normalize(glm::dvec3{ 1.0, 0, 1.0 }))
+	, m_lookDirection(glm::normalize(glm::dvec3{ -1.0, 0, 0.0 }))
 {}
 
 void Camera::Rotate(double deltaX, double deltaY)

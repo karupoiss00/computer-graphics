@@ -17,7 +17,7 @@ public:
 	glm::dvec2 GetCursorPos() const;
 
 protected:
-	void ShowCursor(bool show);
+	void ShowCursor(bool show) const;
 	double GetEllapsedTime();
 private:
 	static BaseWindow* GetBaseWindow(GLFWwindow* window);
@@ -35,6 +35,7 @@ private:
 		[[maybe_unused]] int key, [[maybe_unused]] int scancode, [[maybe_unused]] int mods) {}
 	virtual void OnKeyRepeat(
 		[[maybe_unused]] int key, [[maybe_unused]] int scancode, [[maybe_unused]] int mods) {}
+	virtual void Update(double dt) = 0;
 	virtual void Draw(int width, int height) = 0;
 	virtual void DrawGUI(int width, int height) = 0;
 	virtual void OnRunStart() {}

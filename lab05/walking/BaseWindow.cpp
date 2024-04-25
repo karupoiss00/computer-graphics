@@ -74,18 +74,25 @@ void BaseWindow::Run()
 	while (!glfwWindowShouldClose(m_window))
 	{
 		m_nowTime = glfwGetTime();
+
 		auto size = GetFramebufferSize();
+
+		Update(GetEllapsedTime());
 
 		Draw(size.x, size.y);
 
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
+
 		DrawGUI(size.x, size.y);
+
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
 		glFinish();
+
 		glfwSwapBuffers(m_window);
 		glfwPollEvents();
+
 		m_lastTime = m_nowTime;
 	}
 	OnRunEnd();
@@ -109,7 +116,7 @@ GLFWwindow* BaseWindow::MakeWindow(int w, int h, const char* title)
 	return glfwCreateWindow(w, h, title, nullptr, nullptr);
 }
 
-void BaseWindow::ShowCursor(bool show)
+void BaseWindow::ShowCursor(bool show) const
 {
 	glfwSetInputMode(
 		m_window, 

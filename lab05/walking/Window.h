@@ -2,42 +2,21 @@
 #include <map>
 #include <string>
 #include <functional>
+#include "Game.h"
 #include "BaseWindow.h"
-#include "DirectLight.h"
-#include "Camera.h"
-#include "CameraController.h"
-#include "RenderConfigEditor.h"
-#include "RenderConfig.h"
-#include "World.h"
-#include "WorldRenderer.h"
-#include "Player.h"
-#include "PlayerController.h"
-#include "RenderStats.h"
-#include "PlayerState.h"
-#include "Physics.h"
-#include "Skybox.h"
+#include "IScreenProvider.h"
 
-class Window : public BaseWindow
+class Window : public BaseWindow, public IScreenProvider
 {
 public:
 	Window(int w, int h, const char* title);
 
+	glm::ivec2 GetScreenSize() const override;
+	void SetCursorVisible(bool visible) const override;
 private:
-	void SetupLight();
+	void OnKeyDown(int key, int scancode, int mods) override;
 
-	void SetupPhysics();
-
-	void ApplyFog();
-
-	void UpdatePhysics();
-
-	void UpdateSkybox();
-
-	bool MouseMovePrevented();
-
-	void OnKeyDown(int key, int scancode, int mods);
-
-	void OnKeyUp(int key, int scancode, int mods);
+	void OnKeyUp(int key, int scancode, int mods) override;
 
 	void OnMouseMove(double x, double y) override;
 
@@ -45,42 +24,13 @@ private:
 
 	void OnRunStart() override;
 
-	void Clear();
-
-	void LoadCameraMatrix();
+	void Update(double dt) override;
 
 	void Draw(int width, int height) override;
 	
 	void DrawGUI(int width, int height) override;
 
-	void ApplyProjectionChanges(int width, int height);
+	Game m_game;
 
-	void ApplyChanges();
-
-	void HandleMoving(int key);
-
-	void HandleStopMoving(int key);
-
-	RenderConfigEditor m_renderConfigEditor;
-	RenderConfig m_renderConfig;
-	RenderStats m_renderStats;
-	PlayerState m_playerState;
-
-	Physics m_physics;
-	SkyBox m_skyBox;
-	CubemapTexture m_skyTexture;
-
-	DirectLight m_headLamp;
-	DirectLight m_globalLight;
-
-	CameraController m_cameraController;
-	Camera m_camera;
-
-	World m_world;
-	WorldRenderer m_worldRenderer;
-
-	Player m_player;
-	PlayerController m_playerController;
-
-	bool m_showRenderConfig;
+	IView* m_currentView;
 };

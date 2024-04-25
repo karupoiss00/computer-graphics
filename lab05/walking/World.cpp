@@ -72,7 +72,7 @@ double World::GetClampX(BoundingBox objectBox) const
 }
 
 double World::GetClampZ(BoundingBox objectBox) const
-{
+{	
 	auto zLine = m_map[size_t(std::clamp(objectBox.position.x, 0.0, double(WORLD_SIZE)))];
 	double minZ = std::clamp(objectBox.position.z - objectBox.size.z / 2, 0.0, double(WORLD_SIZE));
 
