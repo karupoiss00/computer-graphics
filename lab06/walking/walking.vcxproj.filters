@@ -1,0 +1,474 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="core">
+      <UniqueIdentifier>{49f43d5e-48fa-47b1-8184-89f8959e437a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\glfw">
+      <UniqueIdentifier>{d887cd17-07a7-4dfb-83e5-569def3021f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\window">
+      <UniqueIdentifier>{7ad58b61-7d81-4f57-b8b4-6be202eca7d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app">
+      <UniqueIdentifier>{c746c303-880e-48e2-a47f-d3b217b37925}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\imgui">
+      <UniqueIdentifier>{64cf54f2-9fad-45aa-abab-04313bde5ac2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external">
+      <UniqueIdentifier>{5d375edc-179f-4470-8fa5-708c83f8d6d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\imgui">
+      <UniqueIdentifier>{dfc5e1bb-05e6-4dc5-bd7c-c3b22617e3f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\gdi">
+      <UniqueIdentifier>{44fa1dcb-b6c8-42e4-bc9a-db56bc036871}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine">
+      <UniqueIdentifier>{68dd7bfa-e929-4b32-925f-b4fde0f87b22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\render">
+      <UniqueIdentifier>{8db94fce-0942-4f06-937c-cee16fd314b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\texture">
+      <UniqueIdentifier>{253d88b5-5708-4630-93df-d3f0daeb202b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\light">
+      <UniqueIdentifier>{12d4b41f-fcf0-4662-9dde-adbab987e109}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\physics">
+      <UniqueIdentifier>{ff5cd95a-51c3-4fdb-a928-206c0b9e0a58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\physics\gravity">
+      <UniqueIdentifier>{6e1ec3bc-8a7f-462a-a4f8-75c7c7a73c6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\physics\collision">
+      <UniqueIdentifier>{2df7e8a2-4254-4878-a3f8-19767ec357dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\physics\object">
+      <UniqueIdentifier>{be806086-15d2-4a16-b984-649acc659aa5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\common">
+      <UniqueIdentifier>{0ccbe02f-78d3-4d40-9b0e-f3e9c29a5071}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\math">
+      <UniqueIdentifier>{54a9ed24-8c9b-4ed1-8e6e-b0c0574218a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\texture\loader">
+      <UniqueIdentifier>{09896bf1-43f8-43d5-ba5e-c81ddf70c6b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\texture\cubemap">
+      <UniqueIdentifier>{9acf3509-d263-4f92-a008-3a204c459ddb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\skybox">
+      <UniqueIdentifier>{ac8b34f1-d622-4707-a8de-5a62ccb88665}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\common">
+      <UniqueIdentifier>{9bec061a-c813-4b9e-9100-1e2469c68cc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\window">
+      <UniqueIdentifier>{5c51385c-d195-438f-adb3-973a2265148d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\game">
+      <UniqueIdentifier>{63cdd2e9-9b63-4ceb-bc39-d09616d25347}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\game\player">
+      <UniqueIdentifier>{f89dd283-bcbb-44b2-a164-c2543dcb7af4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\game\world">
+      <UniqueIdentifier>{0c254a60-d38d-47be-8742-3d6c5420b4f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\game\world\view">
+      <UniqueIdentifier>{dbbea78a-7c67-4d7f-a2eb-0f5f02510a3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\game\world\view\column">
+      <UniqueIdentifier>{92231ba0-41a8-4f14-a83e-4333422bde81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\game\ui">
+      <UniqueIdentifier>{08b0df02-c83e-415e-9fd4-38ff865835c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\game\ui\dev">
+      <UniqueIdentifier>{1981a6ea-0e9e-4910-ae28-d44d5f69eb29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\game\ui\dev\playerState">
+      <UniqueIdentifier>{1d265a32-2ffa-48af-826f-444cc3492935}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\game\ui\dev\playerState\view">
+      <UniqueIdentifier>{c3c3735f-535a-4c7e-b595-900cc0c9a785}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\game\ui\dev\render">
+      <UniqueIdentifier>{07bac160-fc23-40a3-b1e7-bba30b380700}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\game\ui\dev\render\model">
+      <UniqueIdentifier>{843332ab-bde6-4eee-a67a-2fe27f8fac74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\game\ui\dev\render\view">
+      <UniqueIdentifier>{8e08da59-b620-4938-b7f8-78034e856acd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\game\ui\dev\renderStats">
+      <UniqueIdentifier>{8ecb4dff-e136-4ac0-b95a-c17d4144e391}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\game\ui\dev\renderStats\view">
+      <UniqueIdentifier>{62b5c6ab-4191-4632-b824-f5d8105f41fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\game\ui\gameMenu">
+      <UniqueIdentifier>{da65c4fd-d143-47d3-b3e2-c3a3851a3545}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\mainMenu">
+      <UniqueIdentifier>{8d6be304-225c-4dde-9728-7230154759bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\game\ui\gameMenu\view">
+      <UniqueIdentifier>{a099b64c-ab73-4dcf-b47c-ec85f66c9d8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\objects">
+      <UniqueIdentifier>{064eec04-540a-40bd-a4c5-992ddf50cb90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\objects\boundingBox">
+      <UniqueIdentifier>{512fe869-c61c-4ce0-b7a9-e5cd6b74c326}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\mesh">
+      <UniqueIdentifier>{79184f35-0197-436e-9e41-7a1b53d955d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\texture\textureMap">
+      <UniqueIdentifier>{2bb9cf2f-f3a2-4bb3-889c-94d5717e8950}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\material">
+      <UniqueIdentifier>{d022fc6e-c3f1-4974-b18b-27f54b603cd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\model">
+      <UniqueIdentifier>{797251bc-e7be-46bd-8121-79b67b7e0649}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\model\3ds">
+      <UniqueIdentifier>{e0642173-44b2-480d-b005-390cf8f93a1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\objects\bufferObject">
+      <UniqueIdentifier>{f501170e-e3eb-4ab1-964c-0d65d67e3ffd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\glew">
+      <UniqueIdentifier>{f3ea6168-789c-4629-992e-c222235fc049}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\model\loader">
+      <UniqueIdentifier>{8ff2bbc6-4c0c-4717-a882-9c8deff1342f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\model\renderer">
+      <UniqueIdentifier>{0884f093-3a59-4d8e-a94d-547c52f8c91f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\camera">
+      <UniqueIdentifier>{0d576470-0bbc-47d5-8f85-74b6981ca3dd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\external\imgui\imconfig.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\imgui\imgui.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\imgui\imgui_impl_glfw.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\imgui\imgui_impl_opengl3.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\imgui\imgui_impl_opengl3_loader.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\imgui\imgui_internal.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\imgui\imstb_rectpack.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\imgui\imstb_textedit.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\imgui\imstb_truetype.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseWindow.h">
+      <Filter>core\window</Filter>
+    </ClInclude>
+    <ClInclude Include="ImguiInitializer.h">
+      <Filter>core\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="GLFWInitializer.h">
+      <Filter>core\glfw</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraController.h">
+      <Filter>app\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>app\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectLight.h">
+      <Filter>engine\light</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderConfig.h">
+      <Filter>app\game\ui\dev\render\model</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderConfigEditor.h">
+      <Filter>app\game\ui\dev\render\view</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="World.h">
+      <Filter>app\game\world</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>app\game\player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerController.h">
+      <Filter>app\game\player</Filter>
+    </ClInclude>
+    <ClInclude Include="Direction.h">
+      <Filter>engine\common</Filter>
+    </ClInclude>
+    <ClInclude Include="Column.h">
+      <Filter>app\game\world\view\column</Filter>
+    </ClInclude>
+    <ClInclude Include="GetFPS.h">
+      <Filter>engine\render</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionProvider.h">
+      <Filter>engine\physics\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics.h">
+      <Filter>engine\physics\gravity</Filter>
+    </ClInclude>
+    <ClInclude Include="Math.h">
+      <Filter>engine\math</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicalObject.h">
+      <Filter>engine\physics\object</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>engine\physics\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Marker.h">
+      <Filter>app\game\world</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>engine\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="GdiPlusInitializer.h">
+      <Filter>core\gdi</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewDirectionProvider.h">
+      <Filter>app\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureLoader.h">
+      <Filter>engine\texture\loader</Filter>
+    </ClInclude>
+    <ClInclude Include="CubemapTexture.h">
+      <Filter>engine\texture\cubemap</Filter>
+    </ClInclude>
+    <ClInclude Include="Skybox.h">
+      <Filter>engine\skybox</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderable.h">
+      <Filter>engine\render</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldRenderer.h">
+      <Filter>app\game\world\view</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderStats.h">
+      <Filter>app\game\ui\dev\renderStats\view</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState.h">
+      <Filter>app\game\ui\dev\playerState\view</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>app\game</Filter>
+    </ClInclude>
+    <ClInclude Include="IScreenProvider.h">
+      <Filter>app\common</Filter>
+    </ClInclude>
+    <ClInclude Include="IView.h">
+      <Filter>app\common</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>app\window</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>app\mainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMenu.h">
+      <Filter>app\game\ui\gameMenu\view</Filter>
+    </ClInclude>
+    <ClInclude Include="File3ds.h">
+      <Filter>engine\model\3ds</Filter>
+    </ClInclude>
+    <ClInclude Include="BoundingBox.h">
+      <Filter>engine\objects\boundingBox</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>engine\mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureMap.h">
+      <Filter>engine\texture\textureMap</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelMaterial.h">
+      <Filter>engine\material</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>engine\material</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>engine\model</Filter>
+    </ClInclude>
+    <ClInclude Include="BufferObject.h">
+      <Filter>engine\objects\bufferObject</Filter>
+    </ClInclude>
+    <ClInclude Include="GLEWInitializer.h">
+      <Filter>core\glew</Filter>
+    </ClInclude>
+    <ClInclude Include="Buffer.h">
+      <Filter>engine\objects\bufferObject</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelLoader.h">
+      <Filter>engine\model\loader</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelRenderer.h">
+      <Filter>engine\model\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>engine\common</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\external\imgui\imgui.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\imgui\imgui_demo.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\imgui\imgui_draw.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\imgui\imgui_impl_glfw.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\imgui\imgui_impl_opengl3.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\imgui\imgui_tables.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\imgui\imgui_widgets.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseWindow.cpp">
+      <Filter>core\window</Filter>
+    </ClCompile>
+    <ClCompile Include="ImguiInitializer.cpp">
+      <Filter>core\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="GLFWInitializer.cpp">
+      <Filter>core\glfw</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraController.cpp">
+      <Filter>app\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>app\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectLight.cpp">
+      <Filter>engine\light</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderConfigEditor.cpp">
+      <Filter>app\game\ui\dev\render\view</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>app\game\player</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>app\game\world</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerController.cpp">
+      <Filter>app\game\player</Filter>
+    </ClCompile>
+    <ClCompile Include="Column.cpp">
+      <Filter>app\game\world\view\column</Filter>
+    </ClCompile>
+    <ClCompile Include="GetFPS.cpp">
+      <Filter>engine\render</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics.cpp">
+      <Filter>engine\physics\gravity</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicalObject.cpp">
+      <Filter>engine\physics\object</Filter>
+    </ClCompile>
+    <ClCompile Include="GdiPlusInitializer.cpp">
+      <Filter>core\gdi</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureLoader.cpp">
+      <Filter>engine\texture\loader</Filter>
+    </ClCompile>
+    <ClCompile Include="CubemapTexture.cpp">
+      <Filter>engine\texture\cubemap</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldRenderer.cpp">
+      <Filter>app\game\world\view</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyBox.cpp">
+      <Filter>engine\skybox</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderStats.cpp">
+      <Filter>app\game\ui\dev\renderStats\view</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerState.cpp">
+      <Filter>app\game\ui\dev\playerState\view</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>app\game</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>app\window</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>app\mainMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMenu.cpp">
+      <Filter>app\game\ui\gameMenu\view</Filter>
+    </ClCompile>
+    <ClCompile Include="BoundingBox.cpp">
+      <Filter>engine\objects\boundingBox</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>engine\mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureMap.cpp">
+      <Filter>engine\texture\textureMap</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelMaterial.cpp">
+      <Filter>engine\material</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>engine\material</Filter>
+    </ClCompile>
+    <ClCompile Include="GLEWInitializer.cpp">
+      <Filter>core\glew</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>engine\model</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelLoader.cpp">
+      <Filter>engine\model\loader</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelRenderer.cpp">
+      <Filter>engine\model\renderer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>

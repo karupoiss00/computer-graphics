@@ -19,8 +19,8 @@ void MainMenu::DrawUI()
 {
     auto windowSize = m_screenProvider.GetScreenSize();
     auto menuPos = ImVec2(
-        windowSize.x / 2 - MENU_WIDTH / 2,
-        windowSize.y / 2 - MENU_HEIGHT / 2
+        float(windowSize.x / 2 - MENU_WIDTH / 2),
+        float(windowSize.y / 2 - MENU_HEIGHT / 2)
     );
 
     ImGui::SetNextWindowPos(menuPos);
