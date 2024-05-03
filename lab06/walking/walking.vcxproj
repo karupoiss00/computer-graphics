@@ -261,6 +261,7 @@
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TextureLoader.h" />
     <ClInclude Include="TextureMap.h" />
+    <ClInclude Include="TransformData.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="ViewDirectionProvider.h" />
     <ClInclude Include="Window.h" />

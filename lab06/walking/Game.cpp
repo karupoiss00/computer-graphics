@@ -1,5 +1,13 @@
 #include "Game.h"
 
+constexpr float SKYBOX_SIZE = 36;
+
+const std::map<std::string, TransformData> MODELS_DATA = {
+	{"./res/models/hydrant.3ds", TransformData({10, 0, 10}, {0.005, 0.005, 0.005}, {-90, 1, 0, 0})},
+	{"./res/models/trash.3ds", TransformData({11, 0, 11}, {0.01, 0.01, 0.01}, {-90, 1, 0, 0})},
+	{"./res/models/build.3ds", TransformData({5, -0.25, 5}, {0.5, 0.5, 0.5}, {-90, 1, 0, 0})},
+};
+
 Game::Game(IScreenProvider const& screenProvider, std::function<void()> onGoToMenu)
 	: m_camera()
 	, m_cameraController(m_camera)
@@ -12,7 +20,7 @@ Game::Game(IScreenProvider const& screenProvider, std::function<void()> onGoToMe
 	, m_globalLight({ 0.0f, 0.0f, 0.0f })
 	, m_physics(m_world, 10.0)
 	, m_skyTexture(
-		L"./res/",
+		L"./res/textures/",
 		L"pos_x_skybox.jpg",
 		L"neg_x_skybox.jpg",
 		L"pos_y_skybox.jpg",
@@ -20,13 +28,21 @@ Game::Game(IScreenProvider const& screenProvider, std::function<void()> onGoToMe
 		L"pos_z_skybox.jpg",
 		L"neg_z_skybox.jpg"
 	)
-	, m_skyBox(36, m_skyTexture)
+	, m_skyBox(SKYBOX_SIZE, m_skyTexture)
 	, m_playerState(m_player)
 	, m_screenProvider(screenProvider)
 	, m_gameMenu(screenProvider, onGoToMenu)
 {
 	SetupLight();
 	SetupPhysics();
+}
+
+Game::~Game()
+{
+	for (auto& [model, _] : m_objects)
+	{
+		delete model;
+	}
 }
 
 void Game::Setup()
@@ -46,13 +62,11 @@ void Game::Setup()
 
 	ModelLoader loader;
 
-	loader.Load3dsFile("cola.3ds", m_model);
-
-	BoundingBox const& modelBoundingBox = m_model.GetBoundingBox();
-
-	if (modelBoundingBox.IsEmpty())
+	for (auto [path, transform] : MODELS_DATA)
 	{
-		throw std::runtime_error("Model is empty. Nothing to render");
+		Model* model = new Model();
+		loader.Load3dsFile(path.c_str(), *model);
+		m_objects.insert({ model, transform });
 	}
 }
 
@@ -88,15 +102,7 @@ void Game::Draw()
 
 	m_screenProvider.SetCursorVisible(InputPrevented());
 
-	glColor3ub(0, 0, 0);
-	glPushMatrix();
-	glTranslated(10, 1.2, 10);
-	glScaled(0.01, 0.01, 0.01);
-	glRotated(-90, 1, 0, 0);
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	m_modelRenderer.RenderModel(m_model);
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	glPopMatrix();
+	DrawScene();
 }
 
 void Game::DrawUI()
@@ -105,6 +111,26 @@ void Game::DrawUI()
 	m_playerState.Render(m_renderConfig.m_showPlayerState);
 	m_renderConfigEditor.Render(m_showRenderConfig);
 	m_renderStats.Render(m_renderConfig.m_showStats);
+}
+
+void Game::DrawScene()
+{
+	glColor3ub(0, 0, 0);
+
+	for (auto& [model, transform] : m_objects)
+	{
+		glPushMatrix();
+
+		glTranslated(transform.position.x, transform.position.y, transform.position.z);
+		glScaled(transform.scale.x, transform.scale.y, transform.scale.z);
+		glRotated(transform.rotation.x, transform.rotation.y, transform.rotation.z, transform.rotation.w);
+
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		m_modelRenderer.RenderModel(*model);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
+		glPopMatrix();
+	}
 }
 
 void Game::OnKeyDown(int key, int scancode, int mods)
@@ -160,7 +186,7 @@ void Game::SetupLight()
 	m_headLamp.SetAmbientIntensity({ 0.8f, 0.8f, 0.8f, 1.0f });
 	m_headLamp.SetSpecularIntensity({ 0.2f, 0.2f, 0.2f, 1.0f });
 
-	m_globalLight.SetDirection({ 0.0f, 1.0f, 0.0f });
+	m_globalLight.SetDirection({ 1.0f, 1.0f, 1.0f });
 	m_globalLight.SetDiffuseIntensity({ 0.9f, 0.9f, 0.9f, 1.0f });
 	m_globalLight.SetAmbientIntensity({ 0.8f, 0.8f, 0.8f, 1.0f });
 	m_globalLight.SetSpecularIntensity({ 0.2f, 0.2f, 0.2f, 1.0f });

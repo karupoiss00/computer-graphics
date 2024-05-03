@@ -154,8 +154,11 @@
     <Filter Include="engine\model\renderer">
       <UniqueIdentifier>{0884f093-3a59-4d8e-a94d-547c52f8c91f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="app\camera">
+    <Filter Include="app\common\camera">
       <UniqueIdentifier>{0d576470-0bbc-47d5-8f85-74b6981ca3dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\physics\transform">
+      <UniqueIdentifier>{6fff62df-2225-48df-b684-268c7cefee83}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -196,10 +199,10 @@
       <Filter>core\glfw</Filter>
     </ClInclude>
     <ClInclude Include="CameraController.h">
-      <Filter>app\camera</Filter>
+      <Filter>app\common\camera</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>app\camera</Filter>
+      <Filter>app\common\camera</Filter>
     </ClInclude>
     <ClInclude Include="DirectLight.h">
       <Filter>engine\light</Filter>
@@ -256,7 +259,7 @@
       <Filter>core\gdi</Filter>
     </ClInclude>
     <ClInclude Include="ViewDirectionProvider.h">
-      <Filter>app\camera</Filter>
+      <Filter>app\common\camera</Filter>
     </ClInclude>
     <ClInclude Include="TextureLoader.h">
       <Filter>engine\texture\loader</Filter>
@@ -336,6 +339,9 @@
     <ClInclude Include="Vertex.h">
       <Filter>engine\common</Filter>
     </ClInclude>
+    <ClInclude Include="TransformData.h">
+      <Filter>engine\physics\transform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\external\imgui\imgui.cpp">
@@ -369,10 +375,10 @@
       <Filter>core\glfw</Filter>
     </ClCompile>
     <ClCompile Include="CameraController.cpp">
-      <Filter>app\camera</Filter>
+      <Filter>app\common\camera</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
-      <Filter>app\camera</Filter>
+      <Filter>app\common\camera</Filter>
     </ClCompile>
     <ClCompile Include="DirectLight.cpp">
       <Filter>engine\light</Filter>

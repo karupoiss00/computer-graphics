@@ -1,14 +1,14 @@
 #include "WorldRenderer.h"
 
 std::map<MaterialType, std::wstring> TEXTURE_FILES = {
-	{MaterialType::STONE, L"./res/stone.png"},
-	{MaterialType::STONE_LIANE, L"./res/stone_liane.png"},
-	{MaterialType::BRICK, L"./res/brick.png"},
-	{MaterialType::BRICK_LIANE, L"./res/brick_liane.png"},
-	{MaterialType::BRICK_CRACKED, L"./res/brick_cracked.png"},
-	{MaterialType::BRICK_CHISELED, L"./res/brick_chiseled.png"},
-	{MaterialType::BRICK_SMOOTHED, L"./res/brick_smoothed.png"},
-	{MaterialType::MARKER, L"./res/marker.png"},
+	{MaterialType::STONE, L"./res/textures/stone.png"},
+	{MaterialType::STONE_LIANE, L"./res/textures/stone_liane.png"},
+	{MaterialType::BRICK, L"./res/textures/brick.png"},
+	{MaterialType::BRICK_LIANE, L"./res/textures/brick_liane.png"},
+	{MaterialType::BRICK_CRACKED, L"./res/textures/brick_cracked.png"},
+	{MaterialType::BRICK_CHISELED, L"./res/textures/brick_chiseled.png"},
+	{MaterialType::BRICK_SMOOTHED, L"./res/textures/brick_smoothed.png"},
+	{MaterialType::MARKER, L"./res/textures/marker.png"},
 };
 
 WorldRenderer::WorldRenderer(World& world)

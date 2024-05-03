@@ -1,5 +1,6 @@
 #pragma once
 #include <functional>
+#include <glm/glm.hpp>
 #include "IView.h"
 #include "IScreenProvider.h"
 #include "DirectLight.h"
@@ -19,11 +20,13 @@
 #include "Model.h"
 #include "ModelRenderer.h"
 #include "ModelLoader.h"
+#include "TransformData.h"
 
 class Game : public IView
 {
 public:
 	Game(IScreenProvider const& screenProvider, std::function<void()> onGoToMenu);
+	~Game();
 
 	void Setup() override;
 	void Update(double dt) override;
@@ -35,6 +38,7 @@ public:
 	void OnMouseMove(double x, double y);
 	void OnResize(int width, int height);
 private:
+
 	void SetupLight();
 	void SetupPhysics();
 
@@ -46,6 +50,8 @@ private:
 	bool InputPrevented();
 
 	void ApplyProjection(int width, int height);
+
+	void DrawScene();
 
 	RenderConfigEditor m_renderConfigEditor;
 	RenderConfig m_renderConfig;
@@ -73,6 +79,7 @@ private:
 
 	IScreenProvider const& m_screenProvider;
 
-	Model m_model;
+	std::map<Model*, TransformData> m_objects;
 	ModelRenderer m_modelRenderer;
+	Model m_model;
 };
