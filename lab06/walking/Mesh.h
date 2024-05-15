@@ -4,6 +4,8 @@
 
 class Mesh
 {
+
+
 public:
 	Mesh(
 		unsigned int vertexBufferOffset,
@@ -15,6 +17,12 @@ public:
 		GLenum primitiveType,
 		GLenum indexType
 	);
+
+	struct SubMesh
+	{
+		unsigned startIndex;
+		unsigned indexCount;
+	};
 
 	Mesh(const Mesh&) = delete;
 	Mesh& operator=(const Mesh&) = delete;
@@ -28,6 +36,16 @@ public:
 	GLenum GetPrimitiveType() const;
 	GLenum GetIndexType() const;
 
+
+	unsigned AddSubMesh(unsigned startIndex, unsigned subMeshIndexCount);
+	unsigned GetSubMeshCount()const;
+	SubMesh GetSubMesh(unsigned index)const;
+	void SetMaterialSubMesh(int materialIndex, unsigned subMeshIndex);
+	int GetMaterialSubMesh(int materialIndex)const;
+	unsigned GetMaterialsCount()const;
+	int GetMaterial(unsigned index)const;
+	unsigned GetIndexSize()const;
+
 private:
 	unsigned m_vertexBufferOffset;
 	unsigned m_indexBufferOffset;
@@ -38,4 +56,9 @@ private:
 	BoundingBox const m_boundingBox;
 	GLenum m_primitiveType;
 	GLenum m_indexType;
+
+	std::vector<SubMesh> m_subMeshes;
+	std::vector<int> m_materials;
+	std::vector<int> m_materialSubMesh;
+
 };

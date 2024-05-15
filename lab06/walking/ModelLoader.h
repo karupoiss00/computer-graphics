@@ -35,6 +35,11 @@ class ModelLoader
 
 		Lib3dsFile* m_pFile;
 	};
+
+	struct MeshFace;
+
+	class VertexInfo;
+
 public:
 	ModelLoader();
 
@@ -42,9 +47,29 @@ public:
 	void SetVertexBufferUsage(GLenum vertexBufferUsage);
 	void SetIndexBufferUsage(GLenum indexBufferUsage);
 private:
-	static void LoadMesh(Lib3dsMesh const& mesh, Model& model, std::vector<unsigned char>& vertexBufferData, std::vector<unsigned short>& indexBufferData);
-	static void FillVertexBufferData(Lib3dsMesh const& mesh, std::vector<unsigned char>& vertexBufferData);
-	static void FillIndexBufferData(Lib3dsMesh const& mesh, std::vector<unsigned short>& indexBufferData);
+	static void LoadMesh(unsigned materialCount, Lib3dsMesh const& mesh, Model& model, std::vector<unsigned char>& vertexBufferData, std::vector<unsigned char>& indexBufferData);
+	static unsigned FillVertexBufferData(
+		Lib3dsMesh const& mesh, 
+		std::vector<unsigned char>& vertexBufferData,
+		std::vector<MeshFace>& outputFaces
+	);
+	template <typename IndexType>
+	static unsigned FillIndexBufferData(
+		std::vector<MeshFace> const& faces,
+		std::vector< std::vector<unsigned> > const& materialFaces,
+		std::vector<unsigned char>& indexBufferData);
+
+	static void SplitVerticesBySmoothGroup(Lib3dsMesh const& mesh, std::vector<VertexInfo>& outputVertices, std::vector<MeshFace>& outputFaces);
+	static void BuildMaterialFacesList(unsigned meshMaterialCount, std::vector<MeshFace> const& faces, std::vector< std::vector<unsigned> >& materialFaces);
+
+	template <class VertexType>
+	static unsigned SplitVerticesAndBuildNormals(
+		Lib3dsMesh const& mesh,
+		std::vector<unsigned char>& vertexBufferData,
+		size_t vertexBufferOffset,
+		std::vector<MeshFace>& outputFaces
+	);
+
 
 	void LoadMaterials(
 		Lib3dsFile const& file,
@@ -71,3 +96,69 @@ private:
 	GLenum m_indexBufferUsage;
 };
 
+struct ModelLoader::MeshFace
+{
+	unsigned vertices[3];
+	int materialIndex;
+
+};
+
+class ModelLoader::VertexInfo
+{
+public:
+	VertexInfo()
+		: m_originalVertexIndex(-1)
+		, m_derivedVertexIndex(-1)
+		, m_normalIsDefined(false)
+	{}
+
+    VertexInfo(glm::vec3 const& normal, int originalVertexIndex)
+		: m_originalVertexIndex(originalVertexIndex)
+		, m_derivedVertexIndex(-1)
+		, m_normalIsDefined(true)
+		, m_normal(normal)
+	{
+		assert(originalVertexIndex >= 0);
+	}
+
+	glm::vec3 const& GetNormal()const
+	{
+		assert(NormalIsDefined());
+		return m_normal;
+	}
+
+	void SetNormal(glm::vec3 const& normal)
+	{
+		assert(!m_normalIsDefined);
+		m_normal = normal;
+		m_normalIsDefined = true;
+	}
+
+	bool NormalIsDefined() const
+	{
+		return m_normalIsDefined;
+	}
+
+	int GetOriginalVertexIndex() const
+	{
+		return m_originalVertexIndex;
+	}
+
+	int GetDerivedVertex() const
+	{
+		return m_derivedVertexIndex;
+	}
+
+	void DeriveVertex(int vertexIndex)
+	{
+		assert(vertexIndex >= 0);
+		assert(m_derivedVertexIndex == -1);
+		m_derivedVertexIndex = vertexIndex;
+	}
+
+private:
+	int m_originalVertexIndex;
+	int m_derivedVertexIndex;
+	bool m_normalIsDefined;		
+	glm::vec3 m_normal;
+};

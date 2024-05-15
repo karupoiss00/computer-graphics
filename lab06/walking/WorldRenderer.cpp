@@ -8,6 +8,7 @@ std::map<MaterialType, std::wstring> TEXTURE_FILES = {
 	{MaterialType::BRICK_CRACKED, L"./res/textures/brick_cracked.png"},
 	{MaterialType::BRICK_CHISELED, L"./res/textures/brick_chiseled.png"},
 	{MaterialType::BRICK_SMOOTHED, L"./res/textures/brick_smoothed.png"},
+	{MaterialType::SANDSTONE, L"./res/textures/sandstone.jpg"},
 	{MaterialType::MARKER, L"./res/textures/marker.png"},
 };
 
@@ -44,7 +45,8 @@ void WorldRenderer::Render() const
 	}
 
 	glBindTexture(GL_TEXTURE_2D, m_textureMap.at(MaterialType::MARKER));
-	DrawMarker();
+	//DrawMarker();
+	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 void WorldRenderer::DrawSquare(size_t x, size_t z) const

@@ -14,6 +14,7 @@ enum class MaterialType
 	BRICK_CHISELED,
 	BRICK_SMOOTHED,
 	MARKER,
+	SANDSTONE,
 };
 
 struct Cell
