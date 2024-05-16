@@ -4,9 +4,6 @@ constexpr float SKYBOX_SIZE = 36;
 
 const std::multimap<std::string, TransformData> MODELS_DATA = {
 	{"./res/models/town.3ds", TransformData({18, 0, 18}, {5, 5, 5}, {-90, 1, 0, 0})},
-	//{"./res/models/build.3ds", TransformData({5, 1.70, 5}, {2, 2, 2}, {-90, 1, 0, 0})},
-	//{"./res/models/hydrant.3ds", TransformData({8.5, 0, 8.5}, {0.004, 0.004, 0.004}, {-90, 1, 0, 0})},
-	//{"./res/models/trash.3ds", TransformData({7.75, 0, 5.5}, {0.01, 0.01, 0.01}, {-90, 1, 0, 0})},
 };
 
 Game::Game(IScreenProvider const& screenProvider, std::function<void()> onGoToMenu)
