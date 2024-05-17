@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="core">
+      <UniqueIdentifier>{49f43d5e-48fa-47b1-8184-89f8959e437a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\glfw">
+      <UniqueIdentifier>{d887cd17-07a7-4dfb-83e5-569def3021f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\window">
+      <UniqueIdentifier>{7ad58b61-7d81-4f57-b8b4-6be202eca7d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app">
+      <UniqueIdentifier>{c746c303-880e-48e2-a47f-d3b217b37925}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\light">
+      <UniqueIdentifier>{12d4b41f-fcf0-4662-9dde-adbab987e109}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\objects">
+      <UniqueIdentifier>{1fad7fb3-3cc5-4bbb-9500-97da1cd59b8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\camera">
+      <UniqueIdentifier>{0d576470-0bbc-47d5-8f85-74b6981ca3dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\imgui">
+      <UniqueIdentifier>{64cf54f2-9fad-45aa-abab-04313bde5ac2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external">
+      <UniqueIdentifier>{5d375edc-179f-4470-8fa5-708c83f8d6d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\imgui">
+      <UniqueIdentifier>{dfc5e1bb-05e6-4dc5-bd7c-c3b22617e3f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\common">
+      <UniqueIdentifier>{0ccbe02f-78d3-4d40-9b0e-f3e9c29a5071}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\ui">
+      <UniqueIdentifier>{08b0df02-c83e-415e-9fd4-38ff865835c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\ui\object">
+      <UniqueIdentifier>{8eb30f8f-458b-4ba2-bb20-b5b8319822e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\ui\object\model">
+      <UniqueIdentifier>{fa349cd2-45a7-4fda-a21f-c535c68a5c5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\ui\object\view">
+      <UniqueIdentifier>{963639cd-9661-4df5-897d-c58a39cd8c0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\ui\render">
+      <UniqueIdentifier>{07bac160-fc23-40a3-b1e7-bba30b380700}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\ui\render\model">
+      <UniqueIdentifier>{843332ab-bde6-4eee-a67a-2fe27f8fac74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\ui\render\view">
+      <UniqueIdentifier>{8e08da59-b620-4938-b7f8-78034e856acd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\objects\dodecahedron">
+      <UniqueIdentifier>{836e8b05-3c62-48bf-b182-4fe60012fc14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\objects\mobiusStrip">
+      <UniqueIdentifier>{e87db19a-01e3-422d-b089-cc3740d5197b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\glew">
+      <UniqueIdentifier>{0198dae0-9f90-4130-9511-1356fbe6dd11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine">
+      <UniqueIdentifier>{d528db12-353a-42f8-9048-e2bc213d47eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\shader">
+      <UniqueIdentifier>{73714bbc-3900-44cd-9ac3-0d6a664a1074}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\program">
+      <UniqueIdentifier>{d3b94f76-4d4e-4419-b6b4-c454dfc93572}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\shader\loader">
+      <UniqueIdentifier>{cb48ee91-0b46-4fdd-9378-fccc7a556c1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\shader\compiler">
+      <UniqueIdentifier>{58985df1-c639-4e9f-a04d-d9ead0503456}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\shader\linker">
+      <UniqueIdentifier>{0eb0d546-ae5b-4750-be41-8f8326d2e6ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\program\info">
+      <UniqueIdentifier>{ae172296-feaf-4e89-9976-0e37aa53a58a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="GLFWInitializer.h">
+      <Filter>core\glfw</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseWindow.h">
+      <Filter>core\window</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectLight.h">
+      <Filter>app\light</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>app\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="ImguiInitializer.h">
+      <Filter>core\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\imgui\imconfig.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\imgui\imgui.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\imgui\imgui_impl_glfw.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\imgui\imgui_impl_opengl3.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\imgui\imgui_impl_opengl3_loader.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\imgui\imgui_internal.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\imgui\imstb_rectpack.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\imgui\imstb_textedit.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\imgui\imstb_truetype.h">
+      <Filter>external\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderConfig.h">
+      <Filter>app\ui\render\model</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderConfigEditor.h">
+      <Filter>app\ui\render\view</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderable.h">
+      <Filter>app\common</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectConfig.h">
+      <Filter>app\ui\object\model</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectConfigEditor.h">
+      <Filter>app\ui\object\view</Filter>
+    </ClInclude>
+    <ClInclude Include="EmptyObject.h">
+      <Filter>app\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Dodecahedron.h">
+      <Filter>app\objects\dodecahedron</Filter>
+    </ClInclude>
+    <ClInclude Include="MobiusStrip.h">
+      <Filter>app\objects\mobiusStrip</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraController.h">
+      <Filter>app\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="GLEWInitializer.h">
+      <Filter>core\glew</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>engine\shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Program.h">
+      <Filter>engine\program</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderLoader.h">
+      <Filter>engine\shader\loader</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderCompiler.h">
+      <Filter>engine\shader\compiler</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgramLinker.h">
+      <Filter>engine\shader\linker</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgramInfo.h">
+      <Filter>engine\program\info</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GLFWInitializer.cpp">
+      <Filter>core\glfw</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseWindow.cpp">
+      <Filter>core\window</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectLight.cpp">
+      <Filter>app\light</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>app\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="ImguiInitializer.cpp">
+      <Filter>core\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\imgui\imgui.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\imgui\imgui_demo.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\imgui\imgui_draw.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\imgui\imgui_impl_glfw.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\imgui\imgui_impl_opengl3.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\imgui\imgui_tables.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\imgui\imgui_widgets.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderConfigEditor.cpp">
+      <Filter>app\ui\render\view</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectConfigEditor.cpp">
+      <Filter>app\ui\object\view</Filter>
+    </ClCompile>
+    <ClCompile Include="Dodecahedron.cpp">
+      <Filter>app\objects\dodecahedron</Filter>
+    </ClCompile>
+    <ClCompile Include="MobiusStrip.cpp">
+      <Filter>app\objects\mobiusStrip</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraController.cpp">
+      <Filter>app\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="GLEWInitializer.cpp">
+      <Filter>core\glew</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderLoader.cpp">
+      <Filter>engine\shader\loader</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderCompiler.cpp">
+      <Filter>engine\shader\compiler</Filter>
+    </ClCompile>
+    <ClCompile Include="ProrgramLinker.cpp">
+      <Filter>engine\shader\linker</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgramInfo.cpp">
+      <Filter>engine\program\info</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
