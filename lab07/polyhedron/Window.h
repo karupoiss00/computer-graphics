@@ -12,12 +12,7 @@
 #include "ObjectConfig.h"
 #include "EmptyObject.h"
 #include "MobiusStrip.h"
-#include "Shader.h"
-#include "ShaderLoader.h"
-#include "ShaderCompiler.h"
-#include "ProgramLinker.h"
-#include "Program.h"
-#include "ProgramInfo.h"
+#include "Canabola.h"
 
 class Window : public BaseWindow
 {
@@ -29,7 +24,6 @@ private:
 
 	void SetupLight();
 
-	void SetupShaders();
 
 	void SetupDodecahedron();
 
@@ -55,6 +49,8 @@ private:
 
 	void ApplyMobiusStripChanges();
 
+	void ApplyCanabolaStripChanges();
+
 	void ApplyChanges();
 
 
@@ -72,11 +68,10 @@ private:
 	EmptyObject m_emptyObject;
 	Dodecahedron m_dodecahedron;
 	MobiusStrip m_mobiusStrip;
+	Canabola m_canabola;
 
 	IRenderable* m_object;
 
 	std::map<std::string, IRenderable*> m_objectsMap;
 
-	Program m_program;
-	GLint m_twistLocation;
 };

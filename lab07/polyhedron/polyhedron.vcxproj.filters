@@ -88,6 +88,9 @@
     <Filter Include="engine\program\info">
       <UniqueIdentifier>{ae172296-feaf-4e89-9976-0e37aa53a58a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="app\objects\canabola">
+      <UniqueIdentifier>{0331cbdc-d5a1-441d-9b43-e81f5d0f3691}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -186,6 +189,9 @@
     <ClInclude Include="ProgramInfo.h">
       <Filter>engine\program\info</Filter>
     </ClInclude>
+    <ClInclude Include="Canabola.h">
+      <Filter>app\objects\canabola</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GLFWInitializer.cpp">
@@ -262,6 +268,9 @@
     </ClCompile>
     <ClCompile Include="ProgramInfo.cpp">
       <Filter>engine\program\info</Filter>
+    </ClCompile>
+    <ClCompile Include="Canabola.cpp">
+      <Filter>app\objects\canabola</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

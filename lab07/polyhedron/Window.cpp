@@ -7,8 +7,12 @@ Window::Window(int w, int h, const char* title)
 	, m_light({ 0.0f, 0.0f, 1.0f })
 	, m_camera(DISTANCE_TO_ORIGIN)
 	, m_cameraController(m_camera)
+	, m_objectConfig([this]() {
+		m_object->Reload();
+	})
 	, m_dodecahedron(m_objectConfig.m_size)
 	, m_mobiusStrip(m_objectConfig.m_size)
+	, m_canabola(m_objectConfig.m_size)
 	, m_object(&m_emptyObject)
 	, m_renderConfigEditor(m_renderConfig)
 	, m_objectConfigEditor(m_objectConfig)
@@ -18,6 +22,7 @@ Window::Window(int w, int h, const char* title)
 
 	m_objectsMap.insert({ "dodecahedron", &m_dodecahedron });
 	m_objectsMap.insert({ "mobius strip", &m_mobiusStrip });
+	m_objectsMap.insert({ "canabola", &m_canabola });
 }
 
 Window::~Window() {
@@ -30,32 +35,6 @@ void Window::SetupLight()
 	m_light.SetSpecularIntensity({ 0.3f, 0.3f, 0.3f, 1.0f });
 }
 
-void Window::SetupShaders()
-{
-	ShaderLoader loader;
-	Shader vertexShader = loader.LoadShader(GL_VERTEX_SHADER, L"./shaders/twist.vsh");
-
-	ShaderCompiler compiler;
-
-	compiler.CompileShader(vertexShader);
-
-	m_program.Create();
-	m_program.AttachShader(vertexShader);
-
-	compiler.CheckStatus();
-
-	ProgramLinker linker;
-
-	linker.LinkProgram(m_program);
-	linker.CheckStatus();
-
-	// Выводим информацию о программе
-	ProgramInfo programInfo(m_program);
-	programInfo.Print(std::cout);
-
-	// Получаем и сохраняем расположение uniform-переменной TWIST
-	m_twistLocation = m_program.GetUniformLocation("TWIST");
-}
 
 void Window::SetupDodecahedron()
 {
@@ -103,15 +82,11 @@ void Window::OnRunStart()
 	glEnable(GL_DEPTH_TEST);
 
 	m_light.Apply(GL_LIGHT0);
-
-	SetupShaders();
 }
 
 void Window::Draw(int width, int height)
 {
 	ApplyChanges();
-
-	glUseProgram(m_program);
 
 	auto clearColor = m_renderConfig.m_backgroundColor;
 	glClearColor(
@@ -124,28 +99,7 @@ void Window::Draw(int width, int height)
 
 	m_camera.UpdateView();
 
-	//m_object->Render();
-
-	glUniform1f(m_twistLocation, 0.3f);
-
-	glBegin(GL_QUADS);
-	{
-		glTexCoord2f(0, 0);
-		glVertex2d(-0.8, -0.8);
-
-		glTexCoord2f(4, 0);
-		glVertex2d(0.8, -0.8);
-
-		glTexCoord2f(4, 4);
-		glVertex2d(0.8, 0.8);
-
-		glTexCoord2f(0, 4);
-		glVertex2d(-0.8, 0.8);
-	}
-	glEnd();
-
-
-	glUseProgram(0);
+	m_object->Render();
 }
 
 
@@ -168,6 +122,7 @@ void Window::ApplyChanges()
 
 	ApplyDodecahedronChanges();
 	ApplyMobiusStripChanges();
+	ApplyCanabolaStripChanges();
 	ApplyObjectChanges();
 	ApplyProjectionChanges(int(size.x), int(size.y));
 }
@@ -194,6 +149,10 @@ void Window::ApplyMobiusStripChanges()
 	m_mobiusStrip.SetObjectSize(m_objectConfig.m_size);
 }
 
+void Window::ApplyCanabolaStripChanges()
+{
+	m_canabola.SetObjectSize(m_objectConfig.m_size);
+}
 
 void Window::ApplyObjectChanges()
 {

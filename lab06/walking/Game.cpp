@@ -6,6 +6,8 @@ const std::multimap<std::string, TransformData> MODELS_DATA = {
 	{"./res/models/town.3ds", TransformData({18, 0, 18}, {5, 5, 5}, {-90, 1, 0, 0})},
 };
 
+// assimp для загрузки obj файлов
+
 Game::Game(IScreenProvider const& screenProvider, std::function<void()> onGoToMenu)
 	: m_camera()
 	, m_cameraController(m_camera)
@@ -37,6 +39,7 @@ Game::Game(IScreenProvider const& screenProvider, std::function<void()> onGoToMe
 
 Game::~Game()
 {
+	// и пользовать умные указатели
 	for (auto& [model, _] : m_objects)
 	{
 		delete model;

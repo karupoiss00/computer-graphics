@@ -179,6 +179,7 @@
     <ClInclude Include="BaseWindow.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraController.h" />
+    <ClInclude Include="Canabola.h" />
     <ClInclude Include="EmptyObject.h" />
     <ClInclude Include="GLEWInitializer.h" />
     <ClInclude Include="MobiusStrip.h" />
@@ -211,6 +212,7 @@
     <ClCompile Include="BaseWindow.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraController.cpp" />
+    <ClCompile Include="Canabola.cpp" />
     <ClCompile Include="GLEWInitializer.cpp" />
     <ClCompile Include="MobiusStrip.cpp" />
     <ClCompile Include="ObjectConfigEditor.cpp" />

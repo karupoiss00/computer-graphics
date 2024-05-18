@@ -19,13 +19,20 @@ void ObjectConfigEditor::Render()
     SelectedObjectCombo();
     ImGui::SliderFloat("Object size", &m_config.m_size, 0.1f, 2.0f);
 
+    bool needReload = ImGui::Button("Reload");
+
     ImGui::End();
+
+
+    if (needReload) {
+        m_config.m_onReloadFn();
+    }
 }
 
 
 void ObjectConfigEditor::SelectedObjectCombo()
 {
-    const char* items[] = { "empty", "dodecahedron", "mobius strip"};
+    const char* items[] = { "empty", "dodecahedron", "mobius strip", "canabola"};
     auto currentItem = m_config.m_selectedObject.c_str();
 
     if (ImGui::BeginCombo("selected object", currentItem))
