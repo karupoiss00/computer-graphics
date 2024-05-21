@@ -13,6 +13,7 @@
 #include "EmptyObject.h"
 #include "MobiusStrip.h"
 #include "Canabola.h"
+#include "Flag.h"
 
 class Window : public BaseWindow
 {
@@ -49,7 +50,9 @@ private:
 
 	void ApplyMobiusStripChanges();
 
-	void ApplyCanabolaStripChanges();
+	void ApplyCanabolaChanges();
+
+	void ApplyFlagChanges();
 
 	void ApplyChanges();
 
@@ -69,6 +72,7 @@ private:
 	Dodecahedron m_dodecahedron;
 	MobiusStrip m_mobiusStrip;
 	Canabola m_canabola;
+	Flag m_flag;
 
 	IRenderable* m_object;
 

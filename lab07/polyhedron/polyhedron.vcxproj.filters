@@ -91,6 +91,9 @@
     <Filter Include="app\objects\canabola">
       <UniqueIdentifier>{0331cbdc-d5a1-441d-9b43-e81f5d0f3691}</UniqueIdentifier>
     </Filter>
+    <Filter Include="app\objects\flag">
+      <UniqueIdentifier>{d342e6ae-010a-4ef2-9e96-8c6f5e0eb97c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -192,6 +195,12 @@
     <ClInclude Include="Canabola.h">
       <Filter>app\objects\canabola</Filter>
     </ClInclude>
+    <ClInclude Include="Flag.h">
+      <Filter>app\objects\flag</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectWithShader.h">
+      <Filter>app\common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GLFWInitializer.cpp">
@@ -271,6 +280,9 @@
     </ClCompile>
     <ClCompile Include="Canabola.cpp">
       <Filter>app\objects\canabola</Filter>
+    </ClCompile>
+    <ClCompile Include="Flag.cpp">
+      <Filter>app\objects\flag</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

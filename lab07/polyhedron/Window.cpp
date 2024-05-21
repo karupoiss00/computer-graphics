@@ -23,6 +23,7 @@ Window::Window(int w, int h, const char* title)
 	m_objectsMap.insert({ "dodecahedron", &m_dodecahedron });
 	m_objectsMap.insert({ "mobius strip", &m_mobiusStrip });
 	m_objectsMap.insert({ "canabola", &m_canabola });
+	m_objectsMap.insert({ "flag", &m_flag });
 }
 
 Window::~Window() {
@@ -34,7 +35,6 @@ void Window::SetupLight()
 	m_light.SetAmbientIntensity({ 0.3f, 0.3f, 0.3f, 1.0f });
 	m_light.SetSpecularIntensity({ 0.3f, 0.3f, 0.3f, 1.0f });
 }
-
 
 void Window::SetupDodecahedron()
 {
@@ -122,7 +122,8 @@ void Window::ApplyChanges()
 
 	ApplyDodecahedronChanges();
 	ApplyMobiusStripChanges();
-	ApplyCanabolaStripChanges();
+	ApplyCanabolaChanges();
+	ApplyFlagChanges();
 	ApplyObjectChanges();
 	ApplyProjectionChanges(int(size.x), int(size.y));
 }
@@ -149,9 +150,14 @@ void Window::ApplyMobiusStripChanges()
 	m_mobiusStrip.SetObjectSize(m_objectConfig.m_size);
 }
 
-void Window::ApplyCanabolaStripChanges()
+void Window::ApplyCanabolaChanges()
 {
 	m_canabola.SetObjectSize(m_objectConfig.m_size);
+}
+
+void Window::ApplyFlagChanges()
+{
+	m_flag.SetObjectSize(m_objectConfig.m_size);
 }
 
 void Window::ApplyObjectChanges()

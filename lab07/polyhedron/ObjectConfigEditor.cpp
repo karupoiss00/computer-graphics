@@ -32,7 +32,13 @@ void ObjectConfigEditor::Render()
 
 void ObjectConfigEditor::SelectedObjectCombo()
 {
-    const char* items[] = { "empty", "dodecahedron", "mobius strip", "canabola"};
+    const char* items[] = {
+        "empty", 
+        "dodecahedron", 
+        "mobius strip", 
+        "canabola", 
+        "flag"
+    };
     auto currentItem = m_config.m_selectedObject.c_str();
 
     if (ImGui::BeginCombo("selected object", currentItem))
