@@ -17,7 +17,8 @@ void ObjectConfigEditor::Render()
     }
 
     SelectedObjectCombo();
-    ImGui::SliderFloat("Object size", &m_config.m_size, 0.1f, 2.0f);
+    ImGui::SliderFloat("Object Size", &m_config.m_size, 0.1f, 2.0f);
+    ImGui::SliderFloat("Animation Tick", &m_config.m_animationTick, 0.0f, 2.0f);
 
     bool needReload = ImGui::Button("Reload");
 
@@ -37,7 +38,8 @@ void ObjectConfigEditor::SelectedObjectCombo()
         "dodecahedron", 
         "mobius strip", 
         "canabola", 
-        "flag"
+        "flag",
+        "morphing object"
     };
     auto currentItem = m_config.m_selectedObject.c_str();
 

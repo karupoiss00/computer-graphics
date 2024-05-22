@@ -94,6 +94,9 @@
     <Filter Include="app\objects\flag">
       <UniqueIdentifier>{d342e6ae-010a-4ef2-9e96-8c6f5e0eb97c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="app\objects\morphing">
+      <UniqueIdentifier>{ec5f3978-f21c-4006-99b1-2e60fbf4562c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -201,6 +204,9 @@
     <ClInclude Include="ObjectWithShader.h">
       <Filter>app\common</Filter>
     </ClInclude>
+    <ClInclude Include="MorphingObject.h">
+      <Filter>app\objects\morphing</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GLFWInitializer.cpp">
@@ -283,6 +289,9 @@
     </ClCompile>
     <ClCompile Include="Flag.cpp">
       <Filter>app\objects\flag</Filter>
+    </ClCompile>
+    <ClCompile Include="MorphingObject.cpp">
+      <Filter>app\objects\morphing</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

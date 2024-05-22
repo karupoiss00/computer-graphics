@@ -48,6 +48,7 @@ public:
 
 protected:
 	virtual void RenderObject() const = 0;
+	mutable Program m_program;
 private:
 	void SetupShaders() const
 	{
@@ -81,7 +82,6 @@ private:
 		m_shadersLoaded = true;
 	}
 
-	mutable Program m_program;
 	mutable bool m_shadersLoaded;
 	std::wstring m_shaderFileName;
 };

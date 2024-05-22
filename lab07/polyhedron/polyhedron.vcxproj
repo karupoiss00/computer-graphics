@@ -184,6 +184,7 @@
     <ClInclude Include="Flag.h" />
     <ClInclude Include="GLEWInitializer.h" />
     <ClInclude Include="MobiusStrip.h" />
+    <ClInclude Include="MorphingObject.h" />
     <ClInclude Include="ObjectConfig.h" />
     <ClInclude Include="ObjectConfigEditor.h" />
     <ClInclude Include="ObjectWithShader.h" />
@@ -218,6 +219,7 @@
     <ClCompile Include="Flag.cpp" />
     <ClCompile Include="GLEWInitializer.cpp" />
     <ClCompile Include="MobiusStrip.cpp" />
+    <ClCompile Include="MorphingObject.cpp" />
     <ClCompile Include="ObjectConfigEditor.cpp" />
     <ClCompile Include="ProgramInfo.cpp" />
     <ClCompile Include="ProrgramLinker.cpp" />

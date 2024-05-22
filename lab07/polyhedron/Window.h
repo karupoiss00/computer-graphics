@@ -14,6 +14,7 @@
 #include "MobiusStrip.h"
 #include "Canabola.h"
 #include "Flag.h"
+#include "MorphingObject.h"
 
 class Window : public BaseWindow
 {
@@ -54,6 +55,8 @@ private:
 
 	void ApplyFlagChanges();
 
+	void ApplyMorphingObjectChanges();
+
 	void ApplyChanges();
 
 
@@ -73,6 +76,7 @@ private:
 	MobiusStrip m_mobiusStrip;
 	Canabola m_canabola;
 	Flag m_flag;
+	MorphingObject m_morphingObject;
 
 	IRenderable* m_object;
 

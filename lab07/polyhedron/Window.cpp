@@ -13,6 +13,7 @@ Window::Window(int w, int h, const char* title)
 	, m_dodecahedron(m_objectConfig.m_size)
 	, m_mobiusStrip(m_objectConfig.m_size)
 	, m_canabola(m_objectConfig.m_size)
+	, m_morphingObject(m_objectConfig.m_size)
 	, m_object(&m_emptyObject)
 	, m_renderConfigEditor(m_renderConfig)
 	, m_objectConfigEditor(m_objectConfig)
@@ -24,6 +25,7 @@ Window::Window(int w, int h, const char* title)
 	m_objectsMap.insert({ "mobius strip", &m_mobiusStrip });
 	m_objectsMap.insert({ "canabola", &m_canabola });
 	m_objectsMap.insert({ "flag", &m_flag });
+	m_objectsMap.insert({ "morphing object", &m_morphingObject });
 }
 
 Window::~Window() {
@@ -124,6 +126,7 @@ void Window::ApplyChanges()
 	ApplyMobiusStripChanges();
 	ApplyCanabolaChanges();
 	ApplyFlagChanges();
+	ApplyMorphingObjectChanges();
 	ApplyObjectChanges();
 	ApplyProjectionChanges(int(size.x), int(size.y));
 }
@@ -158,6 +161,12 @@ void Window::ApplyCanabolaChanges()
 void Window::ApplyFlagChanges()
 {
 	m_flag.SetObjectSize(m_objectConfig.m_size);
+}
+
+void Window::ApplyMorphingObjectChanges()
+{
+	m_morphingObject.SetObjectSize(m_objectConfig.m_size);
+	m_morphingObject.SetMorphStep(m_objectConfig.m_animationTick);
 }
 
 void Window::ApplyObjectChanges()
