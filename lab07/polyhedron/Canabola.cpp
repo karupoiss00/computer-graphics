@@ -22,7 +22,7 @@ void Canabola::RenderObject() const
 	glTranslated(m_position.x, m_position.y, m_position.z);
 	glScaled(m_size, m_size, m_size);
 
-	glBegin(GL_LINES);
+	glBegin(GL_LINE_LOOP);
 	{
 		for (double i = 0; i < 2 * M_PI; i += M_PI / 1000)
 		{
