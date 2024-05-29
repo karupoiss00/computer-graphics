@@ -18,18 +18,29 @@ CRaytraceView::CRaytraceView()
 	/*
 	Задаем цвет заднего фона сцены
 	*/
-	m_scene.SetBackdropColor(CVector4f(0.9f, 0.9f, 0.9f, 1));
+	m_scene.SetBackdropColor(CVector4f(0.4f, 0.6f, 0.9f, 1));
 
 	auto plane = std::make_shared<CPlane>(0, 1, 0, 1); // Уравнение плоскости y = -1
 
-	auto checkerShader = std::make_shared<CCheckerShader>();
+	auto checkerShader = std::make_shared<CPhongLightShader>();
+	{
+		CSimpleMaterial material1;
+		material1.SetDiffuseColor(CVector4f(0.5f, 0.8f, 0.6f, 1.0f));
+		material1.SetAmbientColor(CVector4f(0.1f, 0.1f, 0.1f, 1.0f));
+		material1.SetSpecularColor(CVector4f(1.0f, 1.0f, 1.0f, 1.0f));
+		material1.SetShiness(20);
+
+		checkerShader->SetMaterial(material1);
+	}
+	
+	/*std::make_shared<CCheckerShader>();
 	{
 		// Задаем смещение текстурных координат в 1/2 размера шахматного кубика для того чтобы избежать
 		// визуальных артефактов при определении цвета клетки, связанных с погрешностями вычислений
 		CMatrix4d checkerShaderTransform;
 		checkerShaderTransform.Translate(0.25, 0.25, 0.25);
 		checkerShader->SetTextureTransform(checkerShaderTransform);
-	}
+	}*/
 
 	/*
 	Добавляем бесконечную шахматную плоскость на сцену
@@ -41,15 +52,15 @@ CRaytraceView::CRaytraceView()
 		Матрица трансформации сферы 1
 		*/
 		CMatrix4d sphereTransform;
-		sphereTransform.Translate(0, 0, -1.5);
-		auto sphere1 = std::make_shared<CSphere>(0.5); // Создаем сферу радиуса 0.5
+		sphereTransform.Translate(0, 0.5, -2.5);
+		auto sphere1 = std::make_shared<CSphere>(0.2); // Создаем сферу радиуса 0.5
 		sphere1->SetTransform(sphereTransform);
 
 		/*
 		Материал сферы 1
 		*/
 		CSimpleMaterial material1;
-		material1.SetDiffuseColor(CVector4f(0.5f, 0.8f, 0.0f, 1.0f));
+		material1.SetDiffuseColor(CVector4f(0.8f, 0.2f, 0.0f, 1.0f));
 		material1.SetAmbientColor(CVector4f(0.1f, 0.1f, 0.1f, 1.0f));
 		material1.SetSpecularColor(CVector4f(1.0f, 1.0f, 1.0f, 1.0f));
 		material1.SetShiness(20);
@@ -60,9 +71,35 @@ CRaytraceView::CRaytraceView()
 		m_scene.AddObject(std::make_shared<CSceneObject>(std::move(sphere1), std::move(sphere1Shader)));
 	}
 
+	{
+		/*
+		Матрица трансформации сферы 1
+		*/
+		CMatrix4d sphereTransform;
+		sphereTransform.Translate(-0.5, 0, -2);
+		auto sphere1 = std::make_shared<CSphere>(0.4); // Создаем сферу радиуса 0.5
+		sphere1->SetTransform(sphereTransform);
+
+		/*
+		Материал сферы 1
+		*/
+		CSimpleMaterial material1;
+		material1.SetDiffuseColor(CVector4f(0.8f, 0.8f, 0.0f, 1.0f));
+		material1.SetAmbientColor(CVector4f(0.1f, 0.1f, 0.1f, 1.0f));
+		material1.SetSpecularColor(CVector4f(1.0f, 1.0f, 1.0f, 1.0f));
+		material1.SetShiness(20);
+
+		// Шейдер сферы 1
+		auto sphere1Shader = std::make_shared<CPhongLightShader>();
+		sphere1Shader->SetMaterial(material1);
+		m_scene.AddObject(std::make_shared<CSceneObject>(std::move(sphere1), std::move(sphere1Shader)));
+	}
+
+
+
 	// Создаем и добавляем в сцену точечный источник света
 	{
-		auto light = std::make_shared<COmniLightSource>(CVector3d(0, 1, 0));
+		auto light = std::make_shared<COmniLightSource>(CVector3d(-1, 1, -1.5));
 		light->SetDiffuseIntensity(CVector4f(0.8f, 0.8f, 0.8f, 1));
 		light->SetAmbientIntensity(CVector4f(0.1f, 0.1f, 0.1f, 1.0f));
 		light->SetSpecularIntensity(CVector4f(1.0f, 1.0f, 1.0f, 1.0f));
